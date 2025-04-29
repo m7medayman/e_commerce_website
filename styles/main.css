@@ -1,0 +1,22 @@
+@import url('components/footer.css');
+@import url('components/outline_buttons.css');
+@import url('components/primary_button.css');
+
+:root {
+    --background-color: #ffffff;
+    --main-font: 'Inter', sans-serif;
+    --secondary-font: 'Poppins', sans-serif;
+    --button-border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--secondary-font);
+    background-color: var(--background-color);
+    height: 100vh;
+}

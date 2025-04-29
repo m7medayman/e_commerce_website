@@ -1,0 +1,118 @@
+:root {
+    /* Footer */
+    --footer-bg-color: #1a1a1a;
+    --footer-text-color: #ffffff;
+    --footer-link-hover-color: #cccccc;
+    --footer-border-color: #333333;
+    --footer-bottom-text-color: #888888;
+    --footer-icon-hover-color: #ff6f61;
+
+}
+
+.footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    padding: 60px 0 30px;
+    font-size: 14px;
+    font-family: var(--secondary-font);
+}
+
+.footer a {
+    color: var(--footer-text-color);
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer a:hover {
+    color: var(--footer-link-hover-color);
+    text-decoration: underline;
+}
+
+.footer .logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.footer .description {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #bbbbbb;
+}
+
+.footer .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.footer .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid var(--footer-border-color);
+    font-size: 13px;
+    color: var(--footer-bottom-text-color);
+}
+
+.footer-bottom>div {
+    margin: 8px 0;
+}
+
+.footer-bottom .links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-bottom .links a {
+    font-size: 13px;
+}
+
+.footer-bottom .social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom .social-icons a {
+    font-size: 20px;
+    color: var(--footer-text-color);
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer-bottom .social-icons a:hover {
+    color: var(--footer-icon-hover-color);
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .footer {
+        text-align: center;
+    }
+
+    .footer .nav-links {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+}

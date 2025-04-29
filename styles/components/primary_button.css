@@ -1,0 +1,27 @@
+:root {
+    --primary-button-color: #141718;
+    --primary-button-color-active: #000000;
+
+    --primary-button-color-hover: #6c757d;
+    --on-primary-button-color: #ffffff;
+    --on-primary-button-color-hover: #1f1f1f;
+
+}
+
+/* Buttons */
+.btn-primary {
+    color: var(--on-primary-button-color);
+    background-color: var(--primary-button-color);
+    border: none;
+    border-radius: var(--button-border-radius);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-button-color-hover);
+    color: var(--on-primary-button-color);
+}
+
+.btn-primary:focus:active {
+    background-color: var(--primary-button-color-active);
+}

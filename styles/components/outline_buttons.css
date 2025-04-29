@@ -1,0 +1,33 @@
+:root {
+    --primary-outline-button-color: #141718;
+    --on-primary-outline-button: #141718;
+    --on-primary-outline-button-hover: #ffffff;
+    --primary-outline-button-color-click: #000000;
+}
+
+
+.btn-outline-primary {
+    color: var(--on-primary-outline-button);
+    border: 1px solid var(--primary-outline-button-color);
+    border-radius: var(--button-border-radius);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    background-color: transparent;
+}
+
+/* Hover effect */
+.btn-outline-primary:hover {
+    background-color: var(--primary-outline-button-color);
+    color: var(--on-primary-outline-button-hover);
+    border: 1px solid var(--primary-outline-button-color) !important;
+
+}
+
+/* Active and Focus effect */
+.btn-outline-primary:active:focus {
+    background-color: var(--primary-outline-button-color-click) !important;
+    color: var(--on-primary-outline-button-hover) !important;
+    border: 1px solid var(--primary-outline-button-color) !important;
+
+    box-shadow: none !important;
+    outline: none !important;
+}
