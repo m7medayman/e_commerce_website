@@ -1,6 +1,7 @@
 @import url('components/footer.css');
 @import url('components/outline_buttons.css');
 @import url('components/primary_button.css');
+@import url('components/typography.css');
 
 :root {
     --background-color: #ffffff;
