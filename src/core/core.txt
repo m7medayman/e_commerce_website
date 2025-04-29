@@ -1,0 +1,1 @@
+this folder will contain the core of the project like the common widgets and other things like the session controller and local storage controller
