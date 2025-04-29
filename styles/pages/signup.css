@@ -1,61 +1,70 @@
-/* Styles specific to the login page */
-.login-form {
+/* Styles specific to the signup page */
+.signup-form {
     width: 100%;
     max-width: 400px;
     padding: 20px;
   }
   
-  .login-form h1 {
+  .signup-form h1 {
     font-size: 2rem;
     font-weight: bold;
     color: #000000;
   }
   
-  .login-form p {
+  .signup-form p {
     font-size: 1rem;
     color: #000000;
   }
   
-  .login-form .text-success {
+  .signup-form .text-success {
     color: #00C875 !important;
   }
   
-  .login-form .form-label {
+  .signup-form .form-label {
     font-size: 0.875rem;
     color: #000000;
   }
   
-  .login-form .form-control {
+  .signup-form .form-control {
     border: 1px solid #ced4da;
     border-radius: 4px;
     padding: 10px;
   }
   
-  #login_button {
+  .signup-form .form-check-label {
+    font-size: 0.875rem;
+    color: #000000;
+  }
+  
+  #signup_button {
     background-color: #000000;
     border: none;
     font-weight: bold;
     padding: 12px;
   }
   
-  #login_button:hover {
+  #signup_button:hover {
     background-color: #333333;
   }
   
   /* Error message styling */
+  #name_error,
   #email_error,
-  #password_error {
+  #password_error,
+  #business_name_error {
     display: none;
   }
   
+  #name.is-invalid ~ #name_error,
   #email.is-invalid ~ #email_error,
-  #password.is-invalid ~ #password_error {
+  #password.is-invalid ~ #password_error,
+  #business_name.is-invalid ~ #business_name_error {
     display: block;
   }
   
   /* Responsive adjustments */
   @media (max-width: 576px) {
-    .login-form {
+    .signup-form {
       padding: 15px;
     }
   }
