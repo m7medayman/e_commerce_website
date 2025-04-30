@@ -1,6 +1,6 @@
 const AuthView = {
   showError(fieldId, message) {
-    $(`#${fieldId}`).addClass('is-invalid');
+    $(`#${fieldId}`).addClass('is-invalid').removeClass('is-valid');
     $(`#${fieldId}_error`).text(message);
   },
 
@@ -9,9 +9,19 @@ const AuthView = {
     $(`#${fieldId}_error`).text('');
   },
 
+  showValid(fieldId) {
+    $(`#${fieldId}`).addClass('is-valid').removeClass('is-invalid');
+    $(`#${fieldId}_error`).text('');
+  },
+
+  clearValidation(fieldId) {
+    $(`#${fieldId}`).removeClass('is-invalid is-valid');
+    $(`#${fieldId}_error`).text('');
+  },
+
   clearForm(formId) {
     $(`#${formId}`)[0].reset();
-    $(`#${formId} .form-control`).removeClass('is-invalid');
+    $(`#${formId} .form-control`).removeClass('is-invalid is-valid');
     $(`#${formId} .invalid-feedback`).text('');
   },
 

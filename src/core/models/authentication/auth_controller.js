@@ -1,5 +1,27 @@
 const AuthController = {
   handleLogin(formId) {
+    $('#email').on('input', function () {
+      AuthView.clearValidation('email');
+      const email = $(this).val();
+      const emailError = Auth.validateEmail(email);
+      if (emailError) {
+        AuthView.showError('email', emailError);
+      } else if (email) {
+        AuthView.showValid('email');
+      }
+    });
+
+    $('#password').on('input', function () {
+      AuthView.clearValidation('password');
+      const password = $(this).val();
+      const passwordError = Auth.validatePassword(password);
+      if (passwordError) {
+        AuthView.showError('password', passwordError);
+      } else if (password) {
+        AuthView.showValid('password');
+      }
+    });
+
     $(`#${formId}`).on('submit', function (e) {
       e.preventDefault();
 
@@ -37,8 +59,51 @@ const AuthController = {
       AuthView.toggleBusinessNameField(isSeller);
       if (isSeller) {
         $('#business_name').attr('required', true);
+        $('#business_name').on('input', function () {
+          AuthView.clearValidation('business_name');
+          const businessName = $(this).val();
+          const businessNameError = Auth.validateBusinessName(businessName);
+          if (businessNameError) {
+            AuthView.showError('business_name', businessNameError);
+          } else if (businessName) {
+            AuthView.showValid('business_name');
+          }
+        });
       } else {
         $('#business_name').removeAttr('required');
+      }
+    });
+
+    $('#name').on('input', function () {
+      AuthView.clearValidation('name');
+      const name = $(this).val();
+      const nameError = Auth.validateName(name);
+      if (nameError) {
+        AuthView.showError('name', nameError);
+      } else if (name) {
+        AuthView.showValid('name');
+      }
+    });
+
+    $('#email').on('input', function () {
+      AuthView.clearValidation('email');
+      const email = $(this).val();
+      const emailError = Auth.validateEmail(email);
+      if (emailError) {
+        AuthView.showError('email', emailError);
+      } else if (email) {
+        AuthView.showValid('email');
+      }
+    });
+
+    $('#password').on('input', function () {
+      AuthView.clearValidation('password');
+      const password = $(this).val();
+      const passwordError = Auth.validatePassword(password, true);
+      if (passwordError) {
+        AuthView.showError('password', passwordError);
+      } else if (password) {
+        AuthView.showValid('password');
       }
     });
 
