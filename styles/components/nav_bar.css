@@ -1,0 +1,216 @@
+.navbar {
+    background-color: #fff;
+}
+
+.navbar-brand {
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    padding-left: .25rem;
+}
+
+.navbar-brand span {
+    font-weight: 400;
+}
+
+.nav-link {
+    color: #6C6C6C !important;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 .75rem;
+    transition: color 0.2s;
+}
+
+.nav-link.active,
+.nav-link:focus,
+.nav-link:hover {
+    color: #181818 !important;
+    font-weight: 700;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: #232323;
+    padding: 0 .4rem;
+    font-size: 2rem;
+    vertical-align: middle;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.icon-btn:focus {
+    outline: none;
+    color: #181818;
+}
+
+.cart-badge {
+    position: absolute;
+    right: -10px;
+    top: -8px;
+    background: #232323;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 700;
+    box-shadow: 0 0 0 2px #fff;
+}
+
+
+/* Extra tweaks for offcanvas nav */
+.offcanvas .nav-link {
+    margin: 0.75rem 0;
+    font-size: 1.2rem;
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid #eee;
+}
+
+.search-box {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+
+.input-search {
+    height: 50px;
+    width: 50px;
+    border-style: none;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: #fff;
+    border: 1px solid #1a1a1a;
+    padding-right: 40px;
+    color: #1a1a1a;
+}
+
+.input-search::placeholder {
+    color: #1a1a1a;
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 100;
+}
+
+.btn-search {
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color: #1a1a1a;
+    background-color: transparent;
+    pointer-events: painted;
+}
+
+.btn-search:focus~.input-search {
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid #1a1a1a;
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+.input-search:focus {
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid #1a1a1a;
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+
+/* 
+.middle {
+
+    order: -1;
+} */
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        width: 100%;
+
+    }
+
+    .navbar-collapse {
+
+        display: flex !important;
+        align-items: center;
+    }
+
+    /* .navbar-brand {
+        flex: 1;
+    } */
+
+
+}
+
+.avatar-outline {
+    border: 1px solid #333;
+    /* Outline color */
+    border-radius: 50%;
+    padding: 10px;
+    color: #333;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6em;
+    background: transparent;
+
+}
+
+.hover-effect:hover {
+    background-color: #333;
+    color: #fff;
+    outline: none;
+}
+
+
+.hover-effect:active {
+    background-color: #181818;
+    color: #fff;
+    outline: none;
+}
+
+.clickMouse {
+    cursor: pointer;
+}
+
+.navbar>.container,
+.navbar>.container-fluid,
+.navbar>.container-lg,
+.navbar>.container-md,
+.navbar>.container-sm,
+.navbar>.container-xl,
+.navbar>.container-xxl {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: start;
+    flex: 1;
+}

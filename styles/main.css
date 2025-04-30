@@ -2,6 +2,7 @@
 @import url('components/outline_buttons.css');
 @import url('components/primary_button.css');
 @import url('components/typography.css');
+@import url('components//nav_bar.css');
 
 :root {
     --background-color: #ffffff;
@@ -20,4 +21,12 @@ body {
     font-family: var(--secondary-font);
     background-color: var(--background-color);
     height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#app {
+    flex: 1;
+    padding-top: 4rem;
 }
