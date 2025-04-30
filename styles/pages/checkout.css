@@ -1,115 +1,40 @@
-body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
+#checkoutStepper .step-number::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-10%);
+  width: 150px;
+  height: 1px;
+  background-color: #000;
 }
 
-.checkout-stepper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.step {
-  display: flex;
-  align-items: center;
-  margin: 0 10px;
-}
-
-.step-number {
+#checkoutStepper .step-number {
   width: 30px;
   height: 30px;
-  border-radius: 50%;
   background-color: #ccc;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 8px;
 }
 
-.step-number.active {
+#checkoutStepper .step-number.active {
   background-color: #000;
 }
 
-.section-title {
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.form-control, .form-select {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.order-summary-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.order-summary-item img {
-  width: 60px;
-  height: 60px;
-  margin-right: 10px;
-}
-
-.order-summary-item .quantity {
-  display: flex;
-  align-items: center;
-}
-
-.order-summary-item .quantity input {
-  width: 40px;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin: 0 5px;
-}
-
-.coupon-input {
-  display: flex;
-  align-items: center;
-}
-
-.coupon-input input {
-  flex-grow: 1;
-  margin-right: 10px;
-}
-
-.coupon-applied {
-  color: green;
-  margin-top: 5px;
-}
-
-.total-section {
-  font-weight: bold;
-}
-
-.place-order-btn {
-  background-color: #000;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .checkout-stepper {
-      display: none;
+@media (max-width: 576px) {
+  #checkoutStepper .step-number {
+      width: 25px;
+      height: 25px;
+      font-size: 14px;
   }
-  .mobile-back {
-      display: block;
-      margin-bottom: 20px;
-  }
-  .order-summary {
-      margin-top: 20px;
-  }
-}
 
-@media (min-width: 769px) {
-  .mobile-back {
-      display: none;
+  #checkoutStepper span {
+      font-size: 14px;
+  }
+
+  #checkoutTitle {
+      font-size: 24px;
+  }
+
+  #checkoutTitle::after {
+      width: 40px;
   }
 }
