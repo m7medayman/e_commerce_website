@@ -1,22 +1,7 @@
-<html lang="en">
-
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body style="display: flex; flex-direction: column; min-height: 100vh;">
-    <section>
-        <button class="btn btn-primary">
-            test
-        </button>
-        <button class="btn btn-outline-primary "> test</button>
-    </section>
-    <footer class="footer">
+export class FooterWidget {
+    static display() {
+        let footerHtml = `
+        <footer class="footer">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -49,7 +34,9 @@
                 </div>
             </div>
         </div>
-    </footer>
-</body>
+    </footer>`;
+        document.getElementById("footer").innerHTML = footerHtml;
 
-</html>
+    }
+
+}
