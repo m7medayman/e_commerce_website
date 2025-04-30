@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  --font-weight-normal: 400;
+  --font-weight-semi: 500;
+  --font-weight-bold: 700;
+
+  --h1-size: 3rem;
+  --h1-line: 1.1;
+  --h1-letter: -0.06em;
+
+  --h2-size: 2.5rem;
+  --h2-line: 1.13;
+  --h2-letter: -0.05em;
+
+  --h3-size: 2rem;
+  --h3-line: 1.18;
+  --h3-letter: -0.04em;
+
+  --h4-size: 1.5rem;
+  --h4-line: 1.23;
+  --h4-letter: -0.03em;
+
+  --h5-size: 1.25rem;
+  --h5-line: 1.28;
+  --h5-letter: -0.02em;
+
+  --h6-size: 1rem;
+  --h6-line: 1.33;
+  --h6-letter: -0.01em;
+
+  --body1-size: 1rem;
+  --body1-line: 1.6;
+
+  --body2-size: 0.875rem;
+  --body2-line: 1.6;
+
+  --caption1-size: 0.75rem;
+  --caption1-line: 1.5;
+
+  --caption2-size: 0.625rem;
+  --caption2-line: 1.4;
+}
+
+/* === Headings === */
+.h1-normal,
+.h1-semi,
+.h1-bold {
+  font-size: var(--h1-size);
+  line-height: var(--h1-line);
+  letter-spacing: var(--h1-letter);
+  font-family: var(--font-primary);
+}
+
+.h1-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.h1-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.h1-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.h2-normal,
+.h2-semi,
+.h2-bold {
+  font-size: var(--h2-size);
+  line-height: var(--h2-line);
+  letter-spacing: var(--h2-letter);
+  font-family: var(--font-primary);
+}
+
+.h2-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.h2-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.h2-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.h3-normal,
+.h3-semi,
+.h3-bold {
+  font-size: var(--h3-size);
+  line-height: var(--h3-line);
+  letter-spacing: var(--h3-letter);
+  font-family: var(--font-primary);
+}
+
+.h3-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.h3-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.h3-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.h4-normal,
+.h4-semi,
+.h4-bold {
+  font-size: var(--h4-size);
+  line-height: var(--h4-line);
+  letter-spacing: var(--h4-letter);
+  font-family: var(--font-primary);
+}
+
+.h4-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.h4-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.h4-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.h5-normal,
+.h5-semi,
+.h5-bold {
+  font-size: var(--h5-size);
+  line-height: var(--h5-line);
+  letter-spacing: var(--h5-letter);
+  font-family: var(--font-primary);
+}
+
+.h5-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.h5-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.h5-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.h6-normal,
+.h6-semi,
+.h6-bold {
+  font-size: var(--h6-size);
+  line-height: var(--h6-line);
+  letter-spacing: var(--h6-letter);
+  font-family: var(--font-primary);
+}
+
+.h6-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.h6-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.h6-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* === Body Text === */
+.body1-normal,
+.body1-semi,
+.body1-bold {
+  font-size: var(--body1-size);
+  line-height: var(--body1-line);
+  font-family: var(--font-secondary);
+}
+
+.body1-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.body1-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.body1-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.body2-normal,
+.body2-semi,
+.body2-bold {
+  font-size: var(--body2-size);
+  line-height: var(--body2-line);
+  font-family: var(--font-secondary);
+}
+
+.body2-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.body2-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.body2-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* === Captions === */
+.caption1-normal,
+.caption1-semi,
+.caption1-bold {
+  font-size: var(--caption1-size);
+  line-height: var(--caption1-line);
+  font-family: var(--font-secondary);
+}
+
+.caption1-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.caption1-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.caption1-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.caption2-normal,
+.caption2-semi,
+.caption2-bold {
+  font-size: var(--caption2-size);
+  line-height: var(--caption2-line);
+  font-family: var(--font-secondary);
+}
+
+.caption2-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.caption2-semi {
+  font-weight: var(--font-weight-semi);
+}
+
+.caption2-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+
+/* Button text sizes */
+.btn-text-xl {
+  font-size: var(--font-btn-xl-size);
+  font-family: var(--font-body1-family);
+}
+
+.btn-text-l {
+  font-size: var(--font-btn-l-size);
+  font-family: var(--font-body1-family);
+}
+
+.btn-text-m {
+  font-size: var(--font-btn-m-size);
+  font-family: var(--font-body1-family);
+}
+
+.btn-text-s {
+  font-size: var(--font-btn-s-size);
+  font-family: var(--font-body1-family);
+}
+
+.btn-text-xs {
+  font-size: var(--font-btn-xs-size);
+  font-family: var(--font-body1-family);
+}
