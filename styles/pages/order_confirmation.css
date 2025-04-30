@@ -1,5 +1,12 @@
-body {
-  background-color: #f5f5f5;
+#checkoutStepper .step-number::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-10%);
+  width: 150px;
+  height: 1px;
+  background-color: #000;
 }
 
 #checkoutStepper .step-number {
