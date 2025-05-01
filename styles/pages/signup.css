@@ -1,0 +1,93 @@
+/* Styles specific to the signup page */
+.signup-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.signup-form h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.signup-form p {
+  font-size: 1rem;
+  color: #000000;
+}
+
+.signup-form .text-success {
+  color: #00C875 !important;
+}
+
+.signup-form .form-label {
+  font-size: 0.875rem;
+  color: #000000;
+}
+
+.signup-form .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+  padding-right: 60px; /* Add padding to make space for both the icon and validation marker */
+}
+
+.signup-form .form-control.is-valid {
+  border-color: #28a745;
+  box-shadow: none;
+}
+
+.signup-form .form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+/* Position the toggle-password icon */
+.signup-form .toggle-password {
+  cursor: pointer;
+  right: 30px !important; /* Move the eye icon to the left of the validation marker */
+}
+
+/* Ensure validation markers (from Bootstrap) are visible */
+.signup-form .form-control.is-valid,
+.signup-form .form-control.is-invalid {
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.signup-form .form-check-label {
+  font-size: 0.875rem;
+  color: #000000;
+}
+
+#signup_button {
+  background-color: #000000;
+  border: none;
+  font-weight: bold;
+  padding: 12px;
+}
+
+#signup_button:hover {
+  background-color: #333333;
+}
+
+/* Error message styling */
+#name_error,
+#email_error,
+#password_error,
+#business_name_error {
+  display: none;
+}
+
+#name.is-invalid ~ #name_error,
+#email.is-invalid ~ #email_error,
+#password.is-invalid ~ #password_error,
+#business_name.is-invalid ~ #business_name_error {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .signup-form {
+    padding: 15px;
+  }
+}
