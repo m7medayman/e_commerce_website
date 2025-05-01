@@ -1,5 +1,5 @@
 export class FooterWidget {
-    static display() {
+     render() {
         let footerHtml = `
         <footer class="footer">
         <div class="container">
