@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   .carousel-item {
       height: 60vh;
       /* Adjust the height as needed */
@@ -38,3 +39,8 @@
       /* Center the image within the element */
 
   }
+=======
+#section {
+
+}
+>>>>>>> parent of 38c904b (and contianer that has the same margin to use it in all project change the footer method name from displayto render and make the method dynamic made the main structre of mvc example in home feature)

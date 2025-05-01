@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Elegant Navbar Responsive with Offcanvas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
@@ -13,97 +14,54 @@
         crossorigin="anonymous"></script> <!-- Font Awesome 6 Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/main.css">
-   
-
-
-
-    <title>Bootstrap Carousel</title>
     <style>
-        .carousel-item {
-            height: 60vh;
-            /* Adjust the height as needed */
-            background-size: cover;
-            background-position: center;
-        }
 
-        .carousel-inner {
-            text-align: center;
-        }
-
-        .carousel-control-prev-icon {
-            background-color: rgb(0, 0, 0, 0.6);
-            border-radius: 50%;
-            width: 50px;
-            /* Increase the circle size */
-            height: 50px;
-            /* Increase the circle size */
-            background-size: 30px;
-        }
-
-        .carousel-control-next-icon {
-            background-color: rgb(0, 0, 0, 0.6);
-            border-radius: 50%;
-            width: 50px;
-            /* Increase the circle size */
-            height: 50px;
-            /* Increase the circle size */
-            background-size: 30px;
-        }
-
-        .carousel-item {
-            background-size: cover;
-            /* Scale the image without maintaining aspect ratio */
-            background-repeat: no-repeat;
-            /* Prevent the image from repeating */
-            background-position: center;
-            /* Center the image within the element */
-
-        }
     </style>
 </head>
 
 <body>
-    <div class="container">
 
-        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="width: 100% ;height: auto;">
-            <div class="carousel-inner">
-                <div class="carousel-item active" style="background-image: url('assets/images/carousalTestIimg.png')  ">
-                    <!-- Content for first slide -->
-                </div>
-                <div class="carousel-item" style="background-image: url('assets/images/carousalTestIimg.png'); ">
-                </div>
-                <div class="carousel-item" style="background-image: url('assets/images/carousalTestIimg.png') ;">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-        </div>
+    <nav id="navbar">
 
-        <div class="text-center mt-5">
-            <h1>Simply Unique/ Simply Better.</h1>
-            <p><strong>3legant</strong> is a gift & decorations store based in HCMC, Vietnam. Est since 2019.</p>
-        </div>
+    </nav>
+    <section id="app">
+        <pre style="background-color: #181818;">
 
-    </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+    </section>
+    <footer id="footer">
+
+    </footer>
 
 </body>
 
-
-
+<script type="module">
+    import { FooterWidget } from '../src/core/common/footer.js';
+    import { NavBar } from '../src/core/common/nav_bar.js';
+    FooterWidget.display();
+    let navBar = new NavBar()
+    navBar.render();
+</script>
 
 </html>
