@@ -35,7 +35,7 @@ export class FooterWidget {
             </div>
         </div>
     </footer>`;
-        document.getElementById("footer").innerHTML = footerHtml;
+       return footerHtml;
 
     }
 

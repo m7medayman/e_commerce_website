@@ -29,12 +29,7 @@ body {
 
 #app {
     flex: 1;
-    padding-top: 4rem;
+    padding-top: 1rem;
 }
 
-@media (max-width: 576px) {
-    .container {
-        margin-left: 32px !important;
-        margin-right: 32px !important;
-    }
-}
+@media (max-width: 576px) {}

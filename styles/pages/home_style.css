@@ -1,40 +1,40 @@
-.carousel-item {
-    height: 60vh;
-    /* Adjust the height as needed */
-    background-size: cover;
-    background-position: center;
-}
+  .carousel-item {
+      height: 60vh;
+      /* Adjust the height as needed */
+      background-size: cover;
+      background-position: center;
+  }
 
-.carousel-inner {
-    text-align: center;
-}
+  .carousel-inner {
+      text-align: center;
+  }
 
-.carousel-control-prev-icon {
-    background-color: rgb(0, 0, 0, 0.6);
-    border-radius: 50%;
-    width: 50px;
-    /* Increase the circle size */
-    height: 50px;
-    /* Increase the circle size */
-    background-size: 30px;
-}
+  .carousel-control-prev-icon {
+      background-color: rgb(0, 0, 0, 0.6);
+      border-radius: 50%;
+      width: 50px;
+      /* Increase the circle size */
+      height: 50px;
+      /* Increase the circle size */
+      background-size: 30px;
+  }
 
-.carousel-control-next-icon {
-    background-color: rgb(0, 0, 0, 0.6);
-    border-radius: 50%;
-    width: 50px;
-    /* Increase the circle size */
-    height: 50px;
-    /* Increase the circle size */
-    background-size: 30px;
-}
+  .carousel-control-next-icon {
+      background-color: rgb(0, 0, 0, 0.6);
+      border-radius: 50%;
+      width: 50px;
+      /* Increase the circle size */
+      height: 50px;
+      /* Increase the circle size */
+      background-size: 30px;
+  }
 
-.carousel-item {
-    background-size: cover;
-    /* Scale the image without maintaining aspect ratio */
-    background-repeat: no-repeat;
-    /* Prevent the image from repeating */
-    background-position: center;
-    /* Center the image within the element */
+  .carousel-item {
+      background-size: cover;
+      /* Scale the image without maintaining aspect ratio */
+      background-repeat: no-repeat;
+      /* Prevent the image from repeating */
+      background-position: center;
+      /* Center the image within the element */
 
-}
+  }
