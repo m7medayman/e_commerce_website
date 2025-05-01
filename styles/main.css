@@ -26,14 +26,15 @@ body {
     flex-direction: column;
 }
 
+
 #app {
     flex: 1;
-<<<<<<< HEAD
-    padding-top: 1rem;
-}
-
-@media (max-width: 576px) {}
-=======
     padding-top: 4rem;
 }
->>>>>>> parent of 38c904b (and contianer that has the same margin to use it in all project change the footer method name from displayto render and make the method dynamic made the main structre of mvc example in home feature)
+
+@media (max-width: 576px) {
+    .container {
+        margin-left: 32px !important;
+        margin-right: 32px !important;
+    }
+}

@@ -1,5 +1,5 @@
 export class NavBar {
-    constructor(page) {
+    constructor() {
         this.htmlcontent = `
     <nav class="navbar navbar-expand-lg " style="background-color: #fff;">
         <div class="container-fluid align-items-center">
@@ -21,16 +21,16 @@ export class NavBar {
             <div class="collapse navbar-collapse order-lg-2" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link ${page==="home"?"active":""}" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ${page==="shop"?"active":""}" href="#">shop</a>
+                        <a class="nav-link" href="#">shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ${page==="product"?"active":""}" href="#">product</a>
+                        <a class="nav-link" href="#">product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ${page==="contact_us"?"active":""}" href="#">contact us</a>
+                        <a class="nav-link" href="#">contact us</a>
                     </li>
 
 
@@ -49,6 +49,6 @@ export class NavBar {
     }
 
     render() {
-        return this.htmlcontent;
+        document.getElementById("navbar").innerHTML = this.htmlcontent;
     }
 }
