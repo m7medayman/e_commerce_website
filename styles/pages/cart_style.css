@@ -4,6 +4,9 @@
         background: transparent;
         font-size: 16px;
 }
+#cart{
+  flex: 1;
+}
 input[name="shipping"]:checked {
     accent-color: black;
   }
@@ -28,7 +31,11 @@ input[name="shipping"]:checked {
     cursor: pointer;
     margin-top: 5px;
   }
-  .shopping-cart{
+  .current{
     border-bottom: 3px solid black;
+    padding-bottom: 5px;
+  }
+  .completed{
+    border-bottom: 3px solid #198754;
     padding-bottom: 5px;
   }
