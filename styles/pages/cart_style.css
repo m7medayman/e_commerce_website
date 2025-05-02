@@ -10,27 +10,17 @@
 /* input[name="shipping"]:checked {
     accent-color: black;
   }
-.cart-item {
-    border-bottom: 1px solid #dee2e6;
-    padding: 20px 0;
-  }
-  .cart-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  .quantity-control {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .remove {
+    */
+    .hover-pointer {
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+  .removed {
     font-size: 14px;
     color: gray;
     cursor: pointer;
     margin-top: 5px;
-  } */
+  } 
   .current{
     border-bottom: 3px solid black;
     padding-bottom: 5px;

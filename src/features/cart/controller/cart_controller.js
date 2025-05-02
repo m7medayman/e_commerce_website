@@ -8,16 +8,34 @@ export class CartController {
     }
 
     init() {
-       const items=this.model.getCartItems();
+      
         this.view.renderPage();
        this.view.renderProgress();
-       this.view.renderCart(items);
+       this.renderCart();
+       this.addEventListeners();
+      
     }
-   
+    renderCart(){
+        const items=this.model.getCartItems();
+        this.view.renderCart(items);
+    }
 
-   
+    addEventListeners() {
+        document.getElementById('cart-items').addEventListener('click', (e) => {
+            const action = e.target.dataset.action;
+            const index = parseInt(e.target.dataset.index);
 
-    // setupEventListeners() {
-    //     // Add any event listeners here if needed
-    // }
+            if (action === 'increase') {
+                this.model.updateQuantity(index, 1);
+                this.renderCart();
+            } else if (action === 'decrease') {
+                this.model.updateQuantity(index, -1);
+                this.renderCart();
+            } else if (action === 'remove') {
+                this.model.removeItem(index);
+                this.renderCart();
+            }
+        });
+    }
+
 }
