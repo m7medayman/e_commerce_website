@@ -66,18 +66,18 @@ export class CartController {
         document.getElementById('apply-coupon').addEventListener('click', (e) => {
             const code = document.getElementById('coupon-code-input').value.trim().toUpperCase();
             const isValid = this.model.setCoupon(code);
-          
+
             const message = document.getElementById('coupon-message');
             if (isValid) {
-              message.textContent = `Coupon "${code}" applied successfully!`;
-              message.classList.remove('text-danger');
-              message.classList.add('text-success');
+                message.textContent = `Coupon "${code}" applied successfully!`;
+                message.classList.remove('text-danger');
+                message.classList.add('text-success');
             } else {
-              message.textContent = `Invalid coupon code.`;
-              message.classList.remove('text-success');
-              message.classList.add('text-danger');
+                message.textContent = `Invalid coupon code.`;
+                message.classList.remove('text-success');
+                message.classList.add('text-danger');
             }
-          
+
             this.renderSummary();
         });
     }

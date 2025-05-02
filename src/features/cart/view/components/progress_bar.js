@@ -15,22 +15,22 @@ export class ProgressBar {
             const stepNumber = index + 1;
             const isCompleted = stepNumber < this.currentCheckout;
             const isCurrent = stepNumber === this.currentCheckout;
-      
+
             let circleClass = "text-center fs-5 pt-1";
             let circleContent = stepNumber;
-      
+
             if (isCompleted) {
-              circleClass += " bg-success text-white"; 
-              circleContent = "✔"; 
+                circleClass += " bg-success text-white";
+                circleContent = "✔";
             } else if (isCurrent) {
-              circleClass += " bg-dark text-white";
+                circleClass += " bg-dark text-white";
             } else {
-              circleClass += " bg-light text-muted border"; 
+                circleClass += " bg-light text-muted border";
             }
-      
-            const textClass = isCompleted ? "fw-5 text-success" :(isCurrent)?'fw-5 text-dark': "text-muted";
-            const wrapperClass =  isCompleted ? "completed" :(isCurrent)?'current': "";
-                
+
+            const textClass = isCompleted ? "fw-5 text-success" : (isCurrent) ? 'fw-5 text-dark' : "text-muted";
+            const wrapperClass = isCompleted ? "completed" : (isCurrent) ? 'current' : "";
+
             return ` 
             <div class="${index !== 0 ? 'd-none d-md-flex' : 'd-flex'} align-items-center ${wrapperClass}">
             <span class="rounded-circle ${circleClass} text-center fs-5 active pt-1"

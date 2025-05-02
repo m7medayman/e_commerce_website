@@ -1,7 +1,7 @@
-export class CouponCode{
-    constructor(){}
-    render(){
-        return`
+export class CouponCode {
+    constructor() { }
+    render() {
+        return `
         <div>
                     <h3>Have a coupon?</h3>
                     <p>Add your code for an instant cart discount</p>

@@ -1,21 +1,21 @@
-export class CartSummary{
-    constructor(subtotal, selectedShipping = 'free' , discount=0) {
+export class CartSummary {
+    constructor(subtotal, selectedShipping = 'free', discount = 0) {
         this.subtotal = subtotal;
         this.selectedShipping = selectedShipping;
-        this.discount=discount;
+        this.discount = discount;
         this.shippingOptions = [
-          { key: 'free', label: 'Free shipping', cost: 0 },
-          { key: 'express', label: 'Express shipping', cost: 15 },
-          { key: 'pickUp', label: 'Pick Up', cost: 21 }
+            { key: 'free', label: 'Free shipping', cost: 0 },
+            { key: 'express', label: 'Express shipping', cost: 15 },
+            { key: 'pickUp', label: 'Pick Up', cost: 21 }
         ];
-      }
-    render(){
+    }
+    render() {
         const selected = this.shippingOptions.find(opt => opt.key === this.selectedShipping);
         const shippingCost = selected ? selected.cost : 0;
-    
+
         const total = (this.subtotal + shippingCost) - this.discount;
-        this.optionsHtml= this.shippingOptions.map(option=>{
-            return`
+        this.optionsHtml = this.shippingOptions.map(option => {
+            return `
             <div class="border p-3 m-2 d-flex justify-content-between">
                         <div> <input type="radio" name="shipping" value='${option.key}'  ${option.key === this.selectedShipping ? 'checked' : ''}/>
                             <label>${option.label}</label>
@@ -26,7 +26,7 @@ export class CartSummary{
         }).join('');
 
 
-        return`
+        return `
         <div class=" border p-4 order-md-1 order-2">
                     <h5>Cart Summary</h5>
                     ${this.optionsHtml}
