@@ -1,50 +1,59 @@
-#checkoutStepper .step-number::after {
+#bodyCheckout {
+  background-color: #f5f5f5;
+}
+
+#checkoutTitle::after {
   content: '';
   position: absolute;
   bottom: -10px;
   left: 50%;
-  transform: translateX(-10%);
-  width: 150px;
+  transform: translateX(-50%);
+  width: 50px;
   height: 1px;
   background-color: #000;
 }
 
-#checkoutStepper .step-number {
+#stepNumber1Checkout, #stepNumber2Checkout, #stepNumber3Checkout {
   width: 30px;
   height: 30px;
   background-color: #ccc;
 }
 
-#checkoutStepper .step-number.active {
+#stepNumber1Checkout.completed, #stepNumber2Checkout.completed, #stepNumber3Checkout.completed {
+  background-color: #28a745;
+}
+
+#stepNumber1Checkout.active, #stepNumber2Checkout.active, #stepNumber3Checkout.active {
   background-color: #000;
 }
-/* Custom radio button styling to make it black */
-#paymentMethod .form-check-input {
-  /* Border color when not checked */
+
+#codInputCheckout {
   border-color: #000;
 }
 
-#paymentMethod .form-check-input:checked {
-  /* Background and border color when checked */
+#codInputCheckout:checked {
   background-color: #000;
   border-color: #000;
 }
 
-#paymentMethod .form-check-input:disabled {
-  /* Ensure the disabled state also respects the black color */
+#codInputCheckout:disabled {
   opacity: 0.6;
   background-color: #000;
   border-color: #000;
 }
 
+#codInputCheckout:checked[type="radio"] {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+}
+
 @media (max-width: 576px) {
-  #checkoutStepper .step-number {
+  #stepNumber1Checkout, #stepNumber2Checkout, #stepNumber3Checkout {
       width: 25px;
       height: 25px;
       font-size: 14px;
   }
 
-  #checkoutStepper span {
+  #step1Checkout span, #step2Checkout span, #step3Checkout span {
       font-size: 14px;
   }
 
