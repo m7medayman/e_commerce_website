@@ -1,11 +1,10 @@
 :root {
     --primary-button-color: #141718;
     --primary-button-color-active: #000000;
-
     --primary-button-color-hover: #6c757d;
     --on-primary-button-color: #ffffff;
     --on-primary-button-color-hover: #1f1f1f;
-
+    --button-border-radius: 4px;
 }
 
 /* Buttons */
@@ -14,7 +13,10 @@
     background-color: var(--primary-button-color);
     border: none;
     border-radius: var(--button-border-radius);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.1s, color 0.1s;
+    padding: 0.5rem 1rem;
+    width: 100%;
+
 }
 
 .btn-primary:hover {
