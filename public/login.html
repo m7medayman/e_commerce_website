@@ -28,12 +28,9 @@
               <input type="email" class="form-control" id="email" name="email" required>
               <div id="email_error" class="invalid-feedback"></div>
             </div>
-            <div class="mb-3 position-relative">
+            <div class="mb-3 ">
               <label for="password" class="form-label">Password</label>
               <input type="password" class="form-control" id="password" name="password" required>
-              <span class="position-absolute left-50 top-50 translate-middle-y me-3 toggle-password" onclick="AuthView.togglePassword('password')" style="cursor: pointer;">
-                <i class="bi bi-eye-slash" id="toggle_icon"></i>
-              </span>
               <div id="password_error" class="invalid-feedback"></div>
             </div>
             <button type="submit" class="btn btn-dark w-100" id="login_button">SIGN IN</button>
