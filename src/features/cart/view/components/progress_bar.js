@@ -12,8 +12,6 @@ export class ProgressBar {
             return `<p class='text-center'> No current checkout is done </p>`;
         }
         const items = this.ProgressBarItems.map((item, index) => {
-            // const isActive = this.ProgressBarItems[index]=== this.currentCheckout;
-            // const isActive =index+1 === this.currentCheckout;
             const stepNumber = index + 1;
             const isCompleted = stepNumber < this.currentCheckout;
             const isCurrent = stepNumber === this.currentCheckout;

@@ -1,13 +1,13 @@
-#Coupon{
+/* #Coupon{
         border: none;
         outline: none; 
         background: transparent;
         font-size: 16px;
-}
+} */
 #cart{
   flex: 1;
 }
-input[name="shipping"]:checked {
+/* input[name="shipping"]:checked {
     accent-color: black;
   }
 .cart-item {
@@ -30,7 +30,7 @@ input[name="shipping"]:checked {
     color: gray;
     cursor: pointer;
     margin-top: 5px;
-  }
+  } */
   .current{
     border-bottom: 3px solid black;
     padding-bottom: 5px;

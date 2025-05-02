@@ -8,11 +8,16 @@ export class CartController {
     }
 
     init() {
+       const items=this.model.getCartItems();
         this.view.renderPage();
        this.view.renderProgress();
+       this.view.renderCart(items);
     }
+   
 
-    setupEventListeners() {
-        // Add any event listeners here if needed
-    }
+   
+
+    // setupEventListeners() {
+    //     // Add any event listeners here if needed
+    // }
 }
