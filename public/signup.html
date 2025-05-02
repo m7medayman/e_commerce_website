@@ -48,7 +48,7 @@
               <div class="mb-3 position-relative">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
-                <span class="position-absolute top-50 translate-middle-y me-3 toggle-password" onclick="AuthView.togglePassword('password')">
+                <span class="position-absolute left-50 top-50 translate-middle-y me-3 toggle-password" onclick="AuthView.togglePassword('password')" style="cursor: pointer;">
                   <i class="bi bi-eye-slash" id="toggle_icon"></i>
                 </span>
                 <div id="password_error" class="invalid-feedback"></div>
@@ -67,9 +67,9 @@
     </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../src/core/models/authentication/auth.js"></script>
-  <script src="../src/core/models/authentication/auth_view.js"></script>
-  <script src="../src/core/models/authentication/auth_controller.js"></script>
-  <script src="../src/core/models/authentication/app.js"></script>
+  <script src="../src/features/auth/model/auth.js"></script>
+  <script src="../src/features/auth/view/auth_view.js"></script>
+  <script src="../src/features/auth/controller/auth_controller.js"></script>
+  <script src="../src/features/auth/authentication_app.js"></script>
 </body>
 </html>
