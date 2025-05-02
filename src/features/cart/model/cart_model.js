@@ -10,7 +10,28 @@ export class CartModel {
       express:15,
       pickUp:21};
       this.selectedShipping = 'free';
+      this.couponCode = '';
+    this.validCoupons = {
+      SAVE10: 0.1, // 10% discount
+      SAVE20: 0.2  // 20% discount
+    };
     }
+    setCoupon(code) {
+      if (this.validCoupons.hasOwnProperty(code)) {
+        this.couponCode = code;
+        return true;
+      } else {
+        this.couponCode = '';
+        return false;
+      }
+    }
+  
+    getDiscountAmount() {
+      const subtotal = this.getSubtotal();
+      const rate = this.validCoupons[this.couponCode] || 0;
+      return subtotal * rate;
+    }
+
     getCartItems(){
         return this.items;
     }
@@ -36,7 +57,7 @@ export class CartModel {
       return this.shipping[this.selectedShipping];
   }
   getTotal() {
-    return this.getSubtotal() + this.getShippingCost();
+    return this.getSubtotal() + this.getShippingCost() - this.getDiscountAmount();
 }
 
 }

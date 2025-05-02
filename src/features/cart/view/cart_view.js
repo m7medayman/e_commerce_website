@@ -3,6 +3,7 @@ import { NavBar } from '../../../core/common/nav_bar.js';
 import { ProgressBar } from './components/progress_bar.js';
 import { CartItem } from './components/cart-items.js';
 import { CartSummary } from './components/cart-summary.js';
+import { CouponCode } from './components/coupon_code.js';
 export class CartView {
     renderPage() {
         new FooterWidget().render();
@@ -24,10 +25,12 @@ export class CartView {
       
       }
 
-      renderSummary(subtotal,selectedShipping){
-        document.getElementById('cart-summary').innerHTML = new CartSummary(subtotal,selectedShipping).render();
+      renderSummary(subtotal,selectedShipping, discount){
+        document.getElementById('cart-summary').innerHTML = new CartSummary(subtotal,selectedShipping, discount).render();
       }
-
+    renderCoupon(){
+        document.getElementById('coupon-code').innerHTML=new CouponCode().render();
+    }
 
 
 }
