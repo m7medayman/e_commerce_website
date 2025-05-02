@@ -3,118 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Complete</title>
+    <title>Order Confirmation</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/pages/order_confirmation.css">
+    <link href="../styles/main.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container my-5">
-        <!-- Mobile Back Button -->
-        <div id="mobileBack" class="mb-4 d-block d-md-none">
-            <a href="#" class="text-dark">← Home</a>
-        </div>
-
-        <h2 id="checkoutTitle" class="text-center mb-4 d-block ">Check Out</h2>
-
-        <!-- Checkout Stepper -->
-        <div id="checkoutStepper" class="d-flex justify-content-center mb-4">
-            <div id="step1" class="d-flex align-items-center mx-3">
-                <div class="step-number rounded-circle text-white d-flex justify-content-center align-items-center me-2 completed position-relative">1</div>
-                <span>Shopping cart</span>
-            </div>
-            <div id="step2" class="d-flex align-items-center mx-3">
-                <div class="step-number rounded-circle text-white d-flex justify-content-center align-items-center me-2 completed position-relative">2</div>
-                <span>Checkout details</span>
-            </div>
-            <div id="step3" class="d-flex align-items-center mx-3">
-                <div class="step-number rounded-circle text-white d-flex justify-content-center align-items-center me-2 active position-relative">3</div>
-                <span>Order complete</span>
-            </div>
-        </div>
-
-        <!-- Order Confirmation Card -->
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <div class="card p-4 text-center">
-                    <h2 class="mb-3">Thank you! 🎉</h2>
-                    <h4 class="mb-4">Your order has been received</h4>
-                    <!-- Order Items -->
-                    <div class="d-flex justify-content-center mb-4">
-                        <img src="./assets/images/table-y.png" alt="Tray Table" class="mx-2">
-                        <img src="./assets/images/table-y.png" alt="Tray Table" class="mx-2">
-                        <img src="./assets/images/table-y.png" alt="Table Lamp" class="mx-2">
-                    </div>
-                    <!-- Order Details -->
-                    <div class="text-start">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Order code:</span>
-                            <span>#M123.AS679</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Date:</span>
-                            <span>October 19, 2023</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Total:</span>
-                            <span>$1,346.00</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-4">
-                            <span>Payment method:</span>
-                            <span>COD - Cash on delivery</span>
-                        </div>
-                    </div>
-                    <!-- Purchase History Button -->
-                    <a href="#" class="btn btn-primary w-100">PURCHASE HISTORY</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Footer-->
-    <footer class="footer">
-        <div class="container">
-          <!-- Top section with logo and nav links -->
-          <div class="footer-top" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 40px;">
-            <!-- Logo and description -->
-            <div>
-              <div class="logo">3legant.</div>
-              <div class="description">Gifts & Decoration Store</div>
-            </div>
-      
-            <!-- Navigation links -->
-            <nav class="nav-links">
-              <a href="#">Home</a>
-              <a href="#">Shop</a>
-              <a href="#">Product</a>
-              <a href="#">Blog</a>
-              <a href="#">Contact Us</a>
-            </nav>
-          </div>
-      
-          <!-- Bottom section with copyright, links, and social icons -->
-          <div class="footer-bottom">
-            <div>&copy; 2025 3legant. All rights reserved</div>
-      
-            <div class="links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Use</a>
-            </div>
-      
-            <div class="social-icons">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
-        </div>
-      </footer>
-      
-
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="container"></div>
+    <!-- MVC Scripts -->
+    <script type="module" src="../src/features/confirmation/controller/confirmation_controller.js"></script>
 </body>
 </html>
