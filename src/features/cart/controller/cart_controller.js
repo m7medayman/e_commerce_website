@@ -13,11 +13,15 @@ export class CartController {
        this.view.renderProgress();
        this.renderCart();
        this.addEventListeners();
+       this.renderSummary();
       
     }
     renderCart(){
         const items=this.model.getCartItems();
         this.view.renderCart(items);
+    }
+    renderSummary(){
+        this.view.renderSummary(this.model.getSubtotal(),this.model.getShippingOption());
     }
 
     addEventListeners() {
@@ -36,6 +40,25 @@ export class CartController {
                 this.renderCart();
             }
         });
+
+        document.getElementById('cart-summary').addEventListener('change', (e) => {
+            if (e.target.name === 'shipping') {
+              const option = e.target.value;
+              this.model.setShipping(option);
+              this.renderSummary(); // update the summary with new total
+            }
+          });
+
+          document.getElementById('cart-summary').addEventListener('click', (e) => {
+            if (e.target.matches('button.btn-primary')) {
+              this.handleCheckout();
+            }
+          });
     }
+    handleCheckout() { 
+        this.view.renderProgress(2); 
+        document.getElementById('shopping').style.display = 'none';
+      }
+    
 
 }

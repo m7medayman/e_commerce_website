@@ -22,19 +22,24 @@
             <h3>Cart</h3>
         </div>
         <section id="progress_bar"></section>
-        <div class="d-flex justify-content-around flex-wrap mt-5 mb-3 container">
-            <div class="col-12 col-md-7 ">
-            <div class="d-flex justify-content-around mb-2">
-                <p class="col-12 col-md-3  fs-5 ">Product</p>
-                <p class=" d-none d-md-block col-md-2">Quantity</p>
-                <p class=" d-none d-md-block col-md-2">Price</p>
-                <p class=" d-none d-md-block col-md-2">SubTotal</p>
+        <section id="shopping">
+            <div class="d-flex justify-content-around flex-wrap mt-5 mb-3 container">
+                <div class="col-12 col-md-7 ">
+                <div class="d-flex justify-content-around mb-2">
+                    <p class="col-12 col-md-3  fs-5 ">Product</p>
+                    <p class=" d-none d-md-block col-md-2">Quantity</p>
+                    <p class=" d-none d-md-block col-md-2">Price</p>
+                    <p class=" d-none d-md-block col-md-2">SubTotal</p>
+                </div>
+                <section id="cart-items"></section>
+                </div>
+                <section id="cart-summary" class="col-12 col-md-4">
+    
+                </section>
+                <section id="coupon-code"></section>
             </div>
-            <section id="cart-items"></section>
-            </div>
-            <section id="cart-summary"></section>
-            <section id="coupon-code"></section>
-        </div>
+        </section>
+       
         
     </section>
     <footer id="footer">
@@ -44,40 +49,7 @@
         let controller = new CartController();
         controller.init();
     </script>
-    <!--  <div class="col-12 col-md-4 border p-3 order-md-1 order-2">
-                    <h5>Cart Summary</h5>
-                    <div class="border p-2 m-3 d-flex justify-content-between">
-                        <div> <input type="radio" name="shipping" />
-                            <label>Free Shipping</label>
-                        </div>
-                        <span>$0.00</span>
-                    </div>
-                    <div class="border p-2 m-3 d-flex justify-content-between">
-                        <div> <input type="radio" name="shipping" />
-                            <label>Express shipping</label>
-                        </div>
-                        <span>+$15.00</span>
-                    </div>
-                    <div class="border p-2 m-3 d-flex justify-content-between">
-                        <div> <input type="radio" name="shipping" />
-                            <label>Pick Up</label>
-                        </div>
-                        <span>$21.00</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p>SubTotal</p>
-                        <p>$1234.00</p>
-                    </div>
-                    <hr />
-                    <div class="d-flex justify-content-between">
-                        <h4>Total</h4>
-                        <h4>$1345.00</h4>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary col-10 ">Checkout</button>
-                    </div>
-
-                </div>
+    <!--  
                 <div class="col-12  my-3 order-md-2 order-1">
                     <h3>Have a coupon?</h3>
                     <p>Add your code for an instant cart discount</p>

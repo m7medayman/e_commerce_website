@@ -4,28 +4,33 @@
         background: transparent;
         font-size: 16px;
 } */
-#cart{
+#cart {
   flex: 1;
+  padding-bottom: 5rem;
 }
-/* input[name="shipping"]:checked {
-    accent-color: black;
-  }
-    */
-    .hover-pointer {
-      cursor: pointer;
-      transition: color 0.2s ease;
-    }
-  .removed {
-    font-size: 14px;
-    color: gray;
-    cursor: pointer;
-    margin-top: 5px;
-  } 
-  .current{
-    border-bottom: 3px solid black;
-    padding-bottom: 5px;
-  }
-  .completed{
-    border-bottom: 3px solid #198754;
-    padding-bottom: 5px;
-  }
+
+input[name="shipping"]:checked {
+  accent-color: black;
+}
+
+.hover-pointer {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.removed {
+  font-size: 14px;
+  color: gray;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.current {
+  border-bottom: 3px solid black;
+  padding-bottom: 5px;
+}
+
+.completed {
+  border-bottom: 3px solid #198754;
+  padding-bottom: 5px;
+}
