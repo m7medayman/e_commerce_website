@@ -10,8 +10,10 @@
     color: var(--on-primary-outline-button);
     border: 1px solid var(--primary-outline-button-color);
     border-radius: var(--button-border-radius);
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.1s, color 0.1s;
+    padding: 0.5rem 1rem;
     background-color: transparent;
+    width: 100%;
 }
 
 /* Hover effect */
