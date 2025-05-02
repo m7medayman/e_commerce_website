@@ -1,3 +1,5 @@
+@import url('../components/product_card.css');
+
 .carousel-item {
     height: 60vh;
     /* Adjust the height as needed */
@@ -37,4 +39,24 @@
     background-position: center;
     /* Center the image within the element */
 
+}
+
+.row flex-nowrap overflow-auto gx-3 {
+    padding: 0.25rem 0.5rem !important;
+}
+
+.col-6 col-sm-4 col-md-3 {
+    height: max-content !important;
+}
+
+.container {
+    padding-bottom: 1rem !important;
+}
+
+.underline-link {
+    color: #1a1a1a !important;
+    text-decoration: underline !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    text-underline-offset: 0.3rem !important;
 }

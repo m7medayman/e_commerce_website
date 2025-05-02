@@ -4,13 +4,15 @@ export class HomeController {
     constructor() {
         this.model = new HomeModel();
         this.view = new HomeView();
-        
+
     }
 
     init() {
         let images = this.model.getImages();
+        let products = this.model.getProducts();
         this.view.renderPage();
         this.view.renderCarousel(images);
+        this.view.renderNewProducts(products);
 
     }
 

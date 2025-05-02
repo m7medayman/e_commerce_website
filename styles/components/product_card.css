@@ -1,0 +1,77 @@
+.product-card {
+    max-width: 280px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    height: max-content;
+    box-shadow: none !important;
+}
+
+.badge-new {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #212529;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.badge-discount {
+    position: absolute;
+    top: 45px;
+    left: 10px;
+    background-color: #20c997;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.fas {
+    color: #1a1a1a !important;
+}
+
+.product-img {
+    width: 100%;
+    height: auto;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #6c757d;
+    margin-left: 8px;
+}
+
+
+
+.position-relative {
+    height: 200px !important;
+}
+
+.position-relative img {
+    height: 100% !important;
+    width: 100% !important;
+}
