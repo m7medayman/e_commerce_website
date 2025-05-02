@@ -28,5 +28,6 @@ body {
 
 #app {
     flex: 1;
-    padding-top: 4rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
