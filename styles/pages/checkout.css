@@ -18,6 +18,24 @@
 #checkoutStepper .step-number.active {
   background-color: #000;
 }
+/* Custom radio button styling to make it black */
+#paymentMethod .form-check-input {
+  /* Border color when not checked */
+  border-color: #000;
+}
+
+#paymentMethod .form-check-input:checked {
+  /* Background and border color when checked */
+  background-color: #000;
+  border-color: #000;
+}
+
+#paymentMethod .form-check-input:disabled {
+  /* Ensure the disabled state also respects the black color */
+  opacity: 0.6;
+  background-color: #000;
+  border-color: #000;
+}
 
 @media (max-width: 576px) {
   #checkoutStepper .step-number {
