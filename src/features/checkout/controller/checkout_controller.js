@@ -40,79 +40,41 @@ class CheckoutController {
 
         // Form submission
         document.getElementById('placeOrderBtnCheckout').addEventListener('click', () => {
-            const firstName = document.getElementById('firstName');
-            const lastName = document.getElementById('lastName');
-            const phone = document.getElementById('phone');
-            const email = document.getElementById('email');
-            const street = document.getElementById('street');
-            const country = document.getElementById('country');
-            const city = document.getElementById('city');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const fields = [
+                { element: document.getElementById('firstName'), rule: val => val.trim(), message: 'First name is required.' },
+                { element: document.getElementById('lastName'), rule: val => val.trim(), message: 'Last name is required.' },
+                { element: document.getElementById('phone'), rule: val => val.trim(), message: 'Phone number is required.' },
+                { element: document.getElementById('email'), rule: val => val.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), message: 'A valid email is required.' },
+                { element: document.getElementById('street'), rule: val => val.trim(), message: 'Street address is required.' },
+                { element: document.getElementById('country'), rule: val => val, message: 'Country is required.' },
+                { element: document.getElementById('city'), rule: val => val.trim(), message: 'Town/City is required.' },
+            ];
 
             let isValid = true;
 
-            if (!firstName.value.trim()) {
-                this.view.showValidationError(firstName, 'First name is required.');
-                isValid = false;
-            } else {
-                this.view.clearValidationError(firstName);
-            }
-
-            if (!lastName.value.trim()) {
-                this.view.showValidationError(lastName, 'Last name is required.');
-                isValid = false;
-            } else {
-                this.view.clearValidationError(lastName);
-            }
-
-            if (!phone.value.trim()) {
-                this.view.showValidationError(phone, 'Phone number is required.');
-                isValid = false;
-            } else {
-                this.view.clearValidationError(phone);
-            }
-
-            if (!email.value.trim() || !emailRegex.test(email.value)) {
-                this.view.showValidationError(email, 'A valid email is required.');
-                isValid = false;
-            } else {
-                this.view.clearValidationError(email);
-            }
-
-            if (!street.value.trim()) {
-                this.view.showValidationError(street, 'Street address is required.');
-                isValid = false;
-            } else {
-                this.view.clearValidationError(street);
-            }
-
-            if (!country.value) {
-                this.view.showValidationError(country, 'Country is required.');
-                isValid = false;
-            } else {
-                this.view.clearValidationError(country);
-            }
-
-            if (!city.value.trim()) {
-                this.view.showValidationError(city, 'Town/City is required.');
-                isValid = false;
-            } else {
-                this.view.clearValidationError(city);
-            }
+            fields.forEach(field => {
+                if (!field.rule(field.element.value)) {
+                    this.view.showValidationError(field.element, field.message);
+                    isValid = false;
+                } else {
+                    this.view.clearValidationError(field.element);
+                }
+            });
 
             if (isValid) {
                 this.model.customer = {
-                    firstName: firstName.value,
-                    lastName: lastName.value,
-                    phone: phone.value,
-                    email: email.value,
+                    firstName: fields[0].element.value,
+                    lastName: fields[1].element.value,
+                    phone: fields[2].element.value,
+                    email: fields[3].element.value,
                     shippingAddress: {
-                        street: street.value,
-                        country: country.value,
-                        city: city.value,
+                        street: fields[4].element.value,
+                        country: fields[5].element.value,
+                        city: fields[6].element.value,
                         state: document.getElementById('state').value,
                         zip: document.getElementById('zip').value,
                     },
+                
                 };
                 const order = this.model.saveOrder();
                 window.location.href = 'order_confirmation.html';
