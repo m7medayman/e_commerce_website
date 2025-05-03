@@ -8,184 +8,59 @@
     <!-- Font Awesome 6 Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/pages/home_style.css">
+    <link rel="stylesheet" href="../styles/pages/home/home_style.css">
     <title>Document</title>
+
 
 </head>
 
 <body>
+    <section class="container">
+        <div >
+            <!-- row with normal left padding and no right padding -->
+            <div class="row g-4 ps-3 pe-0">
 
-    <section class="container ">
-        <!-- Header -->
-        <div class="row align-items-center mb-4">
-            <div class="col">
-                <h2 class="fw-bold">New Arrivals</h2>
+                <!-- ========== Living Room (big) ========== -->
+                <div class="col-12 col-lg-8">
+                    <div class="category-panel">
+                        <div>
+                            <h2 class="fw-bold">Living Room</h2>
+                            <a href="#" class="big-link">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                        <img src="assets/images/panner1.png" alt="Living Room" class="panel-img ms-auto" />
+                    </div>
+                </div>
+
+                <!-- ========== Right side (two small panels) ========== -->
+                <div class="col-12 col-lg-4 d-flex flex-column">
+                    <!-- Bedroom -->
+                    <div class="category-panel mb-4">
+                        <div>
+                            <h4 class="fw-bold mb-1">Bedroom</h4>
+                            <a href="#" class="big-link">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                        <img src="assets/images/panner2.png" alt="Bedroom" class="panel-img ms-auto sm-img" />
+                    </div>
+
+                    <!-- Kitchen -->
+                    <div class="category-panel mb-4">
+                        <div>
+                            <h4 class="fw-bold mb-1">Bedroom</h4>
+                            <a href="#" class="big-link">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                        <img src="assets/images/panner2.png" alt="Bedroom" class="panel-img ms-auto sm-img" />
+                    </div>
+
+                </div>
             </div>
-            <div class="col text-end">
-                <a href="#" class="text-decoration-none">More Products &rarr;</a>
-            </div>
+
+        </div>
         </div>
 
-        <!-- Scrollable slider -->
-        <div class="overflow-hidden">
-            <div class="row flex-nowrap overflow-auto gx-3" id="sliderRow">
-            </div>
-        </div>
     </section>
+    <!-- full-width container, but we’ll zero its padding and re-add only left padding -->
 
-    <!-- Bootstrap JS Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        /**
-         * createProductCard(options)
-         * 
-         * options = {
-         *   imageUrl:       string,
-         *   altText:        string,
-         *   isNew:          boolean,
-         *   discountPct:    number|null,
-         *   isFavorite:     boolean,
-         *   title:          string,
-         *   price:          string,
-         *   originalPrice:  string|null,
-         *   rating:         integer (0–5)
-         * }
-         */
-        function createProductCard(options) {
-            const {
-                imageUrl, altText = '', isNew = false,
-                discountPct = null, isFavorite = false,
-                title = '', price = '', originalPrice = null,
-                rating = 0  // rating from 0 to 5
-            } = options;
-
-            // Build the 5-star HTML
-            let starsHtml = '';
-            for (let i = 1; i <= 5; i++) {
-                if (i <= rating) {
-                    // filled star
-                    starsHtml += `<i class="fas fa-star text-warning"></i>`;
-                } else {
-                    // bordered (unfilled) star
-                    starsHtml += `<i class="fa-regular fa-star"></i>`;
-                }
-            }
-
-            // wrap in your col/card markup
-            const wrapper = document.createElement('div');
-            wrapper.className = 'col-6 col-sm-4 col-md-3 d-flex';
-
-            const card = document.createElement('div');
-            card.className = 'product-card shadow-sm w-100';
-            card.innerHTML = `
-    <div class="position-relative">
-      ${isNew ? `<span class="badge-new">NEW</span>` : ''}
-      ${discountPct ? `<span class="badge-discount">-${discountPct}%</span>` : ''}
-      <button class="wishlist-btn">
-        <i class="${isFavorite ? 'fas' : 'far'} fa-heart"></i>
-      </button>
-      <img src="${imageUrl}"
-           alt="${altText}"
-           class="product-img"
-           style="height:70%;" />
-    </div>
-    <div class="p-3">
-      <button class="btn-outline-primary">Add to cart</button>
-      <div class="mb-2 mt-2">
-        ${starsHtml}
-      </div>
-      <h5 class="mb-1">${title}</h5>
-      <div>
-        <span class="fw-bold">${price}</span>
-        ${originalPrice
-                    ? `<span class="original-price">${originalPrice}</span>`
-                    : ''
-                }
-      </div>
-    </div>
-  `;
-
-            wrapper.appendChild(card);
-            return wrapper;
-        }
-
-        // === Example data & render ===
-        const products = [
-            {
-                imageUrl: 'https://via.placeholder.com/300x200?text=Loveseat+Sofa',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: 'https://via.placeholder.com/300x200?text=Loveseat+Sofa',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: 'https://via.placeholder.com/300x200?text=Loveseat+Sofa',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: 'https://via.placeholder.com/300x200?text=Loveseat+Sofa',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: 'https://via.placeholder.com/300x200?text=Loveseat+Sofa',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: 'https://via.placeholder.com/300x200?text=Table+Lamp',
-                altText: 'Table Lamp',
-                isNew: true,
-                discountPct: 20,
-                isFavorite: true,
-                title: 'Table Lamp',
-                price: '$24.99',
-                originalPrice: null,
-                rating: 4
-            },
-            // …add as many as you like…
-        ];
-
-        const slider = document.getElementById('sliderRow');
-        products.forEach(p => {
-            const cardEl = createProductCard(p);
-            slider.appendChild(cardEl);
-        });
-    </script>
+    <!-- Bootstrap JS (optional) -->
 </body>
 
 </html>

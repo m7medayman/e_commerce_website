@@ -10,9 +10,11 @@ export class HomeController {
     init() {
         let images = this.model.getImages();
         let products = this.model.getProducts();
+        let threeImageSection = this.model.getThreeImageSection();
         this.view.renderPage();
         this.view.renderCarousel(images);
         this.view.renderNewProducts(products);
+        this.view.renderThreeImageSection(threeImageSection[0], threeImageSection[1], threeImageSection[2]);
 
     }
 

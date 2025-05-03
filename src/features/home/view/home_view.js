@@ -2,6 +2,7 @@ import { FooterWidget } from '../../../core/common/footer.js';
 import { NavBar } from '../../../core/common/nav_bar.js';
 import { CarouselComponent } from './components/corsaul.js';
 import { ProductComponent } from './components/product.js';
+import { ThreeImageSection } from './components/three_img_section.js';
 export class HomeView {
     renderPage() {
         new FooterWidget().render();
@@ -16,6 +17,11 @@ export class HomeView {
         const newProductsContainer = document.getElementById("new-products");
         newProductsContainer.innerHTML = productsSliders;
 
+    }
+    renderThreeImageSection(item1, item2, item3) {
+        const threeImageSection = new ThreeImageSection(item1, item2, item3).render();
+        const threeImageContainer = document.getElementById("three-image-section");
+        threeImageContainer.innerHTML = threeImageSection;
     }
 
     builedProductsSlider(punchOfProducts) {
