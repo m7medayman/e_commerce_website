@@ -1,3 +1,4 @@
+import { ProductModel } from '../../../core/models/product_model.js';
 export class HomeModel {
     constructor() {
         this.images = [
@@ -36,190 +37,32 @@ export class HomeModel {
         ]
 
     }
+    // {
+    //     imageUrl: './assets/images/test_product_img.png',
+    //     altText: 'Grey Loveseat Sofa',
+    //     isNew: true,
+    //     discountPct: 50,
+    //     isFavorite: false,
+    //     title: 'Loveseat Sofa',
+    //     price: '$199.00',
+    //     originalPrice: '$400.00',
+    //     rating: 5
+    // },
     getProducts() {
-        const products = [
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
+        const products = [];
+        ProductModel.getAll().forEach((product) => {
+            products.push({
+                imageUrl: product.detailedImages[0],
+                altText: product.name,
                 isNew: true,
                 discountPct: 50,
                 isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-
-                rating: 3
-            },
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 0
-            },
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 1
-            },
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 20,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 2
-            },
-
-            {
-                imageUrl: 'assets/images/carousalTestIimg.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 20,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 2
-            },
-
-            {
-                imageUrl: 'assets/images/carousalTestIimg.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 20,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 2
-            },
-
-            {
-                imageUrl: 'assets/images/carousalTestIimg.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 20,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 2
-            },
-
-            {
-                imageUrl: 'assets/images/carousalTestIimg.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 20,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 2
-            },
-
-            {
-                imageUrl: 'assets/images/carousalTestIimg.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-            {
-                imageUrl: './assets/images/test_product_img.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 20,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 2
-            },
-
-            {
-                imageUrl: 'assets/images/carousalTestIimg.png',
-                altText: 'Grey Loveseat Sofa',
-                isNew: true,
-                discountPct: 50,
-                isFavorite: false,
-                title: 'Loveseat Sofa',
-                price: '$199.00',
-                originalPrice: '$400.00',
-                rating: 5
-            },
-        ];
+                title: product.name,
+                price: `$${product.price}.00`,
+                originalPrice: `$${product.price + 100}.00`,
+                rating: product.rate
+            })
+        })
         return products;
     }
 }
