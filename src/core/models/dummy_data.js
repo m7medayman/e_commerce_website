@@ -33,7 +33,7 @@ export class DummyData {
                 measuarment: "10x10x10",
                 rate: rate,
                 numberOfReviews: reviews,
-                
+                discount: Math.floor(Math.random() * 100) // Random discount between 0 and 100
             });
         }
     }

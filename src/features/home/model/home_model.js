@@ -51,15 +51,17 @@ export class HomeModel {
     getProducts() {
         const products = [];
         ProductModel.getAll().forEach((product) => {
+            const finalPrice = (product.price - (product.price * product.discount) / 100).toFixed(2);
+
             products.push({
                 imageUrl: product.detailedImages[0],
                 altText: product.name,
                 isNew: true,
-                discountPct: 50,
+                discountPct: product.discount,
                 isFavorite: false,
                 title: product.name,
-                price: `$${product.price}.00`,
-                originalPrice: `$${product.price + 100}.00`,
+                price: `${finalPrice}`,
+                originalPrice: `$${product.price}.00`,
                 rating: product.rate
             })
         })
