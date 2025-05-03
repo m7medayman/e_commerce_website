@@ -11,12 +11,12 @@ class OrderCompleteController {
     }
 
     setupEventListeners() {
-        document.getElementById('purchaseHistoryBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'purchase-history.html';
-        });
+        // document.getElementById('purchaseHistoryBtn').addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     window.location.href = 'purchase-history.html';
+        // });
 
-        document.getElementById('homeLinkOrderComplete').addEventListener('click', (e) => {
+        document.getElementById('homeLink').addEventListener('click', (e) => {
           e.preventDefault();
           window.location.href = 'home.html';
       });
