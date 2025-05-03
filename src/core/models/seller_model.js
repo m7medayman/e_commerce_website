@@ -1,3 +1,4 @@
+
 export class SellerAnalyticsModel {
     static STORAGE_KEY = 'sellerAnalytics';
 
