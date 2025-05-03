@@ -47,7 +47,7 @@ export class CheckoutModel {
   }
   saveOrder() {
     const order = {
-      items: [...this.items],
+      items: this.getItems(),
        total: this.calculateDiscountedTotal(),
       orderCode: `M${Math.floor(Math.random() * 1000)}.AS${Math.floor(Math.random() * 1000)}`,
       date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),

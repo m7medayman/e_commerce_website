@@ -21,7 +21,7 @@ class CheckoutView {
                 <!-- Replace the hardcoded stepper with ProgressBar -->
                 <div id="checkoutProgressBar" class="mb-4">
                     ${this.progressBar.render()}
-                </div>
+                </div>
                 <h2 id="checkoutTitle" class="text-center position-relative mb-4 d-block d-md-none">Check Out</h2>
                 <div class="row">
                     <div class="col-md-8">
