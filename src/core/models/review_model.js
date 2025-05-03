@@ -1,4 +1,4 @@
-class ReviewModel {
+export class ReviewModel {
     static STORAGE_KEY = 'reviews';
   
     static getAll() {

@@ -1,4 +1,4 @@
-class SellerAnalyticsModel {
+export class SellerAnalyticsModel {
     static STORAGE_KEY = 'sellerAnalytics';
 
     static getAll() {
