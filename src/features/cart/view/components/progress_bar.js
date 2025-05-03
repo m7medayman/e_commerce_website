@@ -32,18 +32,37 @@ export class ProgressBar {
             const wrapperClass = isCompleted ? "completed" : (isCurrent) ? 'current' : "";
 
             return ` 
-            <div class="${index !== 0 ? 'd-none d-md-flex' : 'd-flex'} align-items-center ${wrapperClass}">
+            <div class="d-flex align-items-center ${wrapperClass}">
             <span class="rounded-circle ${circleClass} text-center fs-5 active pt-1"
                 style="width: 42px; height: 42px;">${circleContent}</span>
             <p class="pt-2 mx-2 ${textClass}">${item}</p>
         </div>
             `;
         }).join('');
+        const currentStep = this.ProgressBarItems[this.currentCheckout - 1];
+        const smallScreenView = `
+            <div class="d-block d-md-none text-center my-2">
+                <div class="d-inline-flex align-items-center justify-content-center text-center">
+                    <span class="rounded-circle bg-dark text-white text-center me-2 fs-5 pt-1" style="width: 40px; height: 40px;">${this.currentCheckout}</span>
+                    <span class="fw-5">${currentStep}</span>
+                </div>
+            </div>
+        `;
 
-        const progressHtml = `<div class=" d-flex justify-content-around ">
-        ${items}
-        </div>`;
-        return progressHtml;
+    // Full progress bar for medium and up
+    const fullDesktopView = `
+        <div class="d-none d-md-flex justify-content-around">
+            ${items}
+        </div>
+    `;
 
-    }
+    return smallScreenView + fullDesktopView;
+}
+
+    //     const progressHtml = `<div class=" d-flex justify-content-around ">
+    //     ${items}
+    //     </div>`;
+    //     return progressHtml;
+
+    // }
 }

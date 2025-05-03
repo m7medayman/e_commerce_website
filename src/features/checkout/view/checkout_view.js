@@ -1,3 +1,4 @@
+import { ProgressBar } from '../../cart/view/components/progress_bar.js'
 class CheckoutView {
     constructor() {
         this.container = document.querySelector('.container');
@@ -6,29 +7,21 @@ class CheckoutView {
         this.styles.href = '../styles/pages/checkout.css';
         document.head.appendChild(this.styles);
         this.orderSummaryContainer = null;
+        this.progressBar = new ProgressBar(2);
     }
 
     // Initial full render
     render(model) {
+        // const steper= new ProgressBar(2).render();
         const html = `
             <div class="my-5">
                 <div id="mobileBackCheckout" class="mb-4 d-block d-md-none">
                     <a href="#" class="text-dark">← back</a>
                 </div>
-                <div id="checkoutStepperCheckout" class="d-flex justify-content-center mb-4">
-                    <div id="step1Checkout" class="d-flex align-items-center mx-2">
-                        <div id="stepNumber1Checkout" class="rounded-circle text-white d-flex justify-content-center align-items-center me-2">1</div>
-                        <span>Shopping cart</span>
-                    </div>
-                    <div id="step2Checkout" class="d-flex align-items-center mx-2">
-                        <div id="stepNumber2Checkout" class="rounded-circle text-white d-flex justify-content-center align-items-center me-2 active">2</div>
-                        <span>Checkout details</span>
-                    </div>
-                    <div id="step3Checkout" class="d-flex align-items-center mx-2">
-                        <div id="stepNumber3Checkout" class="rounded-circle text-white d-flex justify-content-center align-items-center me-2">3</div>
-                        <span>Order complete</span>
-                    </div>
-                </div>
+                <!-- Replace the hardcoded stepper with ProgressBar -->
+                <div id="checkoutProgressBar" class="mb-4">
+                    ${this.progressBar.render()}
+                </div>
                 <h2 id="checkoutTitle" class="text-center position-relative mb-4 d-block d-md-none">Check Out</h2>
                 <div class="row">
                     <div class="col-md-8">
@@ -93,8 +86,8 @@ class CheckoutView {
                             <h4 id="orderSummaryTitleCheckout" class="section-title fw-bold mb-3">ORDER SUMMARY</h4>
                             <div id="orderItemsContainerCheckout"></div>
                             <div class="mb-3">
-                                <p id="shippingOptionCheckout" class="mb-1">Shipping: ${this.formatShippingOption(model.selectedShipping)}</p>
-                                <p id="shippingCostCheckout" class="mb-1">Shipping Cost: $${model.shippingCost.toFixed(2)}</p>
+                                <p id="shippingOptionCheckout" class="mb-1">Shipping: ${this.formatShippingOption(model.getShippingOption())}</p>
+                                <p id="shippingCostCheckout" class="mb-1">Shipping Cost: $${model.getShippingCost().toFixed(2)}</p>
                             </div>
                             <div id="couponInputCheckout" class="d-flex mb-3">
                                 <input id="couponCodeCheckout" type="text" class="form-control me-2" placeholder="JENKAMW">
@@ -104,11 +97,11 @@ class CheckoutView {
                             <div id="totalSectionCheckout" class="fw-bold">
                                 <div id="subtotalRowCheckout" class="d-flex justify-content-between">
                                     <span id="subtotalLabelCheckout">SUBTOTAL</span>
-                                    <span id="subtotalCheckout">$${model.subtotal.toFixed(2)}</span>
+                                    <span id="subtotalCheckout">$${model.getSubtotal().toFixed(2)}</span>
                                 </div>
                                 <div id="shippingRowCheckout" class="d-flex justify-content-between">
                                     <span id="shippingLabelCheckout">SHIPPING</span>
-                                    <span id="shippingCostCheckout">$${model.shippingCost.toFixed(2)}</span>
+                                    <span id="shippingCostCheckout">$${model.getShippingCost().toFixed(2)}</span>
                                 </div>
                                 <div id="totalRowCheckout" class="d-flex justify-content-between">
                                     <span id="totalLabelCheckout">TOTAL</span>
@@ -129,7 +122,7 @@ class CheckoutView {
     // Update only the order summary section
     updateOrderSummary(model) {
         const html = `
-            ${model.items.map(item => `
+            ${model.getItems().map(item => `
                 <div id="orderItem${item.id}Checkout" class="d-flex align-items-center mb-3">
                     <img id="itemImage${item.id}Checkout" src="${item.url}" alt="${item.name}" class="me-3">
                     <div id="itemDetails${item.id}Checkout" class="flex-grow-1">

@@ -15,10 +15,6 @@ export class CartController {
         this.renderCart();
         this.addEventListeners();
         this.renderSummary();
-
-        // this.view.renderCoupon();
-        // this.handleCoupon();
-
     }
     renderCart() {
         const items = this.model.getCartItems();
@@ -64,53 +60,10 @@ export class CartController {
     }
     handleCheckout() {
         this.view.renderProgress(2);
-        document.getElementById('shopping').style.display = 'none';
+        const checkoutObj = this.model.getCheckoutData();
+        localStorage.setItem('checkoutData', JSON.stringify(checkoutObj)); 
+        // document.getElementById('shopping').style.display = 'none';
         window.location.href = 'checkout.html';
     }
-
-    getItems() {
-        return this.model.getCartItems();
-    }
-
-    getShippingOptions() {
-        return this.model.shipping;
-    }
-
-    getSelectedShipping() {
-        return this.model.selectedShipping;
-    }
-
-    // New methods to expose subtotal, shipping cost, and total
-    getSubtotal() {
-        return this.model.getSubtotal();
-    }
-
-    getShippingCost() {
-        return this.model.getShippingCost();
-    }
-
-    getTotal() {
-        return this.model.getTotal();
-    }
-    
-    // handleCoupon() {
-    //     document.getElementById('apply-coupon').addEventListener('click', (e) => {
-    //         const code = document.getElementById('coupon-code-input').value.trim().toUpperCase();
-    //         const isValid = this.model.setCoupon(code);
-
-    //         const message = document.getElementById('coupon-message');
-    //         if (isValid) {
-    //             message.textContent = `Coupon "${code}" applied successfully!`;
-    //             message.classList.remove('text-danger');
-    //             message.classList.add('text-success');
-    //         } else {
-    //             message.textContent = `Invalid coupon code.`;
-    //             message.classList.remove('text-success');
-    //             message.classList.add('text-danger');
-    //         }
-
-    //         this.renderSummary();
-    //     });
-    // }
 
 }
