@@ -1,5 +1,7 @@
 @import url('../../components/product_card.css');
 @import url('./component/three_image_section.css');
+@import url('./component/four_card_section.css');
+@import url('./component/big_two_part_banner.css');
 
 .carousel-item {
     height: 60vh;
@@ -70,3 +72,27 @@
     text-underline-offset: 0.3rem !important;
 }
 
+.feature-card {
+    background-color: #f2f3f5;
+    padding: 30px 20px;
+    text-align: center;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.feature-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.feature-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.feature-text {
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 1.4;
+}

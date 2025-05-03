@@ -3,6 +3,8 @@ import { NavBar } from '../../../core/common/nav_bar.js';
 import { CarouselComponent } from './components/corsaul.js';
 import { ProductComponent } from './components/product.js';
 import { ThreeImageSection } from './components/three_img_section.js';
+import {FourIconsSection} from "./components/four_icon_section.js";
+import{BigTwoPartBanner} from "./components/big_two_part_banner.js";
 export class HomeView {
     renderPage() {
         new FooterWidget().render();
@@ -37,5 +39,15 @@ export class HomeView {
         wrapper.appendChild(mainContainer);
         return wrapper.getHTML();
 
+    }
+    renderFourIconsSection() {
+        const fourIconsSection = new FourIconsSection().render();
+        const fourIconsContainer = document.getElementById("four-icons-section");
+        fourIconsContainer.innerHTML = fourIconsSection;
+    }
+    renderBigTwoPartBanner(img) {
+        const bigTwoPartBanner = new BigTwoPartBanner(img).render();
+        const bigTwoPartContainer = document.getElementById("big-two-part-banner");
+        bigTwoPartContainer.innerHTML = bigTwoPartBanner;
     }
 }

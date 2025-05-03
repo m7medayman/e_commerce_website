@@ -18,6 +18,8 @@ export class HomeController {
         this.view.renderCarousel(images);
         this.view.renderNewProducts(products);
         this.view.renderThreeImageSection(threeImageSection[0], threeImageSection[1], threeImageSection[2]);
+        this.view.renderFourIconsSection();
+        this.view.renderBigTwoPartBanner("./assets/images/big_panner.png")
 
 
     }

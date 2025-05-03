@@ -20,7 +20,7 @@
 
  /* constrain images */
  .panel-img {
-     max-height: 500px;
+     max-height: 565px;
      max-width: 100%;
      align-self: center !important;
      margin: 0 auto;
