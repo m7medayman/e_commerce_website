@@ -1,14 +1,16 @@
-import { CartModel } from '../model/cart_model.js';
+import { CartDataModel } from '../model/cart_data_model.js';
 import { CartView } from '../view/cart_view.js';
+import { DummyData } from '../../../core/models/dummy_data.js';
 export class CartController {
     constructor() {
-        this.model = new CartModel();
+        this.model = new CartDataModel();
         this.view = new CartView();
 
     }
 
     init() {
-
+        DummyData.clearTheLocalStorage();
+        DummyData.generateDummyCartData();
         this.view.renderPage();
         this.view.renderProgress();
         this.renderCart();
@@ -24,7 +26,7 @@ export class CartController {
         this.view.renderCart(items);
     }
     renderSummary() {
-        this.view.renderSummary(this.model.getSubtotal(), this.model.getShippingOption(), this.model.getDiscountAmount());
+        this.view.renderSummary(this.model.getSubtotal(), this.model.getShippingOption());
     }
 
     addEventListeners() {

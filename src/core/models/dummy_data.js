@@ -23,7 +23,7 @@ export class DummyData {
                 name: `Product ${i + 1}`,
                 description: `Description for Product ${i + 1}`,
                 price: (i + 1) * 10,
-                detailedImages: ["image1.jpg", "image2.jpg"], //add your test images here 
+                detailedImages: ['https://images.pexels.com/photos/923192/pexels-photo-923192.jpeg?auto=compress&cs=tinysrgb&w=600', "image2.jpg"], //add your test images here 
                 category: "Category 1",
                 stock: 10,
                 sellerId: "seller-1",

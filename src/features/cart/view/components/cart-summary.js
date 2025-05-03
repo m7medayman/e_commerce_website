@@ -1,8 +1,7 @@
 export class CartSummary {
-    constructor(subtotal, selectedShipping = 'free', discount = 0) {
+    constructor(subtotal, selectedShipping = 'free') {
         this.subtotal = subtotal;
         this.selectedShipping = selectedShipping;
-        this.discount = discount;
         this.shippingOptions = [
             { key: 'free', label: 'Free shipping', cost: 0 },
             { key: 'express', label: 'Express shipping', cost: 15 },
@@ -13,7 +12,7 @@ export class CartSummary {
         const selected = this.shippingOptions.find(opt => opt.key === this.selectedShipping);
         const shippingCost = selected ? selected.cost : 0;
 
-        const total = (this.subtotal + shippingCost) - this.discount;
+        const total = (this.subtotal + shippingCost);
         this.optionsHtml = this.shippingOptions.map(option => {
             return `
             <div class="border p-3 m-2 d-flex justify-content-between">

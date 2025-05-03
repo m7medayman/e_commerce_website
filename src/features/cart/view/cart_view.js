@@ -25,8 +25,8 @@ export class CartView {
 
   }
 
-  renderSummary(subtotal, selectedShipping, discount) {
-    document.getElementById('cart-summary').innerHTML = new CartSummary(subtotal, selectedShipping, discount).render();
+  renderSummary(subtotal, selectedShipping) {
+    document.getElementById('cart-summary').innerHTML = new CartSummary(subtotal, selectedShipping).render();
   }
   // renderCoupon() {
   //   document.getElementById('coupon-code').innerHTML = new CouponCode().render();
