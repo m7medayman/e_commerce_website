@@ -6,7 +6,7 @@
 }
 #cart {
   flex: 1;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 input[name="shipping"]:checked {
