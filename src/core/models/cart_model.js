@@ -1,4 +1,4 @@
-
+import { ProductModel } from './product_model.js';
 export class CartModel {
   static STORAGE_KEY = 'carts';
 
