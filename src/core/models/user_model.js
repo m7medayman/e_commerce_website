@@ -6,7 +6,7 @@ function generateUUID() {
     });
 }
 
-class UserModel {
+export class UserModel {
     static STORAGE_KEY = 'users';
 
     static getAll() {

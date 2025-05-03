@@ -1,4 +1,4 @@
-class ProductModel {
+export class ProductModel {
     static STORAGE_KEY = 'products';
   
     static getAll() {
