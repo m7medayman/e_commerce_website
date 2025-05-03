@@ -33,6 +33,7 @@ export class DummyData {
                 measuarment: "10x10x10",
                 rate: rate,
                 numberOfReviews: reviews,
+                
             });
         }
     }
