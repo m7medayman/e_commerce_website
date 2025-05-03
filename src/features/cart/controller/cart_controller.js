@@ -15,8 +15,8 @@ export class CartController {
         this.addEventListeners();
         this.renderSummary();
 
-        this.view.renderCoupon();
-        this.handleCoupon();
+        // this.view.renderCoupon();
+        // this.handleCoupon();
 
     }
     renderCart() {
@@ -35,12 +35,15 @@ export class CartController {
             if (action === 'increase') {
                 this.model.updateQuantity(index, 1);
                 this.renderCart();
+                this.renderSummary();
             } else if (action === 'decrease') {
                 this.model.updateQuantity(index, -1);
                 this.renderCart();
+                this.renderSummary();
             } else if (action === 'remove') {
                 this.model.removeItem(index);
                 this.renderCart();
+                this.renderSummary();
             }
         });
 
@@ -48,7 +51,7 @@ export class CartController {
             if (e.target.name === 'shipping') {
                 const option = e.target.value;
                 this.model.setShipping(option);
-                this.renderSummary(); // update the summary with new total
+                this.renderSummary(); 
             }
         });
 
@@ -62,24 +65,24 @@ export class CartController {
         this.view.renderProgress(2);
         document.getElementById('shopping').style.display = 'none';
     }
-    handleCoupon() {
-        document.getElementById('apply-coupon').addEventListener('click', (e) => {
-            const code = document.getElementById('coupon-code-input').value.trim().toUpperCase();
-            const isValid = this.model.setCoupon(code);
+    // handleCoupon() {
+    //     document.getElementById('apply-coupon').addEventListener('click', (e) => {
+    //         const code = document.getElementById('coupon-code-input').value.trim().toUpperCase();
+    //         const isValid = this.model.setCoupon(code);
 
-            const message = document.getElementById('coupon-message');
-            if (isValid) {
-                message.textContent = `Coupon "${code}" applied successfully!`;
-                message.classList.remove('text-danger');
-                message.classList.add('text-success');
-            } else {
-                message.textContent = `Invalid coupon code.`;
-                message.classList.remove('text-success');
-                message.classList.add('text-danger');
-            }
+    //         const message = document.getElementById('coupon-message');
+    //         if (isValid) {
+    //             message.textContent = `Coupon "${code}" applied successfully!`;
+    //             message.classList.remove('text-danger');
+    //             message.classList.add('text-success');
+    //         } else {
+    //             message.textContent = `Invalid coupon code.`;
+    //             message.classList.remove('text-success');
+    //             message.classList.add('text-danger');
+    //         }
 
-            this.renderSummary();
-        });
-    }
+    //         this.renderSummary();
+    //     });
+    // }
 
 }
