@@ -10,22 +10,106 @@
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/pages/home_style.css">
     <title>Document</title>
+
+    <style>
+        .product-card {
+            max-width: 280px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #212529;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 3px;
+            z-index: 2;
+        }
+
+        .badge-discount {
+            position: absolute;
+            top: 45px;
+            left: 10px;
+            background-color: #20c997;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 3px;
+            z-index: 2;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            margin-left: 8px;
+        }
+    </style>
 </head>
 
 <body>
-    <header id="navbar">
+    <div class="container mt-5">
+        <div class="product-card shadow-sm">
+            <div class="position-relative">
+                <span class="badge-new">NEW</span>
+                <span class="badge-discount">-50%</span>
+                <button class="wishlist-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <img src="https://placeholder-image-of-grey-sofa.jpg" class="product-img" alt="Grey Loveseat Sofa">
+            </div>
 
-    </header>
-    <section id="app">
-        <section id="mycorsaul"></section>
-    </section>
-    <footer id="footer">
-    </footer>
+            <div class="p-3">
+                <button class="btn-outline-primary">Add to cart</button>
+
+                <div class="mb-1">
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                </div>
+
+                <h5 class="mb-1">Loveseat Sofa</h5>
+                <div>
+                    <span class="fw-bold">$199.00</span>
+                    <span class="original-price">$400.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
-<script type="module">
-    import { HomeController } from "../src/features/home/controller/home_controller.js";
-    let controller = new HomeController();
-    controller.init();
-</script>
 
 </html>
