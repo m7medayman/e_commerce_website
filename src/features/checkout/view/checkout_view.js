@@ -9,7 +9,7 @@ class CheckoutView {
     }
 
     // Initial full render
-    render(model, attachListenersCallback) {
+    render(model) {
         const html = `
             <div class="my-5">
                 <div id="mobileBackCheckout" class="mb-4 d-block d-md-none">
@@ -54,7 +54,7 @@ class CheckoutView {
                             </div>
                         </div>
                         <div id="shippingAddressCheckout" class="card p-4 mb-4">
-                            <h5 id="shippingAddressTitleCheckout" class="section-title fw-bold mb-3">SHIPPING ADDRESS</h5>
+                            <h4 id="shippingAddressTitleCheckout" class="section-title fw-bold mb-3">SHIPPING ADDRESS</h4>
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="street" placeholder="Street Address *" value="${model.customer.shippingAddress.street}">
                                 <div class="invalid-feedback">Street address is required.</div>
@@ -81,7 +81,7 @@ class CheckoutView {
                             </div>
                         </div>
                         <div id="paymentMethodCheckout" class="card p-4 mb-4">
-                            <h5 id="paymentMethodTitleCheckout" class="section-title fw-bold mb-3">PAYMENT METHOD</h5>
+                            <h4 id="paymentMethodTitleCheckout" class="section-title fw-bold mb-3">PAYMENT METHOD</h4>
                             <div id="formCheckCodCheckout" class="form-check mb-3">
                                 <input id="codInputCheckout" class="form-check-input" type="radio" name="paymentMethod" id="cod" checked disabled>
                                 <label id="codLabelCheckout" class="form-check-label" for="cod">Cash on Delivery (COD)</label>
@@ -90,25 +90,29 @@ class CheckoutView {
                     </div>
                     <div id="orderSummaryCheckout" class="col-md-4 mt-4 mt-md-0">
                         <div id="orderSummaryCardCheckout" class="card p-4">
-                            <h5 id="orderSummaryTitleCheckout" class="section-title fw-bold mb-3">ORDER SUMMARY</h5>
+                            <h4 id="orderSummaryTitleCheckout" class="section-title fw-bold mb-3">ORDER SUMMARY</h4>
                             <div id="orderItemsContainerCheckout"></div>
+                            <div class="mb-3">
+                                <p id="shippingOptionCheckout" class="mb-1">Shipping: ${this.formatShippingOption(model.selectedShipping)}</p>
+                                <p id="shippingCostCheckout" class="mb-1">Shipping Cost: $${model.shippingCost.toFixed(2)}</p>
+                            </div>
                             <div id="couponInputCheckout" class="d-flex mb-3">
                                 <input id="couponCodeCheckout" type="text" class="form-control me-2" placeholder="JENKAMW">
                                 <button id="applyCouponCheckout" class="btn btn-dark">APPLY</button>
                             </div>
-                            <p id="couponAppliedCheckout" class="text-success mb-3">$${model.couponDiscount.toFixed(2)} (REMOVE)</p>
+                            <p id="couponAppliedCheckout" class="text-success mb-3">Discount: $${model.couponDiscount.toFixed(2)} (REMOVE)</p>
                             <div id="totalSectionCheckout" class="fw-bold">
-                                <div id="shippingRowCheckout" class="d-flex justify-content-between">
-                                    <span id="shippingLabelCheckout">SHIPPING</span>
-                                    <span id="shippingCostCheckout">Free</span>
-                                </div>
                                 <div id="subtotalRowCheckout" class="d-flex justify-content-between">
                                     <span id="subtotalLabelCheckout">SUBTOTAL</span>
-                                    <span id="subtotalCheckout"></span>
+                                    <span id="subtotalCheckout">$${model.subtotal.toFixed(2)}</span>
+                                </div>
+                                <div id="shippingRowCheckout" class="d-flex justify-content-between">
+                                    <span id="shippingLabelCheckout">SHIPPING</span>
+                                    <span id="shippingCostCheckout">$${model.shippingCost.toFixed(2)}</span>
                                 </div>
                                 <div id="totalRowCheckout" class="d-flex justify-content-between">
                                     <span id="totalLabelCheckout">TOTAL</span>
-                                    <span id="totalCheckout"></span>
+                                    <span id="totalCheckout">$${model.calculateDiscountedTotal().toFixed(2)}</span>
                                 </div>
                             </div>
                             <button id="placeOrderBtnCheckout" class="btn btn-dark w-100 mt-3">PLACE ORDER</button>
@@ -119,21 +123,19 @@ class CheckoutView {
         `;
         this.container.innerHTML = html;
         this.orderSummaryContainer = document.getElementById('orderItemsContainerCheckout');
-        this.updateOrderSummary(model, attachListenersCallback);
+        this.updateOrderSummary(model);
     }
 
     // Update only the order summary section
-    updateOrderSummary(model, attachListenersCallback) {
+    updateOrderSummary(model) {
         const html = `
             ${model.items.map(item => `
                 <div id="orderItem${item.id}Checkout" class="d-flex align-items-center mb-3">
-                    <img id="itemImage${item.id}Checkout" src="${item.img}" alt="${item.name}" class="me-3">
+                    <img id="itemImage${item.id}Checkout" src="${item.url}" alt="${item.name}" class="me-3">
                     <div id="itemDetails${item.id}Checkout" class="flex-grow-1">
                         <p id="itemName${item.id}Checkout" class="mb-1">${item.name}</p>
                         <div id="quantityControls${item.id}Checkout" class="d-flex align-items-center">
-                            <button id="decreaseButton${item.id}Checkout" class="btn btn-sm btn-outline-secondary decrease" data-id="${item.id}">-</button>
-                            <input id="quantityInput${item.id}Checkout" type="text" value="${item.quantity}" readonly class="form-control w-25 mx-2 text-center quantity">
-                            <button id="increaseButton${item.id}Checkout" class="btn btn-sm btn-outline-secondary increase" data-id="${item.id}">+</button>
+                            <input id="quantityInput${item.id}Checkout" type="text" value="${item.quantity}" readonly disabled class="form-control w-25 mx-2 text-center quantity">
                         </div>
                     </div>
                     <span id="itemPrice${item.id}Checkout" class="ms-auto item-price">$${item.price.toFixed(2)}</span>
@@ -142,15 +144,18 @@ class CheckoutView {
         `;
         this.orderSummaryContainer.innerHTML = html;
 
-        // Update totals
-        document.getElementById('subtotalCheckout').textContent = `$${model.calculateSubtotal().toFixed(2)}`;
-        document.getElementById('totalCheckout').textContent = `$${model.calculateTotal().toFixed(2)}`;
-        document.getElementById('couponAppliedCheckout').textContent = `$${model.couponDiscount.toFixed(2)} (REMOVE)`;
+        // Update dynamic totals
+        // document.getElementById('subtotalCheckout').textContent = `$${model.subtotal.toFixed(2)}`;
+        // document.getElementById('shippingCostCheckout').textContent = `$${model.getShippingCost().toFixed(2)}`;
+        document.getElementById('totalCheckout').textContent = `$${model.calculateDiscountedTotal().toFixed(2)}`;
+        document.getElementById('couponAppliedCheckout').textContent = `Discount: $${model.couponDiscount.toFixed(2)} (REMOVE)`;
+        // document.getElementById('shippingOptionCheckout').textContent = `Shipping: ${this.formatShippingOption(model.selectedShipping)}`;
+    }
 
-        // Reattach event listeners
-        if (attachListenersCallback) {
-            attachListenersCallback();
-        }
+    // Helper method to format shipping option display
+    formatShippingOption(option) {
+        const options = { free: 'Free Shipping', express: 'Express Shipping', pickUp: 'Pick Up' };
+        return options[option] || 'Unknown Shipping';
     }
 
     showValidationError(element, message) {

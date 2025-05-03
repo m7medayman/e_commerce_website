@@ -5,9 +5,8 @@ export class CartController {
     constructor() {
         this.model = new CartDataModel();
         this.view = new CartView();
-
     }
-
+ 
     init() {
         DummyData.clearTheLocalStorage();
         DummyData.generateDummyCartData();
@@ -66,7 +65,34 @@ export class CartController {
     handleCheckout() {
         this.view.renderProgress(2);
         document.getElementById('shopping').style.display = 'none';
+        window.location.href = 'checkout.html';
     }
+
+    getItems() {
+        return this.model.getCartItems();
+    }
+
+    getShippingOptions() {
+        return this.model.shipping;
+    }
+
+    getSelectedShipping() {
+        return this.model.selectedShipping;
+    }
+
+    // New methods to expose subtotal, shipping cost, and total
+    getSubtotal() {
+        return this.model.getSubtotal();
+    }
+
+    getShippingCost() {
+        return this.model.getShippingCost();
+    }
+
+    getTotal() {
+        return this.model.getTotal();
+    }
+    
     // handleCoupon() {
     //     document.getElementById('apply-coupon').addEventListener('click', (e) => {
     //         const code = document.getElementById('coupon-code-input').value.trim().toUpperCase();

@@ -1,34 +1,30 @@
 import CheckoutModel from '../model/checkout_model.js';
 import CheckoutView from '../view/checkout_view.js';
-
+import {CartController} from '../../cart/controller/cart_controller.js';
 class CheckoutController {
     constructor() {
-        this.model = new CheckoutModel();
+         const cartController = new CartController();
+        // console.log('cartController:', cartController);
+        // console.log('cartController.getItems:', cartController.getItems);
+        const cartData = {
+            items: cartController.getItems(),
+            shipping: cartController.getShippingOptions(),
+            selectedShipping: cartController.getSelectedShipping(),
+            subtotal: cartController.getSubtotal(),
+            shippingCost: cartController.getShippingCost(),
+            total: cartController.getTotal()
+        };
+        console.log('cartData:', cartData); 
+
+        this.model = new CheckoutModel(cartData);
         this.view = new CheckoutView();
+
+      
         this.view.render(this.model, () => this.attachQuantityListeners());
         this.setupStaticEventListeners();
+
     }
 
-    attachQuantityListeners() {
-        const decreaseButtons = document.querySelectorAll('.decrease');
-        const increaseButtons = document.querySelectorAll('.increase');
-
-        decreaseButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const itemId = button.getAttribute('data-id');
-                this.model.updateQuantity(itemId, -1);
-                this.view.updateOrderSummary(this.model, () => this.attachQuantityListeners());
-            });
-        });
-
-        increaseButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const itemId = button.getAttribute('data-id');
-                this.model.updateQuantity(itemId, 1);
-                this.view.updateOrderSummary(this.model, () => this.attachQuantityListeners());
-            });
-        });
-    }
 
     setupStaticEventListeners() {
         // Coupon application
