@@ -1,12 +1,5 @@
-function generateUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        const r = Math.random() * 16 | 0;
-        const v = c === 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}
 
-class UserModel {
+export class UserModel {
     static STORAGE_KEY = 'users';
 
     static getAll() {
@@ -27,34 +20,34 @@ class UserModel {
 
     static getById(userId) {
         return this.getAll().find(user => user.userId === userId);
-          /*{
-         userId: "user-1",
-            email:" gsdfgdsf@dsdfg.com",
-            password :"fs*****", // In production, hash the password
-            role, // 'customer', 'seller', or 'admin'
-            name ,
-            address: address || null,
-            phone: phone || null,
-            createdAt: "",
-            updatedAt: ""
+        /*{
+       userId: "user-1",
+          email:" gsdfgdsf@dsdfg.com",
+          password :"fs*****", // In production, hash the password
+          role, // 'customer', 'seller', or 'admin'
+          name ,
+          address: address || null,
+          phone: phone || null,
+          createdAt: "",
+          updatedAt: ""
 
-    }*/
+  }*/
     }
 
     static getByEmail(email) {
         return this.getAll().find(user => user.email === email);
-          /*{
-         userId: "user-1",
-            email:" gsdfgdsf@dsdfg.com",
-            password :"fs*****", // In production, hash the password
-            role, // 'customer', 'seller', or 'admin'
-            name ,
-            address: address || null,
-            phone: phone || null,
-            createdAt: "",
-            updatedAt: ""
+        /*{
+       userId: "user-1",
+          email:" gsdfgdsf@dsdfg.com",
+          password :"fs*****", // In production, hash the password
+          role, // 'customer', 'seller', or 'admin'
+          name ,
+          address: address || null,
+          phone: phone || null,
+          createdAt: "",
+          updatedAt: ""
 
-    }*/
+  }*/
     }
 
     static add({ email, password, role, name, address, phone }) {
@@ -79,18 +72,18 @@ class UserModel {
         users.push(user);
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(users));
         return user;
-          /*{
-         userId: "user-1",
-            email:" gsdfgdsf@dsdfg.com",
-            password :"fs*****", // In production, hash the password
-            role, // 'customer', 'seller', or 'admin'
-            name ,
-            address: address || null,
-            phone: phone || null,
-            createdAt: "",
-            updatedAt: ""
+        /*{
+       userId: "user-1",
+          email:" gsdfgdsf@dsdfg.com",
+          password :"fs*****", // In production, hash the password
+          role, // 'customer', 'seller', or 'admin'
+          name ,
+          address: address || null,
+          phone: phone || null,
+          createdAt: "",
+          updatedAt: ""
 
-    }*/
+  }*/
     }
 
     static update(userId, updates) {
@@ -102,18 +95,18 @@ class UserModel {
         Object.assign(user, updates, { updatedAt: new Date().toISOString() });
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(users));
         return user;
-          /*{
-         userId: "user-1",
-            email:" gsdfgdsf@dsdfg.com",
-            password :"fs*****", // In production, hash the password
-            role, // 'customer', 'seller', or 'admin'
-            name ,
-            address: address || null,
-            phone: phone || null,
-            createdAt: "",
-            updatedAt: ""
+        /*{
+       userId: "user-1",
+          email:" gsdfgdsf@dsdfg.com",
+          password :"fs*****", // In production, hash the password
+          role, // 'customer', 'seller', or 'admin'
+          name ,
+          address: address || null,
+          phone: phone || null,
+          createdAt: "",
+          updatedAt: ""
 
-    }*/
+  }*/
     }
 
     static delete(userId) {
@@ -121,6 +114,13 @@ class UserModel {
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(users));
         return `User with ID ${userId} deleted successfully`;
     }
+}
+function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        const r = Math.random() * 16 | 0;
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
 }
 
 // UserModel.add({email:"sasdgsdf",role:"customer"});
