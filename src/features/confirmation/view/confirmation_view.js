@@ -1,5 +1,6 @@
 import { ProgressBar } from '../../cart/view/components/progress_bar.js'
-
+import { FooterWidget } from '../../../core/common/footer.js';
+import { NavBar } from '../../../core/common/nav_bar.js';
 class OrderCompleteView {
   constructor() {
       this.container = document.querySelector('.container');
@@ -8,6 +9,8 @@ class OrderCompleteView {
       this.styles.href = '../styles/pages/order_confirmation.css';
       document.head.appendChild(this.styles);
       this.progressBar = new ProgressBar(3);
+      new NavBar().render();
+      new FooterWidget().render();
   }
 
   render(model) {
@@ -28,7 +31,7 @@ class OrderCompleteView {
                           <h2 class="mb-3">Thank you! 🎉</h2>
                           <h4 class="mb-4">Your order has been received</h4>
                           <div class="d-flex justify-content-center mb-4">
-                              ${order.items.map(item => `<img src="${item.url}" alt="${item.name}" class="mx-2">`).join('')}
+                              ${order.items.map(item => `<img src="${item.url}" width="80px" height="80px" alt="${item.name}" class="mx-2">`).join('')}
                           </div>
                           <div class="text-start">
                               <div class="d-flex justify-content-between mb-2">

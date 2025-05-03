@@ -1,4 +1,6 @@
 import { ProgressBar } from '../../cart/view/components/progress_bar.js'
+import { FooterWidget } from '../../../core/common/footer.js';
+import { NavBar } from '../../../core/common/nav_bar.js';
 class CheckoutView {
     constructor() {
         this.container = document.querySelector('.container');
@@ -8,6 +10,8 @@ class CheckoutView {
         document.head.appendChild(this.styles);
         this.orderSummaryContainer = null;
         this.progressBar = new ProgressBar(2);
+        new FooterWidget().render();
+        new NavBar().render();
     }
 
     // Initial full render
@@ -22,7 +26,7 @@ class CheckoutView {
                 <div id="checkoutProgressBar" class="mb-4">
                     ${this.progressBar.render()}
                 </div>
-                <h2 id="checkoutTitle" class="text-center position-relative mb-4 d-block d-md-none">Check Out</h2>
+               
                 <div class="row">
                     <div class="col-md-8">
                         <div id="contactInfoCheckout" class="card p-4 mb-4">

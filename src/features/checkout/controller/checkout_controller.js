@@ -5,6 +5,7 @@ class CheckoutController {
         this.model = new CheckoutModel();
          this.view = new CheckoutView();
         this.view.render(this.model);
+        
         this.setupStaticEventListeners();
     }
     setupStaticEventListeners() {

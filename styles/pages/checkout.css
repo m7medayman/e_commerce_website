@@ -2,31 +2,6 @@ img{
   width: 80px;
   height: 80px;
 }
-#checkoutTitle::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 1px;
-  background-color: #000;
-}
-
-#stepNumber1Checkout, #stepNumber2Checkout, #stepNumber3Checkout {
-  width: 30px;
-  height: 30px;
-  background-color: #ccc;
-}
-
-#stepNumber1Checkout.completed, #stepNumber2Checkout.completed, #stepNumber3Checkout.completed {
-  background-color: #28a745;
-}
-
-#stepNumber1Checkout.active, #stepNumber2Checkout.active, #stepNumber3Checkout.active {
-  background-color: #000;
-}
-
 #codInputCheckout {
   border-color: #000;
 }
@@ -46,22 +21,10 @@ img{
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
 
-@media (max-width: 576px) {
-  #stepNumber1Checkout, #stepNumber2Checkout, #stepNumber3Checkout {
-      width: 25px;
-      height: 25px;
-      font-size: 14px;
-  }
-
-  #step1Checkout span, #step2Checkout span, #step3Checkout span {
-      font-size: 14px;
-  }
-
+/* @media (max-width: 576px) {
+  
   #checkoutTitle {
       font-size: 24px;
   }
 
-  #checkoutTitle::after {
-      width: 40px;
-  }
-}
+} */
