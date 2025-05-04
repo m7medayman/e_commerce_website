@@ -12,6 +12,7 @@ export class CartController {
         DummyData.clearTheLocalStorage();
         DummyData.generateDummyCartData();
         this.view.renderPage();
+        this.setupDrawer();
         this.view.renderProgress();
         this.renderCart();
         this.addEventListeners();
@@ -21,6 +22,27 @@ export class CartController {
         // this.handleCoupon();
 
     }
+
+
+    setupDrawer() {
+        const bagIcon = document.querySelector('.fa-bag-shopping');
+        const drawer = document.getElementById('cart-drawer');
+        const closeBtn = document.getElementById('close-cart');
+    
+        bagIcon.addEventListener('click', () => {
+            drawer.classList.add('show');
+            this.view.renderDrawerCart(this.model);
+        });
+    
+        closeBtn.addEventListener('click', () => {
+            drawer.classList.remove('show');
+        });
+    
+        document.getElementById("go-to-checkout").addEventListener("click", () => {
+            window.location.href = "checkout.html";
+        });
+    }
+    
     renderCart() {
         const items = this.model.getCartItems();
         this.view.renderCart(items);

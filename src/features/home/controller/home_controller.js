@@ -1,11 +1,12 @@
 import { HomeModel } from '../model/home_model.js';
 import { HomeView } from '../view/home_view.js';
 import { DummyData } from '../../../core/models/dummy_data.js';
+import { CartController } from '../../cart/controller/cart_controller.js';
 export class HomeController {
     constructor() {
         this.model = new HomeModel();
         this.view = new HomeView();
-
+         this.cart = new CartController();
     }
 
     init() {
@@ -14,7 +15,7 @@ export class HomeController {
         let images = this.model.getImages();
         this.view.renderPage();
         this.view.renderCarousel(images);
-
+        this.cart.setupDrawer();
 
     }
 
