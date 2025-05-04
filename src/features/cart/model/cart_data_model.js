@@ -45,6 +45,7 @@ export class CartDataModel {
     this.items[index].quantity = Math.max(1, this.items[index].quantity + change);
   }
   removeItem(index) {
+    
     this.items.splice(index, 1);
     // CartModel.removeItem(this.userId,this.items[index].productId);
   }
