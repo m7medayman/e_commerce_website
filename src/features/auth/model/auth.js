@@ -36,11 +36,11 @@ const Auth = {
         }
     },
 
-    saveUser(data) {
+    saveUser({ email, password, role, name, address, phone }) {
         try {
-            const user = AuthModel.signUp(data);
+            const user = AuthModel.signUp({ email: email, password: password, role: role, name: name, address: address, phone: phone });
             // هنستخدم AuthModel.signIn عشان نسجل المستخدم مباشرة بعد التسجيل
-            AuthModel.signIn(data.email, data.password);
+            // AuthModel.signIn(data.email, data.password); // 
             return null; // نجاح
         } catch (error) {
             return error.message; // خطأ زي 'Email already exists'

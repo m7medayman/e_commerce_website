@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-import { AuthModel } from '../../../core/models/auth_model'; // تأكدي من المسار
-import AuthView from '../view/auth_view';
-=======
+
 import { AuthModel } from '../../../core/models/auth_model.js';
 import Auth from '../model/auth.js';
 import AuthView from '../view/auth_view.js';
 
->>>>>>> f76952231f8d51fe01337afc4709d342f6b1abb6
 const AuthController = {
     handleLogin(formId) {
         $('#email').on('input', function () {
@@ -58,7 +54,7 @@ const AuthController = {
                 AuthView.showSuccess('Login successful!');
                 AuthView.updateLoginState(true, user.email, user.role);
                 // إعادة توجيه لصفحة رئيسية بعد تسجيل الدخول
-                setTimeout(() => window.location.href = 'index.html', 1000);
+                setTimeout(() => window.location.href = 'home.html', 1000);
             }
         });
     },
@@ -130,7 +126,7 @@ const AuthController = {
             const emailError = Auth.validateEmail(email);
             const passwordError = Auth.validatePassword(password, true);
             const businessNameError = role === 'seller' ? Auth.validateBusinessName(businessName) : null;
-            const saveError = Auth.saveUser({ role, name, email, password, businessName });
+            const saveError = Auth.saveUser({ email: email, password: password, role: role, name: name, phone: "not initialized", address: "not initialized" }); //TODO: add phone and address 
 
             AuthView.clearError('name');
             AuthView.clearError('email');

@@ -59,13 +59,8 @@ const AuthView = {
       const type = $field.attr('type') === 'password' ? 'text' : 'password';
       $field.attr('type', type);
       $icon.toggleClass('bi-eye-slash bi-eye');
-<<<<<<< HEAD
+
     },
   };
   export default AuthView;
-=======
-  },
-};
 
-export default AuthView;
->>>>>>> f76952231f8d51fe01337afc4709d342f6b1abb6

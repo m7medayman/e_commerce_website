@@ -28,7 +28,7 @@ export class AuthModel {
 
     // Check if a user is currently signed in
     static isSignedIn() {
-        return !localStorage.getItem(this.STORAGE_KEY);
+        return !!localStorage.getItem(this.STORAGE_KEY);
     }
 
     // Get the full user data of the signed-in user
