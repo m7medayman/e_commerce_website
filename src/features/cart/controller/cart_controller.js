@@ -8,8 +8,8 @@ export class CartController {
     }
  
     init() {
-        DummyData.clearTheLocalStorage();
-        DummyData.generateDummyCartData();
+        // DummyData.clearTheLocalStorage();
+        // DummyData.generateDummyCartData();
         this.view.renderPage();
         this.view.renderProgress();
         this.renderCart();
