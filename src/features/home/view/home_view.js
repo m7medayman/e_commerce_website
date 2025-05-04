@@ -3,8 +3,8 @@ import { NavBar } from '../../../core/common/nav_bar.js';
 import { CarouselComponent } from './components/corsaul.js';
 import { ProductComponent } from './components/product.js';
 import { ThreeImageSection } from './components/three_img_section.js';
-import {FourIconsSection} from "./components/four_icon_section.js";
-import{BigTwoPartBanner} from "./components/big_two_part_banner.js";
+import { FourIconsSection } from "./components/four_icon_section.js";
+import { BigTwoPartBanner } from "./components/big_two_part_banner.js";
 export class HomeView {
     renderPage() {
         new FooterWidget().render();
@@ -17,7 +17,7 @@ export class HomeView {
     renderNewProducts(punchOfProducts) {
         const productsSliders = this.builedProductsSlider(punchOfProducts);
         const newProductsContainer = document.getElementById("new-products");
-        newProductsContainer.innerHTML = productsSliders;
+        newProductsContainer.appendChild(productsSliders);
 
     }
     renderThreeImageSection(item1, item2, item3) {
@@ -32,12 +32,12 @@ export class HomeView {
         mainContainer.innerHTML = "";
         punchOfProducts.forEach((product) => {
             const productComponent = new ProductComponent(product);
-            mainContainer.innerHTML += productComponent.render();
+            mainContainer.appendChild(productComponent.render());
         });
         const wrapper = document.createElement("div");
         wrapper.className = "overflow-hidden";
         wrapper.appendChild(mainContainer);
-        return wrapper.getHTML();
+        return wrapper;
 
     }
     renderFourIconsSection() {
@@ -49,5 +49,28 @@ export class HomeView {
         const bigTwoPartBanner = new BigTwoPartBanner(img).render();
         const bigTwoPartContainer = document.getElementById("big-two-part-banner");
         bigTwoPartContainer.innerHTML = bigTwoPartBanner;
+    }
+    addAddToCartEventListener(controllerAddToCartFunction) {
+
+
+        const addToCartButtons = document.querySelectorAll(`.${ProductComponent.addBtnClassName}`);
+
+        addToCartButtons.forEach((button) => {
+            button.addEventListener("click", (event) => {
+
+                const productCard = event.target.closest(`.${ProductComponent.targetClassName}`);
+                if (!productCard) return;
+
+                // Get the product ID from the data attribute
+                const productId = productCard.getAttribute(`${ProductComponent.dataProductId}`);
+                if (!productId) return;
+                controllerAddToCartFunction(productId);
+                // Handle the add-to-cart logic here
+                // You can call your cart controller function here, e.g.:
+                // addToCart(productId);
+
+            });
+        });
+
     }
 }

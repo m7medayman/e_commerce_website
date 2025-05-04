@@ -54,6 +54,7 @@ export class HomeModel {
             const finalPrice = (product.price - (product.price * product.discount) / 100).toFixed(2);
 
             products.push({
+                id: product.productId,
                 imageUrl: product.detailedImages[0],
                 altText: product.name,
                 isNew: true,
