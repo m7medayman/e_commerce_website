@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 import { AuthModel } from '../../../core/models/auth_model'; // تأكدي من المسار
 import AuthView from '../view/auth_view';
+=======
+import { AuthModel } from '../../../core/models/auth_model.js';
+import Auth from '../model/auth.js';
+import AuthView from '../view/auth_view.js';
+
+>>>>>>> f76952231f8d51fe01337afc4709d342f6b1abb6
 const AuthController = {
     handleLogin(formId) {
         $('#email').on('input', function () {
@@ -47,9 +54,11 @@ const AuthController = {
             }
 
             if (isValid) {
-                const user = AuthModel.getUser(); // استخدام AuthModel
+                const user = AuthModel.getUser();
                 AuthView.showSuccess('Login successful!');
                 AuthView.updateLoginState(true, user.email, user.role);
+                // إعادة توجيه لصفحة رئيسية بعد تسجيل الدخول
+                setTimeout(() => window.location.href = 'index.html', 1000);
             }
         });
     },
@@ -153,15 +162,23 @@ const AuthController = {
             if (isValid) {
                 AuthView.showSuccess('Signup successful!');
                 AuthView.clearForm(formId);
+                // إعادة توجيه لصفحة تسجيل الدخول بعد التسجيل
+                setTimeout(() => window.location.href = 'login.html', 1000);
             }
         });
     },
 
     handleLogout() {
         $('#logout_button').on('click', function () {
-            AuthModel.signOut(); // استخدام AuthModel
-            AuthView.showSuccess('Logout successful!');
-            AuthView.updateLoginState(false);
+            const success = Auth.logoutUser();
+            if (success) {
+                AuthView.showSuccess('Logout successful!');
+                AuthView.updateLoginState(false);
+                // إعادة توجيه لصفحة تسجيل الدخول بعد الخروج
+                setTimeout(() => window.location.href = 'login.html', 1000);
+            } else {
+                AuthView.showError('logout_button', 'Failed to logout');
+            }
         });
     },
 };
