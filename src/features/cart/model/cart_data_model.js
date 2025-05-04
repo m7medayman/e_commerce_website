@@ -9,8 +9,11 @@ export class CartDataModel {
     // ];
  this.userId='user-2';
  const cart = CartModel.getByUserId(this.userId);
+//  console.log(cart);
+//  console.log(CartModel.getAll());
   this.items = cart.items.map(item => {
     const product = ProductModel.getById(item.productId);
+    // console.log("ProductModel.getById", item.productId, ProductModel.getById(item.productId));
     return {
       productId: item.productId,
       quantity: item.quantity,
@@ -43,10 +46,13 @@ export class CartDataModel {
   }
   updateQuantity(index, change) {
     this.items[index].quantity = Math.max(1, this.items[index].quantity + change);
+  // const item = this.items[index];
+  // CartModel.addItem(this.userId, item.productId, 0);
   }
   removeItem(index) {
+    const productId = this.items[index].productId; 
     this.items.splice(index, 1);
-    // CartModel.removeItem(this.userId,this.items[index].productId);
+    // CartModel.removeItem(this.userId, productId); 
   }
   setShipping(option) {
     if (this.shipping.hasOwnProperty(option)) {

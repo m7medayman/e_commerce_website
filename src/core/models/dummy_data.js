@@ -7,6 +7,7 @@ export class DummyData {
         // generate the dummy product data
         this.generateDummyProductData();
         // add the dummy cart data
+        // console.log(ProductModel.getAll());
         ProductModel.getAll().forEach((product, index) => {
             const quantity = Math.floor(Math.random() * 5) + 1; // Random quantity between 1 and 5
             const productId = product.productId;
