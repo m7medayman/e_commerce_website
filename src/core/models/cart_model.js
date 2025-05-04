@@ -38,6 +38,7 @@ export class CartModel {
   static removeItem(userId, productId) {
     const carts = this.getAll();
     const cart = this.getByUserId(userId);
+    console.log(`product id to remove: ${productId}`);
     cart.items = cart.items.filter(item => item.productId !== productId);
     cart.updatedAt = new Date().toISOString();
 

@@ -45,8 +45,11 @@ export class CartDataModel {
     this.items[index].quantity = Math.max(1, this.items[index].quantity + change);
   }
   removeItem(index) {
+    debugger;
+    console.log(`removing item at index: ${index}`);
+    CartModel.removeItem(this.userId, this.items[index].productId);
     this.items.splice(index, 1);
-    // CartModel.removeItem(this.userId,this.items[index].productId);
+
   }
   setShipping(option) {
     if (this.shipping.hasOwnProperty(option)) {
