@@ -3,6 +3,7 @@ export class ProductComponent {
   static addBtnClassName = 'add-to-cart-btn-target';
   static wishlistBtnClassName = 'wishlist-btn-target';
   static dataProductId = 'data-product-id';
+  static dataIsFavorite = 'data-is-favorite';
   constructor({
     id,
     imageUrl, altText = '', isNew = false,
@@ -39,6 +40,7 @@ export class ProductComponent {
     const wrapper = document.createElement('div');
     wrapper.className = `${ProductComponent.targetClassName} col-6 col-sm-4 col-md-3 d-flex`;
     wrapper.setAttribute(`${ProductComponent.dataProductId}`, this.id);
+    wrapper.setAttribute(`${ProductComponent.dataIsFavorite}`, this.isFavorite);
 
     const card = document.createElement('div');
     card.className = 'product-card shadow-sm w-100';

@@ -1,6 +1,8 @@
 import { ProductModel } from '../../../core/models/product_model.js';
 export class HomeModel {
+    
     constructor() {
+        
         this.images = [
             { url: 'assets/images/carousalTestIimg.png', description: 'Image 1' },
             { url: 'assets/images/carousalTestIimg.png', description: 'Image 1' },
@@ -48,6 +50,7 @@ export class HomeModel {
     //     originalPrice: '$400.00',
     //     rating: 5
     // },
+    
     getProducts() {
         const products = [];
         ProductModel.getAll().forEach((product) => {

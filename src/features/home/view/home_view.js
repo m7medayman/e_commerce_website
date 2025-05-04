@@ -73,4 +73,30 @@ export class HomeView {
         });
 
     }
-}
+    addWishlistEventListener() {
+        const wishlistButtons = document.querySelectorAll(`.${ProductComponent.wishlistBtnClassName}`);
+        wishlistButtons.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            const productCard = button.closest(`.${ProductComponent.targetClassName}`);
+            if (!productCard) return;
+        
+            const productId = productCard.getAttribute(ProductComponent.dataProductId);
+            const isFavorite = productCard.getAttribute(ProductComponent.dataIsFavorite);
+        
+            // Always target the <i> icon inside the button
+            const icon = button.querySelector("i");
+            if (!icon) return;
+        
+            const newIsFavorite = isFavorite !== "true";
+            productCard.setAttribute(ProductComponent.dataIsFavorite, newIsFavorite);
+        
+            icon.classList.toggle("fas", newIsFavorite);
+            icon.classList.toggle("far", !newIsFavorite);
+        
+            console.log("Wishlist toggled for product ID:", productId);
+            // Optional: call your controller here
+            // toggleWishlist(productId, newIsFavorite);
+          });
+        })
+        
+    }}
