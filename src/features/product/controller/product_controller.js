@@ -15,9 +15,7 @@ export class ProductController {
 
     if (product) {
       this.view.render(product);
-    } else {
-      this.view.renderError("Product not fلهفound");
-    }
+    } 
     // // Dummy Data بدلاً من استرجاع المنتج من الـ localStorage
     // const dummyProduct = {
     //   id: 1,
