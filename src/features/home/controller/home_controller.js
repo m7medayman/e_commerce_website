@@ -16,6 +16,7 @@ export class HomeController {
         this.view.renderPage();
         this.view.renderCarousel(images);
         this.cart.setupDrawer();
+        this.cart.addEventToCart();
 
     }
 

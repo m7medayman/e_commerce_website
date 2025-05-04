@@ -12,17 +12,23 @@ export class CartController {
         DummyData.clearTheLocalStorage();
         DummyData.generateDummyCartData();
         this.view.renderPage();
-        this.setupDrawer();
-        this.view.renderProgress();
-        this.renderCart();
-        this.addEventListeners();
-        this.renderSummary();
 
+        this.view.renderProgress();
+        // this.renderCart();
+        this.addEventListeners();
+        // this.renderSummary();
+        this.renderAllCarts();
         // this.view.renderCoupon();
         // this.handleCoupon();
 
     }
-
+    renderAllCarts() {
+        const items = this.model.getCartItems();
+        this.view.renderCart(items); // full cart page
+        this.view.renderDrawerCart(this.model); // drawer view
+        this.renderSummary();
+        this.setupDrawer();
+      }
 
     setupDrawer() {
         const bagIcon = document.querySelector('.fa-bag-shopping');
@@ -43,34 +49,53 @@ export class CartController {
         });
     }
     
-    renderCart() {
-        const items = this.model.getCartItems();
+    renderCart(items) {
         this.view.renderCart(items);
     }
     renderSummary() {
         this.view.renderSummary(this.model.getSubtotal(), this.model.getShippingOption());
     }
-
-    addEventListeners() {
-        document.getElementById('cart-items').addEventListener('click', (e) => {
+ addEventToCart(){
+    ['cart-items', 'drawer-cart-items'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('click', (e) => {
             const action = e.target.dataset.action;
             const index = parseInt(e.target.dataset.index);
-
+      
+            if (!action || isNaN(index)) return;
+      
             if (action === 'increase') {
-                this.model.updateQuantity(index, 1);
-                this.renderCart();
-                this.renderSummary();
+              this.model.updateQuantity(index, 1);
             } else if (action === 'decrease') {
-                this.model.updateQuantity(index, -1);
-                this.renderCart();
-                this.renderSummary();
+              this.model.updateQuantity(index, -1);
             } else if (action === 'remove') {
-                this.model.removeItem(index);
-                this.renderCart();
-                this.renderSummary();
+              this.model.removeItem(index);
             }
-        });
+      
+            this.renderAllCarts();
+          });
+        }
+      });
+ }
+    addEventListeners() {
+        // document.getElementById('cart-items').addEventListener('click', (e) => {
+        //     const action = e.target.dataset.action;
+        //     const index = parseInt(e.target.dataset.index);
 
+        //     if (action === 'increase') {
+        //         this.model.updateQuantity(index, 1);
+        //        this.renderAllCarts();
+        //     } else if (action === 'decrease') {
+        //         this.model.updateQuantity(index, -1);
+        //         this.renderAllCarts();
+        //     } else if (action === 'remove') {
+        //         this.model.removeItem(index);
+        //         this.renderAllCarts();
+        //     }
+        // });
+        
+          this.addEventToCart();
         document.getElementById('cart-summary').addEventListener('change', (e) => {
             if (e.target.name === 'shipping') {
                 const option = e.target.value;

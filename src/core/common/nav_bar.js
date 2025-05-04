@@ -56,10 +56,13 @@ export class NavBar {
     <div id="drawer-cart-items" class="p-2">
         <!-- Items will be injected here -->
     </div>
-    <div class="cart-footer p-3">
+    <div class="cart-footer p-3 ">
         <p>Subtotal: $<span id="drawer-subtotal"></span></p>
         <strong>Total: $<span id="drawer-total"></span></strong>
         <button id="go-to-checkout" class="btn btn-dark w-100 mt-2">Checkout</button>
+        <div class="d-flex justify-content-center my-3">
+  <a href="cart.html" class="text-black">View Cart</a>
+</div>
     </div>
 </div>`;
     }

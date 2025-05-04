@@ -22,9 +22,9 @@ export class CartView {
             <div>
                 <p class="mb-0">${item.name}</p>
                 <div class="d-flex gap-3 align-items-center border rounded p-1 mt-2">
-               <span class="change hover-pointer" data-action="decrease" data-index="${this.index}">−</span>
+               <span class="change hover-pointer" data-action="decrease" data-index="${index}">−</span>
               <span>${item.quantity}</span>
-              <span class="change hover-pointer" data-action="increase" data-index="${this.index}">+</span>
+              <span class="change hover-pointer" data-action="increase" data-index="${index}">+</span>
          </div>
             </div>
             <div>
