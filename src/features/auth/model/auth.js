@@ -1,56 +1,60 @@
-import { AuthModel } from '../../../core/models/auth_model';
+import { AuthModel } from '../../../core/models/auth_model.js';
+
 const Auth = {
     validateEmail(email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email) ? null : 'Invalid email format';
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email) ? null : 'Invalid email format';
     },
-  
+
     validatePassword(password, isSignup = false) {
-      if (password.length < 8) {
-        return 'Password must be at least 8 characters';
-      }
-      if (isSignup) {
-        const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
-        return passwordRegex.test(password)
-          ? null
-          : 'Password must include a number and special character';
-      }
-      return null;
+        if (password.length < 8) {
+            return 'Password must be at least 8 characters';
+        }
+        if (isSignup) {
+            const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+            return passwordRegex.test(password)
+                ? null
+                : 'Password must include a number and special character';
+        }
+        return null;
     },
-  
+
     validateBusinessName(businessName) {
-      return businessName.trim() === '' ? 'Business name is required' : null;
+        return businessName.trim() === '' ? 'Business name is required' : null;
     },
-  
+
     validateName(name) {
-      return name.trim() === '' ? 'Name is required' : null;
+        return name.trim() === '' ? 'Name is required' : null;
     },
-  
+
     authenticateUser(email, password) {
-      try {
-        AuthModel.signIn(email, password); // استخدام AuthModel
-        return null; // نجاح
-    } catch (error) {
-        return error.message; // خطأ زي 'Invalid email or password'
-    }
+        try {
+            AuthModel.signIn(email, password);
+            return null; // نجاح
+        } catch (error) {
+            return error.message; // خطأ زي 'Invalid email or password'
+        }
     },
-  
+
     saveUser(data) {
-      try {
-        AuthModel.signUp(data); // استخدام AuthModel
-        return null; // نجاح
-    } catch (error) {
-        return error.message; // خطأ زي 'Email already exists'
-    }
+        try {
+            const user = AuthModel.signUp(data);
+            // هنستخدم AuthModel.signIn عشان نسجل المستخدم مباشرة بعد التسجيل
+            AuthModel.signIn(data.email, data.password);
+            return null; // نجاح
+        } catch (error) {
+            return error.message; // خطأ زي 'Email already exists'
+        }
     },
-  
+
     logoutUser() {
-      try {
-        AuthModel.signOut();
-        return true;
-    } catch (error) {
-        return false;
-    }
+        try {
+            AuthModel.signOut();
+            return true;
+        } catch (error) {
+            return false;
+        }
     },
-  };
-  export default Auth;
+};
+
+export default Auth;

@@ -1,61 +1,65 @@
+
 const AuthView = {
-    showError(fieldId, message) {
+  showError(fieldId, message) {
       $(`#${fieldId}`).addClass('is-invalid').removeClass('is-valid');
       $(`#${fieldId}_error`).text(message);
-    },
-  
-    clearError(fieldId) {
+  },
+
+  clearError(fieldId) {
       $(`#${fieldId}`).removeClass('is-invalid');
       $(`#${fieldId}_error`).text('');
-    },
-  
-    showValid(fieldId) {
+  },
+
+  showValid(fieldId) {
       $(`#${fieldId}`).addClass('is-valid').removeClass('is-invalid');
       $(`#${fieldId}_error`).text('');
-    },
-  
-    clearValidation(fieldId) {
+  },
+
+  clearValidation(fieldId) {
       $(`#${fieldId}`).removeClass('is-invalid is-valid');
       $(`#${fieldId}_error`).text('');
-    },
-    
-  
-    clearForm(formId) {
+  },
+
+  clearForm(formId) {
       $(`#${formId}`)[0].reset();
       $(`#${formId} .form-control`).removeClass('is-invalid is-valid');
       $(`#${formId} .invalid-feedback`).text('');
-    },
-  
-    showSuccess(message) {
-      alert(message);
-    },
-  
-    toggleBusinessNameField(show) {
+  },
+
+  showSuccess(message) {
+      $('#welcome_message').text(message).show();
+      setTimeout(() => $('#welcome_message').hide(), 3000); // إخفاء الرسالة بعد 3 ثواني
+  },
+
+  toggleBusinessNameField(show) {
       $('#business_name_field').css('display', show ? 'block' : 'none');
-    },
-  
-    updateLoginState(isLoggedIn, email, role) {
+  },
+
+  updateLoginState(isLoggedIn, email, role) {
       if (isLoggedIn) {
-        $('#login_form').hide();
-        $('#logout_button').show();
-        this.showWelcomeMessage(email, role);
+          $('#login_form').hide();
+          $('#logout_button').show();
+          this.showWelcomeMessage(email, role);
       } else {
-        $('#login_form').show();
-        $('#logout_button').hide();
-        $('#welcome_message').hide();
+          $('#login_form').show();
+          $('#logout_button').hide();
+          $('#welcome_message').hide();
       }
-    },
-  
-    showWelcomeMessage(email, role) {
+  },
+
+  showWelcomeMessage(email, role) {
       $('#welcome_message').text(`Welcome, ${role.charAt(0).toUpperCase() + role.slice(1)} ${email}!`);
       $('#welcome_message').show();
-    },
-  
-    togglePassword(fieldId) {
+      setTimeout(() => $('#welcome_message').hide(), 3000); // إخفاء الرسالة بعد 3 ثواني
+  },
+
+  togglePassword(fieldId) {
       const $field = $(`#${fieldId}`);
       const $icon = $('#toggle_icon');
       const type = $field.attr('type') === 'password' ? 'text' : 'password';
       $field.attr('type', type);
       $icon.toggleClass('bi-eye-slash bi-eye');
-    },
-  };
+  },
+};
+
+export default AuthView;
