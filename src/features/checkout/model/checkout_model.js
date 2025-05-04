@@ -1,3 +1,4 @@
+import {OrderModel} from '../../../core/models/order_model.js';
 export class CheckoutModel {
   constructor() {
     const data = JSON.parse(localStorage.getItem('checkoutData')) || {
@@ -54,7 +55,8 @@ export class CheckoutModel {
       paymentMethod: 'Cash on Delivery (COD)',
       customer: { ...this.customer },
     };
-    localStorage.setItem('orderData', JSON.stringify(order));
+    localStorage.setItem('orderData', JSON.stringify(order)); // use order_model
+    //OrderModel.add();
     return order;
   }
 }
