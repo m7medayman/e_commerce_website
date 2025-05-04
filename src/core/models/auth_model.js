@@ -1,4 +1,4 @@
-import { UserModel } from './user_model.js';
+import { UserModel } from './user_model';
 export class AuthModel {
     static STORAGE_KEY = 'auth_user_id';
 

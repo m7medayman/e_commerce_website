@@ -1,3 +1,4 @@
+import { AuthModel } from '../../../core/models/auth_model';
 const Auth = {
     validateEmail(email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -26,22 +27,30 @@ const Auth = {
     },
   
     authenticateUser(email, password) {
-      const storedUser = localStorage.getItem(email);
-      if (!storedUser) return 'User not found';
-      const user = JSON.parse(storedUser);
-      return user.password === password ? null : 'Incorrect password';
+      try {
+        AuthModel.signIn(email, password); // استخدام AuthModel
+        return null; // نجاح
+    } catch (error) {
+        return error.message; // خطأ زي 'Invalid email or password'
+    }
     },
   
     saveUser(data) {
-      if (localStorage.getItem(data.email)) {
-        return 'Email already exists';
-      }
-      localStorage.setItem(data.email, JSON.stringify(data));
-      return null;
+      try {
+        AuthModel.signUp(data); // استخدام AuthModel
+        return null; // نجاح
+    } catch (error) {
+        return error.message; // خطأ زي 'Email already exists'
+    }
     },
   
     logoutUser() {
-      sessionStorage.removeItem('currentUser');
-      return true;
+      try {
+        AuthModel.signOut();
+        return true;
+    } catch (error) {
+        return false;
+    }
     },
   };
+  export default Auth;
