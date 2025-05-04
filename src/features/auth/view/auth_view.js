@@ -59,3 +59,4 @@ const AuthView = {
       $icon.toggleClass('bi-eye-slash bi-eye');
     },
   };
+  export default AuthView;

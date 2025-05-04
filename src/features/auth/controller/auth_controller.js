@@ -1,5 +1,5 @@
 import { AuthModel } from '../../../core/models/auth_model'; // تأكدي من المسار
-
+import AuthView from '../view/auth_view';
 const AuthController = {
     handleLogin(formId) {
         $('#email').on('input', function () {
