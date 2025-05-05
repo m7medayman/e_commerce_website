@@ -30,3 +30,12 @@ button{
     height: 52px;
     margin-right: 8px;
 }
+.small-image {
+    filter: grayscale(100%);
+    cursor: pointer;
+    transition: filter 0.3s ease;
+  }
+  
+  .small-image.active {
+    filter: none;
+  }

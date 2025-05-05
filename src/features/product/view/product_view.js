@@ -14,12 +14,12 @@ export class ProductView {
         <div class="row">
             <div class="col-md-6 p-5 d-flex flex-column align-items-center">
                 <div class="main-img border mb-3">
-                    <img class="w-100" src="${product.img}" alt="">
+                    <img id="main-image" class="w-100" src="${product.img}" alt="main image">
                 </div>
                 <div class="imgs-details d-none m-2 d-md-flex w-100 d-flex justify-content-between">
-                    <img  src="${product.img}" alt="">
-                    <img  src="${product.img}" alt="">
-                    <img  src="${product.img}" alt="">
+                ${product.detailedImages.map(
+                    (image) => `<img class="img-thumbnail small-image" src="${image}" alt="Detailed Image">`
+                  ).join('')}
                 </div>
             </div>
             <div class="col-md-6 p-5">
@@ -58,6 +58,34 @@ export class ProductView {
         </div>
     </div>
       `;
-    }
-  }
+      // Add event listeners to small images
+      const mainImage = document.getElementById("main-image");
+      const smallImages = document.querySelectorAll(".small-image");
+
+      smallImages.forEach((img) => {
+        img.addEventListener("click", () => {
+          mainImage.src = img.src; 
+          smallImages.forEach((image) => image.classList.remove("active"));
+
+          img.classList.add("active");
+          
+        });
+      })
+
+      mainImage.addEventListener("load", () => {
+        smallImages.forEach((image) => {
+          if (image.src === mainImage.src) {
+            image.classList.add("active");
+          } else {
+            image.classList.remove("active");
+          }
+        });
+      });
+    
+     
+    
+
+}
   
+}
+
