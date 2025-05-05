@@ -1,7 +1,14 @@
 import {CheckoutModel} from '../model/checkout_model.js';
 import CheckoutView from '../view/checkout_view.js';
+import { AuthModel } from '../../../core/models/auth_model.js';
 class CheckoutController {
     constructor() {
+         // Check if user is signed in
+         if (!AuthModel.isSignedIn()) {
+            window.location.href = 'login.html';
+            return;
+        }
+
         this.model = new CheckoutModel();
          this.view = new CheckoutView();
         this.view.render(this.model);
@@ -53,7 +60,7 @@ class CheckoutController {
                     },
                 
                 };
-                const order = this.model.saveOrder();
+                const order = this.model.saveOrderWithOrderModel();
                 window.location.href = 'order_confirmation.html';
             }
         });
