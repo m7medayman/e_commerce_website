@@ -5,10 +5,13 @@ import { ProductComponent } from './components/product.js';
 import { ThreeImageSection } from './components/three_img_section.js';
 import { FourIconsSection } from "./components/four_icon_section.js";
 import { BigTwoPartBanner } from "./components/big_two_part_banner.js";
+import { Toast } from '../../../core/common/toast.js';
 export class HomeView {
     renderPage() {
         new FooterWidget().render();
         new NavBar().render();
+        this.toast = new Toast();
+        this.toast.render();
 
     }
     renderCarousel(images) {
@@ -65,6 +68,7 @@ export class HomeView {
                 const productId = productCard.getAttribute(`${ProductComponent.dataProductId}`);
                 if (!productId) return;
                 controllerAddToCartFunction(productId);
+                this.toast.showToast("Product added to cart", "Success");
                 // Handle the add-to-cart logic here
                 // You can call your cart controller function here, e.g.:
                 // addToCart(productId);
@@ -76,27 +80,28 @@ export class HomeView {
     addWishlistEventListener() {
         const wishlistButtons = document.querySelectorAll(`.${ProductComponent.wishlistBtnClassName}`);
         wishlistButtons.forEach((button) => {
-          button.addEventListener("click", (event) => {
-            const productCard = button.closest(`.${ProductComponent.targetClassName}`);
-            if (!productCard) return;
-        
-            const productId = productCard.getAttribute(ProductComponent.dataProductId);
-            const isFavorite = productCard.getAttribute(ProductComponent.dataIsFavorite);
-        
-            // Always target the <i> icon inside the button
-            const icon = button.querySelector("i");
-            if (!icon) return;
-        
-            const newIsFavorite = isFavorite !== "true";
-            productCard.setAttribute(ProductComponent.dataIsFavorite, newIsFavorite);
-        
-            icon.classList.toggle("fas", newIsFavorite);
-            icon.classList.toggle("far", !newIsFavorite);
-        
-            console.log("Wishlist toggled for product ID:", productId);
-            // Optional: call your controller here
-            // toggleWishlist(productId, newIsFavorite);
-          });
+            button.addEventListener("click", (event) => {
+                const productCard = button.closest(`.${ProductComponent.targetClassName}`);
+                if (!productCard) return;
+
+                const productId = productCard.getAttribute(ProductComponent.dataProductId);
+                const isFavorite = productCard.getAttribute(ProductComponent.dataIsFavorite);
+
+                // Always target the <i> icon inside the button
+                const icon = button.querySelector("i");
+                if (!icon) return;
+
+                const newIsFavorite = isFavorite !== "true";
+                productCard.setAttribute(ProductComponent.dataIsFavorite, newIsFavorite);
+
+                icon.classList.toggle("fas", newIsFavorite);
+                icon.classList.toggle("far", !newIsFavorite);
+
+                console.log("Wishlist toggled for product ID:", productId);
+                // Optional: call your controller here
+                // toggleWishlist(productId, newIsFavorite);
+            });
         })
-        
-    }}
+
+    }
+}
