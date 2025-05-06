@@ -1,0 +1,41 @@
+/* @import url('components/outline_buttons.css');
+@import url('components/primary_button.css'); */
+
+.imgs-details>img{
+    width: 30% ;
+    height: 150px ;
+    cursor: pointer;
+}
+.product-description {
+    color: rgba(108, 114, 117, 1);
+}
+.discount{
+    color: rgba(108, 114, 117, 1);
+    text-decoration: line-through;
+    
+}
+.product-measurements {
+    color: rgba(108, 114, 117, 1);
+}
+.measurements_value {
+    color: black;
+    font-size: 22px;
+}
+button{
+    width: 100%;
+    height: 52px;
+}
+
+.quantity {
+    height: 52px;
+    margin-right: 8px;
+}
+.small-image {
+    filter: grayscale(100%);
+    cursor: pointer;
+    transition: filter 0.3s ease;
+  }
+  
+  .small-image.active {
+    filter: none;
+  }
