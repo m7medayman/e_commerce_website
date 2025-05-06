@@ -1,7 +1,6 @@
 export class ProductsView {
-  constructor(model) {
+  constructor() {
       this.app = document.getElementById('container');
-      this.render(model);
   }
 
   render(model) {

@@ -1,11 +1,14 @@
 import { ProductsModel } from "../model/products_model.js";
 import { ProductsView } from "../view/products_view.js";
+import { ProductModel } from "../../../../core/models/product_model.js";
 export class ProductsController {
-    constructor(sellerId) {
-        this.sellerId = sellerId;
+    constructor() {
+    }
+    init() {
         this.model = new ProductsModel();
-        this.data = this.model.getBySellerId('seller-2');
-        this.view = new ProductsView(this.data);
+        this.view = new ProductsView();
+        this.data = this.model.getBySellerId();
+        this.view.render(this.data);
         this.handleAddClick();
         this.setupEventListeners();
     }
@@ -39,8 +42,7 @@ export class ProductsController {
     handleDeleteClick(productId) {
         if (confirm('Are you sure you want to delete this product?')) {
             ProductModel.delete(productId);
-            this.model = ProductModel.getBySellerId(this.sellerId);
-            this.view.render(this.model);
+            this.init();
         }
     }
 
