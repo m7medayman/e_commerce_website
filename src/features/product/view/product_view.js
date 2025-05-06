@@ -56,9 +56,9 @@ export class ProductView {
                     <input type="number"  class="form-control text-center quantity" value="1" min="1">
                 </div>
 
-                <button class="btn-outline-primary wishBtn mb-3"> <span><i class="far fa-heart"></i></span> Wishlist</button>
+                <button class="btn-outline-primary wishBtn mb-3 details_button"> <span><i class="far fa-heart"></i></span> Wishlist</button>
             </div>
-            <button class="btn-primary"> Add To Cart</button>
+            <button class="btn-primary details_button"> Add To Cart</button>
         </div>
     </div>
       `;
