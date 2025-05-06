@@ -14,7 +14,9 @@ export class NavBar {
             <!-- THIS DIV: flex container for trailing icons; put it after brand for mobile alignment -->
             <div class="d-flex align-items-center ms-auto order-lg-3">
 
+                <a href="/public/cart.html" style="text-decoration: none; color: inherit;">
                 <i class="fa-solid fa-bag-shopping m-2 clickMouse" style="font-size: 2rem;"></i>
+                </a>
             </div>
 
             <!-- This is the collapsible nav and search (order-lg-2 so navbar nav stays “center” on desktop) -->
