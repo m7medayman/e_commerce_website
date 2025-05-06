@@ -53,10 +53,14 @@ export class UserModel {
     static add({ email, password, role, name, address, phone }) {
         const users = this.getAll();
         if (this.getByEmail(email)) {
+            alert('Email already exists');
+
             throw new Error('Email already exists');
         }
         if (!['customer', 'seller', 'admin'].includes(role)) {
+            alert('Invalid role');
             throw new Error('Invalid role');
+          
         }
         const user = {
             userId: generateUUID(),
@@ -125,3 +129,5 @@ function generateUUID() {
 
 // UserModel.add({email:"sasdgsdf",role:"customer"});
 // //email password 
+
+

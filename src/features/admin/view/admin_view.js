@@ -1,71 +1,16 @@
+
 export class AdminView {
-  constructor(containerId) {
-    this.container = document.getElementById(containerId);
+  constructor(usersContainerId, productsContainerId) {
+    this.usersContainer = document.getElementById(usersContainerId);
+    this.productsContainer = document.getElementById(productsContainerId);
   }
-     // عرض لوحة التحكم
-  renderDashboard(users, products) {
-    this.container.innerHTML = `
-      <div class="dashboard">
-        <h1>Admin Dashboard</h1>
-        <div class="stats">
-          <div class="stat">
-            <h3>Total Users</h3>
-            <p>${users.length}</p>
-          </div>
-          <div class="stat">
-            <h3>Total Products</h3>
-            <p>${products.length}</p>
-          </div>
-        </div>
-        <div class="chart-container">
-          <canvas id="productsChart"></canvas>
-        </div>
-      </div>
-    `;
 
-    // رسم الرسم البياني
-    this.renderChart(products);
-  }
-   // رسم الرسم البياني باستخدام Chart.js
-   renderChart(products) {
-    const ctx = document.getElementById("productsChart").getContext("2d");
-    const categories = [...new Set(products.map(product => product.category))];
-    const categoryCounts = categories.map(category =>
-      products.filter(product => product.category === category).length
-    );
-
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: categories,
-        datasets: [
-          {
-            label: "Products by Category",
-            data: categoryCounts,
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderColor: "rgba(75, 192, 192, 1)",
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "top",
-          },
-          title: {
-            display: true,
-            text: "Products Distribution by Category",
-          },
-        },
-      },
-    });
-  }
   renderUsers(users) {
     const usersHTML = `
       <h2>Users</h2>
-      <table class="table">
+      <button id="add-user-btn" class="btn btn-primary mb-3">Add User</button>
+      <input type="text" id="user-search" class="form-control mb-3" placeholder="Search users by name...">
+      <table class="table overflow-x-auto">
         <thead>
           <tr>
             <th>ID</th>
@@ -77,87 +22,42 @@ export class AdminView {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          ${users.map(user => `
-            <tr>
-              <td>${user.id}</td>
-              <td>${user.name}</td>
-              <td>${user.email}</td>
-              <td>${user.role}</td>
-              <td>${user.address}</td>
-              <td>${user.phone}</td>
-              <td>
-                <button class="btn btn-warning btn-sm edit-user" data-id="${user.id}">Edit</button>
-                <button class="btn btn-danger btn-sm delete-user" data-id="${user.id}">Delete</button>
-              </td>
-            </tr>
-          `).join('')}
+        <tbody id="users-table-body">
+          
+          ${users.map(user => this.createUserRow(user)).join('')}
         </tbody>
       </table>
     `;
-    return usersHTML;
+    this.usersContainer.innerHTML = usersHTML;
+    document.getElementById("user-search").addEventListener("input", (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const filteredUsers = users.filter(user => user.name.toLowerCase().includes(searchTerm));
+      this.updateUsersTable(filteredUsers);
+    });
   }
-
-  
-  renderProducts(products) {
-    const productsHTML = `
-      <h2>Products</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Stock</th>
-            <th>Seller ID</th>
-            <th>Measurement</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${products.map(product => `
-            <tr>
-              <td>${product.id}</td>
-              <td>${product.name}</td>
-              <td>${product.price}</td>
-              <td>${product.description}</td>
-              <td>${product.category}</td>
-              <td>${product.stock}</td>
-              <td>${product.sellerId}</td>
-              <td>${product.measures}</td>
-              <td>
-                <button class="btn btn-warning btn-sm edit-product" data-id="${product.id}">Edit</button>
-                <button class="btn btn-danger btn-sm delete-product" data-id="${product.id}">Delete</button>
-              </td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-    `;
-    return productsHTML;
-  }
-
-  
-  renderMainPage(users, products) {
-    this.container.innerHTML = `
-      <div class="mb-3">
-        <button id="add-user-btn" class="btn btn-primary">Add User</button>
-        <button id="add-product-btn" class="btn btn-secondary">Add Product</button>
-      </div>
-      <div id="users-section">
-        ${this.renderUsers(users)}
-      </div>
-      <div id="products-section">
-        ${this.renderProducts(products)}
-      </div>
+  createUserRow(user) {
+    return `
+      <tr>
+        <td>${user.userId}</td>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.role}</td>
+        <td>${user.address}</td>
+        <td>${user.phone}</td>
+        <td>
+          <button class="btn btn-warning btn-sm edit-user" data-id="${user.userId}">Edit</button>
+          <button class="btn btn-danger btn-sm delete-user" data-id="${user.userId}">Delete</button>
+        </td>
+      </tr>
     `;
   }
+  updateUsersTable(filteredUsers) {
+    const tableBody = document.getElementById("users-table-body");
+    tableBody.innerHTML = filteredUsers.map(user => this.createUserRow(user)).join('');
+  }
 
-  
   renderAddUserForm(user = {}) {
-    this.container.innerHTML = `
+    const formHTML = `
       <h2>${user.id ? "Edit User" : "Add User"}</h2>
       <form id="add-user-form">
         <div class="mb-3">
@@ -183,10 +83,66 @@ export class AdminView {
         <button type="submit" class="btn btn-primary">${user.id ? "Update User" : "Add User"}</button>
       </form>
     `;
+    this.usersContainer.innerHTML = formHTML;
   }
 
+  renderProducts(products) {
+    const productsHTML = `
+      <h2>Products</h2>
+      <button id="add-product-btn" class="btn btn-primary mb-3">Add Product</button>
+      <input type="text" id="product-search" class="form-control mb-3" placeholder="Search products by name...">
+      <table class="table overflow-x-auto">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Stock</th>
+            <th>Seller ID</th>
+            <th>Measurement</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="products-table-body">
+        ${products.map(product => this.createProductRow(product)).join('')}
+        </tbody>
+      </table>
+   
+    `;
+    this.productsContainer.innerHTML = productsHTML;
+    document.getElementById("product-search").addEventListener("input", (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchTerm));
+      this.updateProductsTable(filteredProducts);
+    });
+    
+  }
+  createProductRow(product) {
+    return `
+      <tr>
+        <td>${product.productId}</td>
+        <td>${product.name}</td>
+        <td>${product.price}</td>
+        <td>${product.description}</td>
+        <td>${product.category}</td>
+        <td>${product.stock}</td>
+        <td>${product.sellerId}</td>
+        <td>${product.measures}</td>
+        <td>
+          <button class="btn btn-warning btn-sm edit-product" data-id="${product.productId}">Edit</button>
+          <button class="btn btn-danger btn-sm delete-product" data-id="${product.productId}">Delete</button>
+        </td>
+      </tr>
+    `;
+  }
+  updateProductsTable(filteredProducts) {
+    const tableBody = document.getElementById("products-table-body");
+    tableBody.innerHTML = filteredProducts.map(product => this.createProductRow(product)).join('');
+  }
   renderAddProductForm(product = {}) {
-    this.container.innerHTML = `
+    const formHTML = `
       <h2>${product.id ? "Edit Product" : "Add Product"}</h2>
       <form id="add-product-form">
         <div class="mb-3">
@@ -220,5 +176,6 @@ export class AdminView {
         <button type="submit" class="btn btn-primary">${product.id ? "Update Product" : "Add Product"}</button>
       </form>
     `;
+    this.productsContainer.innerHTML = formHTML;
   }
 }
