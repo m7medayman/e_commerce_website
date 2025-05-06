@@ -21,9 +21,10 @@ export class ProductFormController {
       detailedImages: formData.get('imageUrl').split(','),
       measuarment: formData.get('productMeasurement'),
       discount: parseFloat(formData.get('productDiscount')) || 0,
-      sellerId: 'seller-1'
+      sellerId: 'seller-2'
     };
     ProductModel.add(productData);
     this.view.resetForm();
+    window.location.href='products.html';
   }
 }
