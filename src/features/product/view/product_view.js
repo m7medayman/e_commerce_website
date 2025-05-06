@@ -1,15 +1,19 @@
+import { FooterWidget } from "../../../core/common/footer.js";
+import { NavBar } from "../../../core/common/nav_bar.js";
 export class ProductView {
-    constructor(containerId) {
-      this.container = document.getElementById(containerId);
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+  }
+
+  render(product) {
+    new FooterWidget().render();
+    new NavBar().render();
+    if (!product) {
+      this.container.innerHTML = "<p>Product not found.</p>";
+      return;
     }
-  
-    render(product) {
-      if (!product) {
-        this.container.innerHTML = "<p>Product not found.</p>";
-        return;
-      }
-  
-      this.container.innerHTML = `
+
+    this.container.innerHTML = `
         <div class="container">
         <div class="row">
             <div class="col-md-6 p-5 d-flex flex-column align-items-center">
@@ -18,8 +22,8 @@ export class ProductView {
                 </div>
                 <div class="imgs-details d-none m-2 d-md-flex w-100 d-flex justify-content-between">
                 ${product.detailedImages.map(
-                    (image) => `<img class="img-thumbnail small-image" src="${image}" alt="Detailed Image">`
-                  ).join('')}
+      (image) => `<img class="img-thumbnail small-image" src="${image}" alt="Detailed Image">`
+    ).join('')}
                 </div>
             </div>
             <div class="col-md-6 p-5">
@@ -58,34 +62,34 @@ export class ProductView {
         </div>
     </div>
       `;
-      // Add event listeners to small images
-      const mainImage = document.getElementById("main-image");
-      const smallImages = document.querySelectorAll(".small-image");
+    // Add event listeners to small images
+    const mainImage = document.getElementById("main-image");
+    const smallImages = document.querySelectorAll(".small-image");
 
-      smallImages.forEach((img) => {
-        img.addEventListener("click", () => {
-          mainImage.src = img.src; 
-          smallImages.forEach((image) => image.classList.remove("active"));
+    smallImages.forEach((img) => {
+      img.addEventListener("click", () => {
+        mainImage.src = img.src;
+        smallImages.forEach((image) => image.classList.remove("active"));
 
-          img.classList.add("active");
-          
-        });
-      })
+        img.classList.add("active");
 
-      mainImage.addEventListener("load", () => {
-        smallImages.forEach((image) => {
-          if (image.src === mainImage.src) {
-            image.classList.add("active");
-          } else {
-            image.classList.remove("active");
-          }
-        });
       });
-    
-     
-    
+    })
 
-}
-  
+    mainImage.addEventListener("load", () => {
+      smallImages.forEach((image) => {
+        if (image.src === mainImage.src) {
+          image.classList.add("active");
+        } else {
+          image.classList.remove("active");
+        }
+      });
+    });
+
+
+
+
+  }
+
 }
 
