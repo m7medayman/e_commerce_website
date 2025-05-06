@@ -1,0 +1,177 @@
+/* Sidebar Styling */
+#profile #profile .sidebar {
+  min-height: 100vh;
+  background-color: #F8F9FA !important;
+  padding: 0 !important;
+}
+#profile #profile .sidebar h5 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #000;
+  padding: 16px 24px;
+  margin: 0;
+  border-bottom: 1px solid #E5E7EB;
+}
+#profile #profile .sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#profile #profile .sidebar li {
+  margin-bottom: 10px;
+}
+#profile #profile .sidebar a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000 !important;
+  padding: 12px 24px !important;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+#profile #profile .sidebar a:hover {
+  background-color: #E5E7EB;
+}
+#profile #profile .sidebar a.active {
+  font-weight: 600;
+  background-color: #E5E7EB;
+}
+#profile #profile .sidebar a.logout {
+  color: #E73C17 !important;
+}
+
+/* Main Content Styling */
+#profile h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 44px;
+  color: #000;
+}
+#profile h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #000;
+}
+#profile h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  color: #000;
+}
+
+/* Account Section Styling */
+#account-section label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+}
+#account-section input {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  border: 1px solid #E5E7EB;
+  border-radius: 0;
+}
+#account-section button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  background-color: #000;
+  border-color: #000;
+  border-radius: 0;
+  padding: 8px 16px;
+}
+#account-section button:hover {
+  background-color: #333;
+  border-color: #333;
+}
+
+/* Addresses Section Styling */
+#addresses-section h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #000;
+  margin-bottom: 16px;
+}
+#addresses-section p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  margin-bottom: 16px;
+}
+#addresses-section .address-type {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #000;
+  margin-bottom: 8px;
+}
+#addresses-section .address-type a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  text-decoration: none;
+  float: right;
+}
+#addresses-section .address-details {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #666;
+  margin: 0;
+}
+
+/* Orders Section Styling */
+#orders-section table th, #orders-section table td {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  vertical-align: middle;
+}
+
+/* Wishlist Section Styling */
+#wishlist-section table th, #wishlist-section table td {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  vertical-align: middle;
+}
+#wishlist-section button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  background-color: #000;
+  border-color: #000;
+  border-radius: 0;
+  padding: 8px 16px;
+}
+#wishlist-section button:hover {
+  background-color: #333;
+  border-color: #333;
+}
