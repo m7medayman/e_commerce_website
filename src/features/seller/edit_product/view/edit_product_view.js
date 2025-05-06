@@ -1,6 +1,6 @@
 export class EditProductView {
     constructor() {
-        this.container = document.getElementById('edit_product');
+        this.container = document.getElementById('container');
        
     }
 
@@ -11,8 +11,9 @@ export class EditProductView {
         }
 
         const form = `
+        <h3 class='my-3 text-center'>Edit Product</h3>
             <form id="editProductForm">
-                <div class="d-flex justify-content-around align-items-center mb-2 flex-wrap">
+                <div class="d-flex justify-content-around align-items-center mb-3 flex-wrap">
                     <div class="col-10 col-md-5">
                         <label for="name" class="form-label">Product Name</label>
                         <input type="text" class="form-control" id="name" value="${product.name}" required>
@@ -22,7 +23,7 @@ export class EditProductView {
                         <textarea class="form-control" id="description" required>${product.description}</textarea>
                     </div>
                 </div>
-                <div class="d-flex justify-content-around align-items-center mb-2 flex-wrap">
+                <div class="d-flex justify-content-around align-items-center mb-3 flex-wrap">
                     <div class="col-10 col-md-5">
                         <label for="price" class="form-label">Price</label>
                         <input type="number" class="form-control" id="price" min="0.01" step="0.01" value="${product.price}" required>
@@ -32,7 +33,7 @@ export class EditProductView {
                         <input type="number" class="form-control" id="stock" value="${product.stock}" required>
                     </div>
                 </div>
-                <div class="d-flex justify-content-around align-items-center mb-2 flex-wrap">
+                <div class="d-flex justify-content-around align-items-center mb-3 flex-wrap">
                     <div class="col-10 col-md-5">
                         <label for="category" class="form-label">Category</label>
                         <input type="text" class="form-control" id="category" value="${product.category}" required>
@@ -42,7 +43,7 @@ export class EditProductView {
                         <input type="number" class="form-control" id="discount" min="0" max="100" value="${product.discount}">
                     </div>
                 </div>
-                <div class="d-flex justify-content-around align-items-center mb-2 flex-wrap">
+                <div class="d-flex justify-content-around align-items-center mb-3 flex-wrap">
                     <div class="col-10 col-md-5">
                         <label for="image" class="form-label">Image URL</label>
                         <input type="url" class="form-control" id="image" value="${product.detailedImages[0] }" required">
@@ -53,7 +54,7 @@ export class EditProductView {
                             }" required>
                     </div>
                 </div>
-                <div class="d-flex justify-content-around align-items-center my-3">
+                <div class="d-flex justify-content-around align-items-center my-5">
                     <button type="submit" class="btn btn-dark">Save Changes</button>
                     <a href="index.html" class="btn btn-danger">Cancel</a>
                 </div>

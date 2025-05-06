@@ -2,6 +2,7 @@ import { ProductsModel } from "../model/products_model.js";
 import { ProductsView } from "../view/products_view.js";
 import { ProductModel } from "../../../../core/models/product_model.js";
 import { ProductFormController } from "../../add_product/controller/product_form_controller.js";
+import { EditProductController } from "../../edit_product/controller/edit_product_controller.js";
 export class ProductsController {
     constructor() {
     }
@@ -12,6 +13,7 @@ export class ProductsController {
         this.view.render(this.data);
         this.handleAddClick();
         this.setupEventListeners();
+        
     }
 
     // handleAddClick() {
@@ -50,7 +52,11 @@ export class ProductsController {
     }
 
     handleEditClick(productId) {
-        window.location.href = `edit_product.html?productId=${productId}`;
+        this.view.app.innerHTML = `<div id="container"></div>`;
+        // window.location.href = `edit_product.html?productId=${productId}`;
+        new EditProductController(productId, () => {
+                 this.init();
+          }).init();
     }
 
     handleDeleteClick(productId) {
