@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="../../styles/pages/seller/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
   <!-- Sidebar -->
@@ -19,7 +21,7 @@
     </div>
     <a href="#" class="active" data-section="dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
     <a href="#" data-section="orders"><i class="bi bi-cart"></i> Orders</a>
-    <a href="#" data-section="products"><i class="bi bi-box"></i> Products</a>
+    <a href="products.html" data-section="products"><i class="bi bi-box"></i> Products</a>
   </div>
 
   <!-- Content -->
@@ -34,6 +36,6 @@
   <!-- MVC Scripts -->
   <script src="../../src/features/seller/dashboard/model/model.js"></script>
   <script src="../../src/features/seller/dashboard/view/view.js"></script>
-  <script src="../../src/features/seller/dashboard/controller/controller.js"></script>
+  <script type="module" src="../../src/features/seller/dashboard/controller/controller.js"></script>
 </body>
 </html>

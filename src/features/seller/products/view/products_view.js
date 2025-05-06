@@ -18,7 +18,7 @@ export class ProductsView {
           </tr>`;
       }).join('');
 
-      const container = `<table class="table text-center">
+      const container = `<table class="table text-center mt-5">
           <thead>
               <tr class="table-dark text-white">
                   <th scope="col">#</th>
