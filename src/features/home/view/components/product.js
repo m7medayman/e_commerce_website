@@ -3,7 +3,10 @@ export class ProductComponent {
   static addBtnClassName = 'add-to-cart-btn-target';
   static wishlistBtnClassName = 'wishlist-btn-target';
   static dataProductId = 'data-product-id';
+
   static dataIsFavorite = 'data-is-favorite';
+  static addtoCartAction = 'add-to-cart';
+  static toggelFavoriteAction = 'toggle-favorite'; 
   constructor({
     id,
     imageUrl, altText = '', isNew = false,
@@ -48,8 +51,8 @@ export class ProductComponent {
 <div class="position-relative">
   ${this.isNew ? `<span class="badge-new">NEW</span>` : ''}
   ${this.discountPct ? `<span class="badge-discount">-${this.discountPct}%</span>` : ''}
-  <button class="${ProductComponent.wishlistBtnClassName} wishlist-btn">
-    <i class="${this.isFavorite ? 'fas' : 'far'} fa-heart"></i>
+  <button class="${ProductComponent.wishlistBtnClassName} wishlist-btn" data-action="${ProductComponent.toggelFavoriteAction}">
+    <i class="${this.isFavorite ? 'fas' : 'far'} fa-heart"></i> 
   </button>
   <img src="${this.imageUrl}"
        alt="${this.altText}"
@@ -57,7 +60,7 @@ export class ProductComponent {
        style="height:70%;" />
 </div>
 <div class="p-3">
-  <button class="${ProductComponent.addBtnClassName} btn-outline-primary">Add to cart</button>
+  <button class="${ProductComponent.addBtnClassName} btn-outline-primary" data-action="${ProductComponent.addtoCartAction}">Add to cart </button>
   <div class="mb-2 mt-2">
     ${starsHtml}
   </div>

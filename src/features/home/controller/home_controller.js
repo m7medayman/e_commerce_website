@@ -19,8 +19,9 @@ export class HomeController {
         this.view.renderPage();
         this.view.renderCarousel(images);
         this.view.renderNewProducts(products);
-        this.view.addAddToCartEventListener(this.addAddToCartEventListener);
-        this.view.addWishlistEventListener();
+        this.view.addEventListenerToProductCard(this.addAddToCartEventListener, function () { }, this.goToProductPage);
+        // this.view.addAddToCartEventListener(this.addAddToCartEventListener);
+        // this.view.addWishlistEventListener();
         this.view.renderThreeImageSection(threeImageSection[0], threeImageSection[1], threeImageSection[2]);
         this.view.renderFourIconsSection();
         this.view.renderBigTwoPartBanner("./assets/images/big_panner.png")
@@ -33,7 +34,9 @@ export class HomeController {
         console.log("Add to cart clicked for product ID:", id);
 
     }
-
+    goToProductPage(id) {
+        window.location.href = `./product_details.html?id=${id}`;
+    }
     setupEventListeners() {
         // Add any event listeners here if needed
     }
