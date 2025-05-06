@@ -3,7 +3,7 @@ export class ProductsView {
       this.app = document.getElementById('container');
   }
 
-  render(model) {
+  render(model,searchTerm='') {
       const products = model.map((product, index) => {
           return `<tr class="text-center align-middle">
               <th scope="row">${index + 1}</th>
@@ -39,7 +39,14 @@ export class ProductsView {
 
       this.app.innerHTML = `
           <div class="d-flex justify-content-around my-3">
-              <div class="border py-2 px-5"><i class="fa-solid fa-magnifying-glass"></i></div>
+             <div class="w-25">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <input type="text" id="searchInput" placeholder="Search about product here..."  value='${searchTerm}' class="form-control">
+                    </div>
+                </div>
               <button class="btn btn-dark" id="add_button">Add New Product</button>
           </div>
           <div id="products">${container}</div>
