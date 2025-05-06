@@ -1,6 +1,7 @@
 import { ProductsModel } from "../model/products_model.js";
 import { ProductsView } from "../view/products_view.js";
 import { ProductModel } from "../../../../core/models/product_model.js";
+import { ProductFormController } from "../../add_product/controller/product_form_controller.js";
 export class ProductsController {
     constructor() {
     }
@@ -13,12 +14,18 @@ export class ProductsController {
         this.setupEventListeners();
     }
 
+    // handleAddClick() {
+    //     document.getElementById('add_button').addEventListener('click', () => {
+    //         window.location.href = 'add_product.html';
+    //     })
+    // }
     handleAddClick() {
         document.getElementById('add_button').addEventListener('click', () => {
-            window.location.href = 'add_product.html';
-        })
+          new ProductFormController(() => {
+            this.init();
+          });
+        });
     }
-
     setupEventListeners() {
         const container = document.getElementById('container');
         container.addEventListener('click', (e) => {

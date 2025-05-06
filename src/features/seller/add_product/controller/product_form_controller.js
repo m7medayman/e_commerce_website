@@ -2,7 +2,8 @@ import { ProductModel } from '../../../../core/models/product_model.js';
 import { ProductFormView } from '../view/product_form_view.js';
 
 export class ProductFormController {
-  constructor() {
+  constructor(onDone) {
+    this.onDone =onDone;
     this.view = new ProductFormView();
     this.view.bindSubmit(this.handleSubmit.bind(this));
   }
@@ -25,6 +26,7 @@ export class ProductFormController {
     };
     ProductModel.add(productData);
     this.view.resetForm();
-    window.location.href='products.html';
+    this.onDone();
+    // window.location.href='products.html';
   }
 }

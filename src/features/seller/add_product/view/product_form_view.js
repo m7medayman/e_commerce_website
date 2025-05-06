@@ -1,6 +1,6 @@
 export class ProductFormView {
     constructor() {
-        this.container = document.getElementById('app');
+        this.container = document.getElementById('container');
         this.render();
     }
     render() {
