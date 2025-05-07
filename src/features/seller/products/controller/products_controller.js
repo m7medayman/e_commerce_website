@@ -44,7 +44,7 @@ export class ProductsController {
         });
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
-            searchInput.addEventListener('input', () => {
+            searchInput.addEventListener('change', () => {
                 const searchTerm = searchInput.value.toLowerCase();
                 this.filterProducts(searchTerm);
             });
@@ -69,6 +69,7 @@ export class ProductsController {
 
 
     filterProducts(searchTerm) {
+        console.log('Filtering for:', searchTerm);
         let filteredProducts = this.data;
         if (searchTerm) {
              filteredProducts = this.data.filter(product =>
@@ -77,7 +78,6 @@ export class ProductsController {
             );
             this.view.render(filteredProducts,searchTerm);
         }
-        
         
     }
 
