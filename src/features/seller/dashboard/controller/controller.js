@@ -1,9 +1,11 @@
 import { ProductsController } from "../../products/controller/products_controller.js";
+import { OrdersController } from "../../orders/controller/orders_controller.js";
 class DashboardController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
     this.productsController = null; 
+    this.ordersController=null;
     this.init();
   }
 
@@ -37,8 +39,12 @@ class DashboardController {
       }
       this.productsController.init();
     } else {
-      this.view.renderSection(section);
-    }
+        document.getElementById('app').innerHTML = '<div id="container"></div>';
+        if (!this.ordersController) {
+          this.ordersController = new OrdersController ();
+        }
+        this.ordersController.init();
+      }
 
     this.view.setActiveLink(section);
   }
