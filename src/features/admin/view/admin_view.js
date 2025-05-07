@@ -10,7 +10,8 @@ export class AdminView {
       <h2>Users</h2>
       <button id="add-user-btn" class="btn btn-primary mb-3">Add User</button>
       <input type="text" id="user-search" class="form-control mb-3" placeholder="Search users by name...">
-      <table class="table overflow-x-auto">
+      <div class="overflow-x-auto">
+      <table class="table">
         <thead>
           <tr>
             <th>ID</th>
@@ -27,6 +28,7 @@ export class AdminView {
           ${users.map(user => this.createUserRow(user)).join('')}
         </tbody>
       </table>
+      </div>
     `;
     this.usersContainer.innerHTML = usersHTML;
     document.getElementById("user-search").addEventListener("input", (e) => {
@@ -45,7 +47,6 @@ export class AdminView {
         <td>${user.address}</td>
         <td>${user.phone}</td>
         <td>
-          <button class="btn btn-warning btn-sm edit-user" data-id="${user.userId}">Edit</button>
           <button class="btn btn-danger btn-sm delete-user" data-id="${user.userId}">Delete</button>
         </td>
       </tr>
@@ -91,7 +92,8 @@ export class AdminView {
       <h2>Products</h2>
       <button id="add-product-btn" class="btn btn-primary mb-3">Add Product</button>
       <input type="text" id="product-search" class="form-control mb-3" placeholder="Search products by name...">
-      <table class="table overflow-x-auto">
+      <div class="overflow-x-auto">
+      <table class="table">
         <thead>
           <tr>
             <th>ID</th>
@@ -100,7 +102,7 @@ export class AdminView {
             <th>Description</th>
             <th>Category</th>
             <th>Stock</th>
-            <th>Seller ID</th>
+            <th>SellerID</th>
             <th>Measurement</th>
             <th>Actions</th>
           </tr>
@@ -109,6 +111,7 @@ export class AdminView {
         ${products.map(product => this.createProductRow(product)).join('')}
         </tbody>
       </table>
+      </div>
    
     `;
     this.productsContainer.innerHTML = productsHTML;
@@ -131,7 +134,6 @@ export class AdminView {
         <td>${product.sellerId}</td>
         <td>${product.measures}</td>
         <td>
-          <button class="btn btn-warning btn-sm edit-product" data-id="${product.productId}">Edit</button>
           <button class="btn btn-danger btn-sm delete-product" data-id="${product.productId}">Delete</button>
         </td>
       </tr>
