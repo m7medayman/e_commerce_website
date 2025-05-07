@@ -41,7 +41,7 @@ export class ProfileView {
             </div>
         `;
 
-        this.bindSidebarNavigation();
+        // this.bindSidebarNavigation();
     }
 
     bindSidebarNavigation(handleNavigation) {
@@ -53,7 +53,7 @@ export class ProfileView {
                     AuthModel.signOut();
                     window.location.reload(); // Reload to reset the page
                 } else {
-                    handleNavigation(section);
+                   handleNavigation(section);
                 }
             });
         });

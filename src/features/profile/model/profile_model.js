@@ -1,4 +1,5 @@
 import { AuthModel } from "../../../core/models/auth_model.js";
+import { OrderModel } from "../../../core/models/order_model.js";
 
 export class ProfileModel {
   static getUserData() {
@@ -22,11 +23,13 @@ export class ProfileModel {
   }
 
   static getOrders() {
-      return [
-          { orderId: '#123456', date: 'October 11, 2023', status: 'Delivered', price: '$123.45' },
-          { orderId: '#123457', date: 'August 24, 2022', status: 'Delivered', price: '$89.99' },
-          { orderId: '#123458', date: 'August 17, 2021', status: 'Delivered', price: '$45.00' }
-      ];
+    this.orders=OrderModel.getByUserId(AuthModel.STORAGE_KEY);
+    console.log(this.orders);
+    //   return [
+    //       { orderId: '#123456', date: 'October 11, 2023', status: 'Delivered', price: '$123.45' },
+    //       { orderId: '#123457', date: 'August 24, 2022', status: 'Delivered', price: '$89.99' },
+    //       { orderId: '#123458', date: 'August 17, 2021', status: 'Delivered', price: '$45.00' }
+    //   ];
   }
 
   static getWishlist() {

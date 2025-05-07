@@ -55,8 +55,8 @@ export class CheckoutModel {
 
     const orderData = {
         userId: user.userId,
-        items: this.items.map(item => ({
-            id: item.id.toString(),
+        items: this.getItems().map(item => ({
+            id: item.productId, 
             quantity: item.quantity,
             price: item.price
         })),

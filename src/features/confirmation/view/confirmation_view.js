@@ -5,8 +5,8 @@ class OrderCompleteView {
   constructor() {
       this.container = document.querySelector('.container');
       this.styles = document.createElement('link');
-      this.styles.rel = 'stylesheet';
-      this.styles.href = '../styles/pages/order_confirmation.css';
+    //   this.styles.rel = 'stylesheet';
+    //   this.styles.href = '../styles/pages/order_confirmation.css';
       document.head.appendChild(this.styles);
       this.progressBar = new ProgressBar(3);
       new NavBar().render();
