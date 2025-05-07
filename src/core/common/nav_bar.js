@@ -38,9 +38,9 @@ export class NavBar {
 
 
                 </ul>
-                <form class="d-flex middle" role="search">
+               <form class="d-flex middle" role="search">
                     <div class="search-box">
-                        <button class="btn-search"><i class="fas fa-search"></i></button>
+                        <button class="btn-search" type="button"><i class="fas fa-search"></i></button>
                         <input type="text" class="input-search" placeholder="Type to Search...">
                     </div>
                 </form>
