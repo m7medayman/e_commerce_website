@@ -19,15 +19,12 @@ export class ProfileView {
         const userType = 'seller';
 
         const sidebarHtml = `
-            <div class="col-12 col-md-3 bg-light sidebar">
+            <div class="col-12 col-md-3 bg-light sidebar" id="sidebar">
                 <div class="position-sticky pt-3">
                     <h5 class="sidebar-heading">My Account</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="../index.html" data-section="home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-section="account">Account</a>
+                            <a class="nav-link active" href="#" data-section="account">Account</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-section="addresses">Addresses</a>
@@ -54,7 +51,7 @@ export class ProfileView {
         const mainContentHtml = `
             <div class="col-12 col-md-9 main-content">
                 <h1 class="my-4">My Account</h1>
-                <div class="content-section" id="account-section" style="display: none;"></div>
+                <div class="content-section" id="account-section" style="display: block;"></div>
                 <div class="content-section" id="addresses-section" style="display: none;"></div>
                 <div class="content-section" id="orders-section" style="display: none;"></div>
                 <div class="content-section" id="wishlist-section" style="display: none;"></div>
@@ -64,17 +61,18 @@ export class ProfileView {
         profileDiv.innerHTML = `
             <div class="container">
                 <div class="row justify-content-center">
-                    <!-- Sidebar -->
-                    ${sidebarHtml}
+                    <!-- Sidebar -->           
+                    ${sidebarHtml}               
                     <!-- Main Content -->
                     ${mainContentHtml}
+                   
                 </div>
             </div>
         `;
     }
 
     bindSidebarNavigation(handler) {
-        document.querySelectorAll('#profile .sidebar a').forEach(link => {
+        document.querySelectorAll('#profile #sidebar a').forEach(link => {
             link.addEventListener('click', (e) => {
                 const section = e.target.getAttribute('data-section');
                 if (section) {
@@ -86,11 +84,10 @@ export class ProfileView {
     }
 
     renderSection(section) {
-        if (section === 'addresses') {
-            this.addressesView.render();
-        } 
-        else if (section === 'account') {
+        if (section === 'account') {
             this.accountView.render();
+        } else if (section === 'addresses') {
+            this.addressesView.render();
         } else if (section === 'orders') {
             this.ordersView.render();
         } else if (section === 'wishlist') {
