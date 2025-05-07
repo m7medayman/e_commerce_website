@@ -2,7 +2,12 @@ export class WishlistModel {
   static STORAGE_KEY = 'wishlists';
 
   static getAll() {
-      return JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
+      return JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [
+        { name: 'Tray Table', price: '$150000.00', action: 'Add to Cart' },
+        { name: 'Sofa', price: '$45.00', action: 'Add to Cart' },
+        { name: 'Armchair', price: '$25.00', action: 'Add to Cart' },
+        { name: 'Pillow', price: '$10.00', action: 'Add to Cart' }
+    ];
   }
 
   static getByUserId(userId) {

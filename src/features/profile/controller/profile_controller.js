@@ -1,4 +1,5 @@
-import {ProfileView} from '../view/profile_view.js';
+import { ProfileView } from '../view/profile_view.js';
+import { AuthModel } from '../../../core/models/auth_model.js';
 export class ProfileController {
     constructor() {
         this.profileView = new ProfileView();
@@ -6,9 +7,16 @@ export class ProfileController {
     }
 
     init() {
+        const user = AuthModel.getUser();
+        if (!user) {
+            // Redirect to login page if no user is logged in
+            window.location.href = 'login.html';
+            return;
+        }
+
         this.profileView.renderPage();
         this.profileView.bindSidebarNavigation(this.handleNavigation.bind(this));
-        this.handleNavigation('home'); // Set "home" as default
+        this.handleNavigation('account'); // Set "account" as default
     }
 
     handleNavigation(section) {
@@ -22,7 +30,7 @@ export class ProfileController {
             this.profileView.renderSection(section);
         }
 
-        document.querySelectorAll('#profile .sidebar a').forEach(link => {
+        document.querySelectorAll('#profile #sidebar a').forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('data-section') === section) {
                 link.classList.add('active');

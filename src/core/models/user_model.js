@@ -64,7 +64,7 @@ export class UserModel {
             password, // In production, hash the password
             role, // 'customer', 'seller', or 'admin'
             name,
-            address: address || null,
+            address: address || [],
             phone: phone || null,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
