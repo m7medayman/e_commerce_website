@@ -12,15 +12,24 @@ export class ProductView {
       this.container.innerHTML = "<p>Product not found.</p>";
       return;
     }
-
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+      if (i <= product.rate) {
+        // filled star
+        starsHtml += `<i class="fas fa-star text-warning"></i>`;
+      } else {
+        // bordered (unfilled) star
+        starsHtml += `<i class="fa-regular fa-star"></i>`;
+      }
+    }
     this.container.innerHTML = `
         <div class="container">
         <div class="row">
             <div class="col-md-6 p-5 d-flex flex-column align-items-center">
                 <div class="main-img border mb-3">
-                    <img id="main-image" class="w-100" src="${product.img}" alt="main image">
+                    <img id="main-image" class="w-100" src="${product.detailedImages[0]}" alt="main image">
                 </div>
-                <div class="imgs-details d-none m-2 d-md-flex w-100 d-flex justify-content-between">
+                <div class="imgs-details d-none m-2 d-md-flex w-100 d-flex ">
                 ${product.detailedImages.map(
       (image) => `<img class="img-thumbnail small-image" src="${image}" alt="Detailed Image">`
     ).join('')}
@@ -28,12 +37,8 @@ export class ProductView {
             </div>
             <div class="col-md-6 p-5">
                 <div class="rating mb-3">
-                    <i class="fas fa-star text-dark"></i>
-                    <i class="fas fa-star text-dark"></i>
-                    <i class="fas fa-star text-dark"></i>
-                    <i class="fas fa-star text-dark"></i>
-                    <i class="fas fa-star text-dark"></i>
-                    <span>11 Reviews</span>
+                   ${starsHtml}
+                    <span>${product.numberOfReviews} Reviews</span>
                 </div>
                 <div class="product-name fw-bold fs-3 mb-3">
                     ${product.name}
@@ -42,8 +47,8 @@ export class ProductView {
                 ${product.description}
                                 </div>
                 <div class="product-price mb-3">
-                    <span class="fw-bold fs-3 mx-2">${product.price}</span> 
-                    <span class="discount fs-3 ">${product.discount}</span>
+                    <span class="fw-bold fs-3 mx-2">${(product.price) - product.price * product.discount / 100}</span> 
+                    <span class="discount fs-3 ">${product.price}</span>
                 </div>
                 
                 <div class="product-measurements mb-3">
