@@ -45,9 +45,15 @@ export class EditProductView {
                 </div>
                 <div class="d-flex justify-content-around align-items-center mb-3 flex-wrap">
                     <div class="col-10 col-md-5">
-                        <label for="image" class="form-label">Image URL</label>
-                        <input type="url" class="form-control" id="image" value="${product.detailedImages[0] }" required">
-                    </div>
+                        <label class="form-label">Existing Images</label>
+    <div id="existingImages" class="d-flex gap-2 flex-wrap mb-2">
+    <img src="${product.detailedImages[0]}" width="100" class="rounded border">
+    </div>
+
+    <label for="imageUpload" class="form-label">Upload New Images</label><br>
+    <button type="button" id="uploadTrigger" class="btn btn-dark mb-2">Upload Images</button>
+    <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;">
+    <div id="previewContainer" class="d-flex gap-2 flex-wrap"></div></div>
                     <div class="col-10 col-md-5">
                         <label for="measuarment" class="form-label">Measurement</label>
                         <input type="text" class="form-control" id="measuarment" value="${product.measuarment
@@ -60,5 +66,48 @@ export class EditProductView {
                 </div>
             </form>`;
         this.container.innerHTML = form;
+        const imageInput = document.getElementById('imageUpload');
+const previewContainer = document.getElementById('previewContainer');
+const triggerBtn = document.getElementById('uploadTrigger');
+
+// Create a hidden input to hold new images (base64)
+const hiddenInput = document.createElement('input');
+hiddenInput.type = 'hidden';
+hiddenInput.name = 'newImagesBase64';
+hiddenInput.id = 'newImagesBase64';
+document.getElementById('editProductForm').appendChild(hiddenInput);
+
+triggerBtn.addEventListener('click', () => {
+    imageInput.click();
+});
+
+imageInput.addEventListener('change', () => {
+    const files = Array.from(imageInput.files);
+    previewContainer.innerHTML = '';
+    const base64Images = [];
+
+    const promises = files.map(file => {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                base64Images.push(e.target.result);
+
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.width = 100;
+                img.classList.add('rounded', 'border');
+                previewContainer.appendChild(img);
+
+                resolve();
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
+    Promise.all(promises).then(() => {
+        hiddenInput.value = JSON.stringify(base64Images);
+    });
+});
+
     }
 }
