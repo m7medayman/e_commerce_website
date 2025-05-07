@@ -17,16 +17,21 @@ export class CartView {
   renderCart(cartItems) {
     const container = document.getElementById('cart-items');
     container.innerHTML = '';
-
+      (cartItems.length>0)?
     cartItems.forEach((product, index) => {
       const item = new CartItem(product, index);
       container.innerHTML += item.render();
-    });
+    }):container.innerHTML=`<p class='text-center'>No Products added to cart</p>`;
 
   }
 
   renderSummary(subtotal, selectedShipping) {
     document.getElementById('cart-summary').innerHTML = new CartSummary(subtotal, selectedShipping).render();
+  }
+  updateCheckOutButtonState(products) {
+    const submitBtn = document.getElementById('checkBtn');
+    submitBtn.disabled = products.length === 0;
+    submitBtn.classList.add('btn-dark');
   }
   // renderCoupon() {
   //   document.getElementById('coupon-code').innerHTML = new CouponCode().render();

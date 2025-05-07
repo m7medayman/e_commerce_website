@@ -39,9 +39,10 @@ export class CartSummary {
                         <h4>$${total.toFixed(2)}</h4>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary col-10 ">Checkout</button>
+                        <button class="btn btn-primary col-10 " id="checkBtn">Checkout</button>
                     </div>
 
                 </div>`;
     }
+     
 }
