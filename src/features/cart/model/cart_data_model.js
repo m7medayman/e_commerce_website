@@ -43,6 +43,7 @@ export class CartDataModel {
   }
   updateQuantity(index, change) {
     this.items[index].quantity = Math.max(1, this.items[index].quantity + change);
+    CartModel.addItem(this.userId,this.items[index].productId,change);
   }
   removeItem(index) {
     debugger;
