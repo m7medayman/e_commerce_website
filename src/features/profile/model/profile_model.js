@@ -1,9 +1,17 @@
+import { AuthModel } from "../../../core/models/auth_model.js";
+
 export class ProfileModel {
   static getUserData() {
-      return {
-          name: 'John Doe',
-          email: 'john.doe@example.com'
-      };
+    this.data = AuthModel.getUser();
+    console.log(this.data);
+    return{
+        name:this.data.name,
+        email:this.data.email,
+    }
+    //   return {
+    //       name: 'John Doe',
+    //       email: 'john.doe@example.com'
+    //   };
   }
 
   static getAddresses() {
