@@ -1,5 +1,7 @@
 import { FooterWidget } from "../../../core/common/footer.js";
 import { NavBar } from "../../../core/common/nav_bar.js";
+import { CartModel } from "../../../core/models/cart_model.js";
+import { Toast } from "../../../core/common/toast.js";
 export class ProductView {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
@@ -8,6 +10,8 @@ export class ProductView {
   render(product) {
     new FooterWidget().render();
     new NavBar().render();
+    this.toast = new Toast();
+    this.toast.render();
     if (!product) {
       this.container.innerHTML = "<p>Product not found.</p>";
       return;
@@ -58,12 +62,12 @@ export class ProductView {
             
             <div class="d-flex">
                 <div class=" d-flex justify-content-between" >
-                    <input type="number"  class="form-control text-center quantity" value="1" min="1">
+                    <input type="number"  class="form-control text-center quantity"  value="1" min="1" id="count">
                 </div>
 
                 <button class="btn-outline-primary wishBtn mb-3 details_button"> <span><i class="far fa-heart"></i></span> Wishlist</button>
             </div>
-            <button class="btn-primary details_button"> Add To Cart</button>
+            <button class="btn-primary details_button" id="addToCart"> Add To Cart</button>
         </div>
     </div>
       `;
@@ -94,6 +98,15 @@ export class ProductView {
 
 
 
+  }
+  addToCartEventListner(id) {
+    document.getElementById("addToCart").addEventListener("click", () => {
+      // Add the product to cart using the id
+      let count = document.getElementById("count").value;
+      count = Number.parseInt(count);
+      CartModel.addItem('user-1', id, count);
+      this.toast.showToast("Product added to cart", "Success");
+    });
   }
 
 }

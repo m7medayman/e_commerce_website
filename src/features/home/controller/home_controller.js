@@ -16,11 +16,15 @@ export class HomeController {
         DummyData.generateDummyProductData(); // that will generate dummy product data and add it to the cart 
         let images = this.model.getImages();
         let products = this.model.getProducts();
+        // Get the favorite list once before mapping products
+        let favoriteList = (WishlistModel.getByUserId("user-1")["items"]).map(item => item.productId);
+
         products = products.map(function (product) {
-            let favoriteList = WishlistModel.getByUserId("user-1")[1].map(item => item.id);
-            product.isFavorite = favoriteList.includes(product.productId);
+            let f = favoriteList.includes(product.id);
+            product.isFavorite = favoriteList.includes(product.id);
             return product;
         });
+        console.log(products);
         let threeImageSection = this.model.getThreeImageSection();
         this.view.renderPage();
         this.view.renderCarousel(images);
