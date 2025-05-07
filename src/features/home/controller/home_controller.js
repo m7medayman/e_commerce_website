@@ -3,6 +3,7 @@ import { HomeView } from '../view/home_view.js';
 import { DummyData } from '../../../core/models/dummy_data.js';
 import { ProductModel } from '../../../core/models/product_model.js';
 import { CartModel } from '../../../core/models/cart_model.js';
+import { WishlistModel } from '../../../core/models/wish_model.js'
 export class HomeController {
     constructor() {
         this.model = new HomeModel();
@@ -19,7 +20,7 @@ export class HomeController {
         this.view.renderPage();
         this.view.renderCarousel(images);
         this.view.renderNewProducts(products);
-        this.view.addEventListenerToProductCard(this.addAddToCartEventListener, function () { }, this.goToProductPage);
+        this.view.addEventListenerToProductCard(this.addAddToCartEventListener, this.toggelProductInWishList, this.goToProductPage);
         // this.view.addAddToCartEventListener(this.addAddToCartEventListener);
         // this.view.addWishlistEventListener();
         this.view.renderThreeImageSection(threeImageSection[0], threeImageSection[1], threeImageSection[2]);
@@ -33,6 +34,14 @@ export class HomeController {
         CartModel.addItem(userId, id, 1);
         console.log("Add to cart clicked for product ID:", id);
 
+    }
+    toggelProductInWishList(produtId, isFavorite) {
+        if (isFavorite) {
+            WishlistModel.addItem("user-1", ProductModel.getById(produtId));
+        }
+        else {
+            WishlistModel.removeItem("user-1", produtId);
+        }
     }
     goToProductPage(id) {
         window.location.href = `./product_details.html?id=${id}`;
