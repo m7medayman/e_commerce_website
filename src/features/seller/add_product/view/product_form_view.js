@@ -33,8 +33,11 @@ export class ProductFormView {
                             <div class="invalid-feedback">Category is required.</div>
                         </div>
                         <div class="col-10 col-md-5 mb-2">
-                            <label for="imageUrl" class="mb-2">Product Images URL</label>
-                            <input type="url" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter images URL seperated by comma" required>
+                          <div class="custom-upload mb-2">
+  <button type="button" id="uploadTrigger" class="btn  btn-dark text-white">Upload Images</button>
+  <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;">
+</div>
+<div id="previewContainer" class="d-flex gap-2 flex-wrap mt-2"></div>
                             <div class="invalid-feedback">Product Images is required.</div>
                         </div>
                     </div>
@@ -72,19 +75,67 @@ export class ProductFormView {
 </form>`;
         this.container.innerHTML = html;
         this.form = document.getElementById('productForm');
-        this.feedback = document.getElementById('feedback');
-    }
+        // this.feedback = document.getElementById('feedback');
 
-    bindSubmit(handler) {
-        this.form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const formData = new FormData(this.form);
-            handler(this.form, formData);
+
+        const imageInput = document.getElementById('imageUpload');
+const triggerButton = document.getElementById('uploadTrigger');
+const previewContainer = document.getElementById('previewContainer');
+
+// Hidden input to store base64 images
+const hiddenInput = document.createElement('input');
+hiddenInput.type = 'hidden';
+hiddenInput.name = 'imagesBase64';
+this.form.appendChild(hiddenInput);
+
+// Trigger hidden file input
+triggerButton.addEventListener('click', () => {
+    imageInput.click();
+});
+
+// Handle image selection and preview
+imageInput.addEventListener('change', function () {
+    const files = Array.from(imageInput.files);
+    previewContainer.innerHTML = ''; // clear previous previews
+    const base64Images = [];
+
+    const readers = files.map(file => {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                base64Images.push(e.target.result);
+
+                // Create preview image
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.width = 100;
+                img.classList.add('rounded', 'border');
+                previewContainer.appendChild(img);
+
+                resolve();
+            };
+            reader.readAsDataURL(file);
         });
-    }
-    resetForm() {
-        this.form.reset();
-        this.form.classList.remove('was-validated');
+    });
+
+    Promise.all(readers).then(() => {
+        hiddenInput.value = JSON.stringify(base64Images);
+    });
+});
+
     }
 
-}
+
+        bindSubmit(handler) {
+            this.form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const formData = new FormData(this.form);
+                handler(this.form, formData);
+            });
+        }
+        resetForm() {
+            this.form.reset();
+            this.form.classList.remove('was-validated');
+        }
+
+    }

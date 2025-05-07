@@ -19,7 +19,7 @@ export class ProductFormController {
       category: formData.get('productCategory'),
       price: parseFloat(formData.get('productPrice')),
       stock: parseInt(formData.get('productStock')),
-      detailedImages: formData.get('imageUrl').split(','),
+      detailedImages:JSON.parse(formData.get('imagesBase64') || '[]') ,
       measuarment: formData.get('productMeasurement'),
       discount: parseFloat(formData.get('productDiscount')) || 0,
       sellerId: 'seller-2'
