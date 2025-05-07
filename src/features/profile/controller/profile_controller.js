@@ -1,5 +1,5 @@
-import {ProfileView} from '../view/profile_view.js';
-import {UserModel} from '../../../core/models/user_model.js';
+import { ProfileView } from '../view/profile_view.js';
+import { AuthModel } from '../../../core/models/auth_model.js';
 export class ProfileController {
     constructor() {
         this.profileView = new ProfileView();
@@ -7,29 +7,18 @@ export class ProfileController {
     }
 
     init() {
-        // Simulate a logged-in user by adding a user if none exists
-        let loggedInUserId = localStorage.getItem('loggedInUserId');
-        if (!loggedInUserId) {
-            try {
-                const newUser = UserModel.add({
-                    email: "sofia.haverz@example.com",
-                    password: "password123", // In production, hash this
-                    role: "customer",
-                    name: "Sofia Haverz",
-                    address: "123 Main St, New York, NY, USA",
-                    phone: "555-123-4567"
-                });
-                loggedInUserId = newUser.userId;
-                localStorage.setItem('loggedInUserId', loggedInUserId);
-            } catch (error) {
-                console.error("Error adding user:", error.message);
-            }
+        const user = AuthModel.getUser();
+        if (!user) {
+            // Redirect to login page if no user is logged in
+            window.location.href = 'login.html';
+            return;
         }
 
         this.profileView.renderPage();
         this.profileView.bindSidebarNavigation(this.handleNavigation.bind(this));
         this.handleNavigation('account'); // Set "account" as default
     }
+
     handleNavigation(section) {
         document.querySelectorAll('.content-section').forEach(section => {
             section.style.display = 'none';

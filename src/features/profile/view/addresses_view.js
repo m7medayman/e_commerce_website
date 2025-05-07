@@ -1,13 +1,18 @@
 import { UserModel } from "../../../core/models/user_model.js";
+import { AuthModel } from '../../../core/models/auth_model.js';
+
 export class AddressesView {
     render() {
         const addressesSection = document.getElementById('addresses-section');
         if (!addressesSection) return;
 
-        const loggedInUserId = localStorage.getItem('loggedInUserId');
-        const user = UserModel.getById(loggedInUserId);
+        const user = AuthModel.getUser();
+        if (!user) {
+            addressesSection.innerHTML = `<p class="text-muted">Please log in to view addresses.</p>`;
+            return;
+        }
 
-        if (!user || !user.addresses || user.addresses.length === 0) {
+        if (!user.address || user.address.length === 0) {
             addressesSection.innerHTML = `<p class="text-muted">No addresses found. Please add an address.</p>`;
             return;
         }
@@ -15,7 +20,7 @@ export class AddressesView {
         addressesSection.innerHTML = `
             <h3 class="mb-4">Address</h3>
             <div class="row">
-                ${user.addresses.map((address, index) => `
+                ${user.address.map((address, index) => `
                     <div class="col-12 col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body">
@@ -33,11 +38,11 @@ export class AddressesView {
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">City</label>
-                                            <input type="text" class="form-control" value="${address.city}">
+                                            <input type="text" class="form-control" value="${city}">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Country</label>
-                                            <input type="text" class="form-control" value="${address.country}">
+                                            <input type="text" class="form-control" value="${country}">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-sm">Save</button>
                                         <button type="button" class="btn btn-secondary btn-sm ms-2 cancel-edit">Cancel</button>
@@ -80,11 +85,11 @@ export class AddressesView {
                 const city = form.querySelector('input:nth-child(4)').value;
                 const country = form.querySelector('input:nth-child(6)').value;
 
-                const addresses = user.addresses.map((addr, i) => 
+                const addresses = user.address.map((addr, i) => 
                     i === parseInt(index) ? { ...addr, street, city, country } : addr
                 );
                 try {
-                    UserModel.update(loggedInUserId, { addresses });
+                    UserModel.update(user.userId, { addresses });
                     this.render(); // Re-render to show updated address
                 } catch (error) {
                     alert(error.message);
