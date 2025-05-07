@@ -41,7 +41,7 @@ export class EditProductController{
             stock: parseInt(document.getElementById('stock').value),
             category: document.getElementById('category').value,
             discount: parseInt(document.getElementById('discount').value) || 0,
-            detailedImages: [document.getElementById('image').value],
+            detailedImages: JSON.parse(document.getElementById('newImagesBase64')?.value || '[]'),
             measuarment: parseFloat(document.getElementById('measuarment').value),
             sellerId:'seller-2'
         };
