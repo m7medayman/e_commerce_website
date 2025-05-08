@@ -2,10 +2,11 @@
 import { ProductModel } from "../../../core/models/product_model.js";
 import { WishlistModel } from "../../../core/models/wish_model.js";
 import { CartModel } from "../../../core/models/cart_model.js";
+import { ProductView } from "../view/product_view.js"
 
 export class ProductController {
-  constructor(view) {
-    this.view = view;
+  constructor() {
+    this.view = new ProductView("product-details");
     const params = new URLSearchParams(window.location.search);
     this.id = params.get("id");
     this.addToCart = this.addToCart.bind(this);
@@ -14,6 +15,7 @@ export class ProductController {
   }
 
   init() {
+    this.view.renderPage();
 
 
     const product = ProductModel.getById(this.id);

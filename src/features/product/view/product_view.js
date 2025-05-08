@@ -5,12 +5,16 @@ export class ProductView {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
   }
-
-  render(product) {
+  renderPage() {
     new FooterWidget().render();
     new NavBar().render();
     this.toast = new Toast();
     this.toast.render();
+
+  }
+
+  render(product) {
+
     if (!product) {
       this.container.innerHTML = "<p>Product not found.</p>";
       return;
