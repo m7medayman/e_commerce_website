@@ -1,5 +1,4 @@
 
-import { } from "../../../core/models/cart_model.js"
 import { ProductModel } from "../../../core/models/product_model.js";
 import { WishlistModel } from "../../../core/models/wish_model.js";
 import { CartModel } from "../../../core/models/cart_model.js";
@@ -24,7 +23,7 @@ export class ProductController {
       this.view.render(product);
     }
     this.view.addToCartEventListner(this.addToCart);
-    this.view.toggleFavorite(this.toggelProductInWishList);
+    this.view.togelFavorite(this.toggelProductInWishList);
 
   }
   addToCart(productCount) {

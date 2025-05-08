@@ -142,10 +142,11 @@ export class NavBar {
             // Apply debouncing to avoid excessive searches while typing
             const debouncedSearch = debounce((searchTerm) => {
                 updateSearchResults(searchTerm);
-            }, 300); // 300ms delay
+            }, 100); // 300ms delay
 
             // Attach input event listener
             searchInput.addEventListener('input', function () {
+                debugger;
                 const searchTerm = this.value;
                 debouncedSearch(searchTerm);
             });
