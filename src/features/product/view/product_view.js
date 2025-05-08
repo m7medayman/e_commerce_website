@@ -1,6 +1,5 @@
 import { FooterWidget } from "../../../core/common/footer.js";
 import { NavBar } from "../../../core/common/nav_bar.js";
-import { CartModel } from "../../../core/models/cart_model.js";
 import { Toast } from "../../../core/common/toast.js";
 export class ProductView {
   constructor(containerId) {
@@ -65,7 +64,7 @@ export class ProductView {
                     <input type="number"  class="form-control text-center quantity"  value="1" min="1" id="count">
                 </div>
 
-                <button class="btn-outline-primary wishBtn mb-3 details_button"> <span><i class="far fa-heart"></i></span> Wishlist</button>
+                <button class="${product.isFavorite ? "btn-primary" : "btn-outline-primary"} wishBtn mb-3 details_button" id="favorite" data-favorite=${product.isFavorite}> <span><i class="far fa-heart"></i></span> Wishlist</button>
             </div>
             <button class="btn-primary details_button" id="addToCart"> Add To Cart</button>
         </div>
@@ -99,15 +98,29 @@ export class ProductView {
 
 
   }
-  addToCartEventListner(id) {
+  addToCartEventListner(addToCart) {
     document.getElementById("addToCart").addEventListener("click", () => {
       // Add the product to cart using the id
       let count = document.getElementById("count").value;
       count = Number.parseInt(count);
-      CartModel.addItem('user-1', id, count);
+      addToCart(count);
       this.toast.showToast("Product added to cart", "Success");
     });
   }
-
+  toggleFavorite(favoriteFunc) {
+    const button = document.getElementById("favorite");
+    button.addEventListener("click", function (event) {
+      // Toggle the class
+      const isFavorite = button.classList.contains('btn-primary');
+      if (isFavorite) {
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-outline-primary');
+      } else {
+        button.classList.remove('btn-outline-primary');
+        button.classList.add('btn-primary');
+      }
+      favoriteFunc(!isFavorite);
+    })
+  }
 }
 
