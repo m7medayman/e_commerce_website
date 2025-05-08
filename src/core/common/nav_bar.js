@@ -146,7 +146,6 @@ export class NavBar {
 
             // Attach input event listener
             searchInput.addEventListener('input', function () {
-                debugger;
                 const searchTerm = this.value;
                 debouncedSearch(searchTerm);
             });

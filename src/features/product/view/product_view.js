@@ -107,7 +107,7 @@ export class ProductView {
       this.toast.showToast("Product added to cart", "Success");
     });
   }
-  toggleFavorite(favoriteFunc) {
+  togelFavorite(favoriteFunc) {
     const button = document.getElementById("favorite");
     button.addEventListener("click", function (event) {
       // Toggle the class
