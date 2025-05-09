@@ -50,34 +50,18 @@ const AuthController = {
 
             if (isValid) {
                 const user = AuthModel.getUser();
-                AuthView.showSuccess('Login successful!');
-                AuthView.updateLoginState(true, user.email, user.role);
+                if (!user || !user.name) {
+                    AuthView.showError('email', 'Failed to retrieve user data');
+                    return;
+                }
+                AuthView.showSuccess(`Welcome, ${user.name}!`);
+                AuthView.updateLoginState(true, user.name, user.role);
                 setTimeout(() => window.location.href = 'home.html', 3000);
             }
         });
     },
 
     handleSignup(formId) {
-        $('#role').on('change', function () {
-            const isSeller = $(this).val() === 'seller';
-            AuthView.toggleBusinessNameField(isSeller);
-            if (isSeller) {
-                $('#business_name').attr('required', true);
-                $('#business_name').on('input', function () {
-                    AuthView.clearValidation('business_name');
-                    const businessName = $(this).val();
-                    const businessNameError = Auth.validateBusinessName(businessName);
-                    if (businessNameError) {
-                        AuthView.showError('business_name', businessNameError);
-                    } else if (businessName) {
-                        AuthView.showValid('business_name');
-                    }
-                });
-            } else {
-                $('#business_name').removeAttr('required');
-            }
-        });
-
         $('#name').on('input', function () {
             AuthView.clearValidation('name');
             const name = $(this).val();
@@ -142,15 +126,13 @@ const AuthController = {
             const password = $(this).find('#password').val() || '';
             const phone = $(this).find('#phone').val() || '';
             const address = $(this).find('#address').val() || '';
-            const businessName = role === 'seller' ? $(this).find('#business_name').val() || '' : null;
 
             const nameError = Auth.validateName(name);
             const emailError = Auth.validateEmail(email);
             const passwordError = Auth.validatePassword(password, true);
             const phoneError = Auth.validatePhone(phone);
             const addressError = Auth.validateAddress(address);
-            const businessNameError = role === 'seller' ? Auth.validateBusinessName(businessName) : null;
-            const saveError = Auth.saveUser({ email, password, role, name, phone, address, businessName });
+            const saveError = Auth.saveUser({ email, password, role, name, phone, address });
 
             console.log('Validation Results:', {
                 nameError,
@@ -158,7 +140,6 @@ const AuthController = {
                 passwordError,
                 phoneError,
                 addressError,
-                businessNameError,
                 saveError
             });
 
@@ -167,7 +148,6 @@ const AuthController = {
             AuthView.clearError('password');
             AuthView.clearError('phone');
             AuthView.clearError('address');
-            if (role === 'seller') AuthView.clearError('business_name');
 
             let isValid = true;
             if (nameError) {
@@ -193,11 +173,6 @@ const AuthController = {
             if (addressError) {
                 console.log('Address Error:', addressError);
                 AuthView.showError('address', addressError);
-                isValid = false;
-            }
-            if (businessNameError) {
-                console.log('Business Name Error:', businessNameError);
-                AuthView.showError('business_name', businessNameError);
                 isValid = false;
             }
             if (saveError) {
