@@ -104,16 +104,17 @@ export class ProductView {
   }
   addToCartEventListner(addToCart) {
     document.getElementById("addToCart").addEventListener("click", () => {
+      addToCart(count);
       // Add the product to cart using the id
       let count = document.getElementById("count").value;
       count = Number.parseInt(count);
-      addToCart(count);
       this.toast.showToast("Product added to cart", "Success");
     });
   }
   togelFavorite(favoriteFunc) {
     const button = document.getElementById("favorite");
     button.addEventListener("click", function (event) {
+      favoriteFunc(!isFavorite);
       // Toggle the class
       const isFavorite = button.classList.contains('btn-primary');
       if (isFavorite) {
@@ -123,7 +124,6 @@ export class ProductView {
         button.classList.remove('btn-outline-primary');
         button.classList.add('btn-primary');
       }
-      favoriteFunc(!isFavorite);
     })
   }
 }

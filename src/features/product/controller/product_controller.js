@@ -3,6 +3,8 @@ import { ProductModel } from "../../../core/models/product_model.js";
 import { WishlistModel } from "../../../core/models/wish_model.js";
 import { CartModel } from "../../../core/models/cart_model.js";
 import { ProductView } from "../view/product_view.js"
+import { AuthModel } from "../../../core/models/auth_model.js"
+import { AuthPopupController } from "../../../core/common/auth_checker/auth_checker_controller.js"
 
 export class ProductController {
   constructor() {
@@ -15,28 +17,47 @@ export class ProductController {
   }
 
   init() {
+    this.auth = AuthModel.getUser();
+    this.isLoggedIn = !(this.auth == null);
+    console.log(this.isLoggedIn);
     this.view.renderPage();
 
 
     const product = ProductModel.getById(this.id);
-    let favoriteList = (WishlistModel.getByUserId("user-1")["items"]).map(item => item.productId);
+    let favoriteList = [];
+    if (this.isLoggedIn) {
+      favoriteList = (WishlistModel.getByUserId(this.auth.userId)["items"]).map(item => item.productId);
+
+    }
     product.isFavorite = favoriteList.includes(product.productId);
     if (product) {
       this.view.render(product);
     }
-    this.view.addToCartEventListner(this.addToCart);
-    this.view.togelFavorite(this.toggelProductInWishList);
+    this.view.addToCartEventListner(this.addToCart.bind(this));
+    this.view.togelFavorite(this.toggelProductInWishList.bind(this));
 
   }
   addToCart(productCount) {
-    CartModel.addItem('user-1', this.id, productCount);
+    if (!this.isLoggedIn) {
+      AuthPopupController.show("to add product");
+      return;
+    }
+
+    const userId = this.auth.userId;
+    CartModel.addItem(userId, this.id, productCount);
   };
   toggelProductInWishList(isFavorite) {
+    if (!this.isLoggedIn) {
+      AuthPopupController.show("to add product");
+      return;
+    }
+
+    const userId = this.auth.userId;
     if (isFavorite) {
-      WishlistModel.addItem("user-1", ProductModel.getById(this.id));
+      WishlistModel.addItem(userId, ProductModel.getById(this.id));
     }
     else {
-      WishlistModel.removeItem("user-1", this.id);
+      WishlistModel.removeItem(userId, this.id);
     }
   }
 
