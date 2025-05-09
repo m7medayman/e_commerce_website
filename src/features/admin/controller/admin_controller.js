@@ -1,20 +1,22 @@
 import { UserModel } from "../../../core/models/user_model.js";
 import { ProductModel } from "../../../core/models/product_model.js";
 import { AdminView } from "../view/admin_view.js";
+import { AuthModel } from "../../../core/models/auth_model.js";
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
   const users = UserModel.getAll();
   const products = ProductModel.getAll();
-  const view = new AdminView("users-panel", "products-panel");
+  const user = AuthModel.getUser();
+  const view = new AdminView("users-panel", "products-panel",'profile');
 
   view.renderProducts(products);
   view.renderUsers(users);
-
+  view.renderProfile(user);
   initializeEventListeners(view);
 });
-
+ 
 function initializeEventListeners(view) {
   
   document.getElementById("add-user-btn").addEventListener("click", () => {
@@ -36,6 +38,7 @@ function initializeEventListeners(view) {
 
       initializeEventListeners(view);
     });
+
   });
 
   document.getElementById("add-product-btn").addEventListener("click", () => {
@@ -83,4 +86,13 @@ function initializeEventListeners(view) {
       initializeEventListeners(view);
     }
   });
+  const logoutLink = document.getElementById('logout');
+    if (logoutLink) {
+      logoutLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        logoutLink.classList.add('text-light');
+        localStorage.removeItem(AuthModel.STORAGE_KEY);
+        window.location.href = 'login.html';
+      });
+    }
 }

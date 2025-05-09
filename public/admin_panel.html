@@ -17,7 +17,9 @@
     <a href="#" id="dashboard-link" class="active" onclick="showSection('dashboard')"><span><i class="fas fa-tachometer-alt m-2"></i></span>Dashboard</a>
     <a href="#" id="users-link"  onclick="showSection('users-panel')"><span><i class="fas fa-users m-2"></i></span>Users</a>
     <a href="#" id="products-link" onclick="showSection('products-panel')"><span><i class="fas fa-box m-2"></i></span>Products</a>
-  </div>
+     <a href="#" id="profile-link" onclick="showSection('profile')"><span><i class="fa-solid fa-user m-2"></i></span>Profile</a>
+   <a href="#" id="logout" >Logout</a>
+    </div>
 
   <!-- Content -->
   <div class="content">
@@ -68,11 +70,11 @@
           <div class="card">
             <div class="card-header">Top Selling Product</div>
             <div class="card-body">
-              <img src="../assets/buf.jpg" class="product-img" alt="Product 1">
+              <img src="assets/buf.jpg" class="product-img" alt="Product 1">
               <p>Red Tape Shoes for Men<br><span class="text-muted">110 Stocks Remaining</span></p>
-              <img src="../assets/carousalTestIimg.png" class="product-img" alt="Product 2">
+              <img src="assets/carousalTestIimg.png" class="product-img" alt="Product 2">
               <p>Fasttrack FS1 Pro Smartwatch<br><span class="text-muted">75 Stocks Remaining</span></p>
-              <img src="../assets/product1.png" class="product-img" alt="Product 3">
+              <img src="assets/product1.png" class="product-img" alt="Product 3">
               <p>Larvia Fashion Men's Shirt<br><span class="text-muted">45 Stocks Remaining</span></p>
             </div>
           </div>
@@ -87,6 +89,9 @@
   </div>
   <div id="users-panel" class="section" >
     <h1 class="mb-4">users Dashboard</h1>
+  </div>
+  <div id="profile" class="section">
+    <h1 class="mb-4">My Account</h1>
   </div>
 </div>
     
@@ -118,10 +123,7 @@ function showSection(sectionId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  
-  
   showSection('dashboard');
-  
 });
 </script>
 <script type="module" src="../src/features/admin/controller/admin_controller.js"></script>
