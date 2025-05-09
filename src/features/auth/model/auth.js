@@ -19,10 +19,6 @@ const Auth = {
         return null;
     },
 
-    validateBusinessName(businessName) {
-        return businessName.trim() === '' ? 'Business name is required' : null;
-    },
-
     validateName(name) {
         return name.trim() === '' ? 'Name is required' : null;
     },

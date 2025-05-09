@@ -31,15 +31,11 @@ const AuthView = {
         setTimeout(() => $('#welcome_message').fadeOut(500), 2500);
     },
 
-    toggleBusinessNameField(show) {
-        $('#business_name_field').css('display', show ? 'block' : 'none');
-    },
-
-    updateLoginState(isLoggedIn, email, role) {
+    updateLoginState(isLoggedIn, name, role) {
         if (isLoggedIn) {
-            $('#login_form').hide();
+            // $('#login_form').hide(); // تم تعليقه عشان الـ Form تظل مرئية
             $('#logout_button').show();
-            this.showWelcomeMessage(email, role);
+            this.showWelcomeMessage(name);
         } else {
             $('#login_form').show();
             $('#logout_button').hide();
@@ -47,9 +43,13 @@ const AuthView = {
         }
     },
 
-    showWelcomeMessage(email, role) {
-        $('#welcome_message').text(`Welcome, ${role.charAt(0).toUpperCase() + role.slice(1)} ${email}!`);
-        $('#welcome_message').show();
+    showWelcomeMessage(name) {
+        if (!name) {
+            $('#welcome_message').text('Welcome, User!').show();
+            setTimeout(() => $('#welcome_message').fadeOut(500), 2500);
+            return;
+        }
+        $('#welcome_message').text(`Welcome, ${name}!`).show();
         setTimeout(() => $('#welcome_message').fadeOut(500), 2500);
     },
 
