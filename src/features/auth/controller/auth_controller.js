@@ -61,7 +61,7 @@ const AuthController = {
                         setTimeout(() => window.location.href = 'home.html', 2000);
                         break;
                     case 'admin':
-
+                     setTimeout(() => window.location.href = 'admin_panel.html', 2000);
                         break;
                     case 'seller':
                         setTimeout(() => window.location.href = 'seller/dashboard.html', 2000);
