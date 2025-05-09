@@ -1,6 +1,7 @@
 import { EditProductModel } from "../model/edit_product_model.js";
 import { EditProductView } from "../view/edit_product_view.js";
 import { ProductModel } from "../../../../core/models/product_model.js";
+import { AuthModel } from "../../../../core/models/auth_model.js";
 export class EditProductController {
     constructor(productId, onDone) {
         this.onDone = onDone;
@@ -34,6 +35,8 @@ export class EditProductController {
     }
 
     handleFormSubmit() {
+        const newImages = document.getElementById('newImagesBase64')?.value;
+        const parsedNewImages = newImages ? JSON.parse(newImages) : null;
         const updates = {
             name: document.getElementById('name').value,
             description: document.getElementById('description').value,
@@ -41,9 +44,9 @@ export class EditProductController {
             stock: parseInt(document.getElementById('stock').value),
             category: document.getElementById('category').value,
             discount: parseInt(document.getElementById('discount').value) || 0,
-            detailedImages: JSON.parse(document.getElementById('newImagesBase64')?.value || '[]'),
+            detailedImages: parsedNewImages?.length ? parsedNewImages : this.product.detailedImages,
             measuarment: parseFloat(document.getElementById('measuarment').value),
-            sellerId: 'seller-1'
+            sellerId: localStorage.getItem(AuthModel.STORAGE_KEY)
         };
         console.log(updates);
 
