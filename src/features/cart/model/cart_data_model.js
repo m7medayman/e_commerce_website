@@ -1,5 +1,6 @@
 import { CartModel } from "../../../core/models/cart_model.js";
 import { ProductModel } from "../../../core/models/product_model.js";
+import { AuthModel } from "../../../core/models/auth_model.js";
 export class CartDataModel {
   constructor() {
     // this.items = [
@@ -7,7 +8,8 @@ export class CartDataModel {
     //   { id: 2, name: 'Tray Table', price: 19.00, quantity: 2, url: 'https://images.pexels.com/photos/923192/pexels-photo-923192.jpeg?auto=compress&cs=tinysrgb&w=600' },
     //   { id: 3, name: 'Table Lamp', price: 39.00, quantity: 1, url: 'https://images.pexels.com/photos/923192/pexels-photo-923192.jpeg?auto=compress&cs=tinysrgb&w=600' }
     // ];
-    this.userId = 'user-1';
+    debugger;
+    this.userId = AuthModel.getUser().userId;
     const cart = CartModel.getByUserId(this.userId);
     this.items = cart.items.map(item => {
       const product = ProductModel.getById(item.productId);
