@@ -83,6 +83,10 @@ triggerBtn.addEventListener('click', () => {
 
 imageInput.addEventListener('change', () => {
     const files = Array.from(imageInput.files);
+    if (files.length === 0) {
+        //keep existing images
+        return;
+    }
     previewContainer.innerHTML = '';
     const base64Images = [];
 
