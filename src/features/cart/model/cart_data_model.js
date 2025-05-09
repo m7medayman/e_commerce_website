@@ -16,7 +16,8 @@ export class CartDataModel {
         quantity: item.quantity,
         price: item.price,
         name: product ? product.name : 'Unknown',
-        url: product ? product.detailedImages[0] : ''
+        url: product ? product.detailedImages[0] : '',
+        sellerId: product ? product.sellerId : ''
       };
     });
     this.shipping = {
@@ -43,7 +44,7 @@ export class CartDataModel {
   }
   updateQuantity(index, change) {
     this.items[index].quantity = Math.max(1, this.items[index].quantity + change);
-    CartModel.addItem(this.userId,this.items[index].productId,change);
+    CartModel.addItem(this.userId, this.items[index].productId, change);
   }
   removeItem(index) {
     debugger;
