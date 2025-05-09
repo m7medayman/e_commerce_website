@@ -3,6 +3,7 @@ import { ShopModel } from "../model/shop_model.js";
 import { ProductModel } from '../../../core/models/product_model.js';
 import { CartModel } from '../../../core/models/cart_model.js';
 import { WishlistModel } from '../../../core/models/wish_model.js'
+import { AuthPopupController } from "../../../core/common/auth_checker/auth_checker_controller.js"
 export class ShopController {
     constructor() {
         this.model = new ShopModel();
@@ -27,11 +28,7 @@ export class ShopController {
         this.view.addFilterEventListeners(this.handleFilter.bind(this));
 
         // Add product card event listeners
-        this.view.addEventListenerToProductCard(
-            this.addAddToCartEventListener,
-            this.toggelProductInWishList,
-            this.goToProductPage
-        );
+
     }
 
     handleFilter(filterType, value) {
@@ -40,6 +37,7 @@ export class ShopController {
 
         // Reload products with new filters
         this.loadProducts();
+
     }
 
     loadProducts() {
@@ -59,17 +57,19 @@ export class ShopController {
         // Re-add event listeners to new product cards
         this.view.addEventListenerToProductCard(
             this.addAddToCartEventListener,
-            this.toggelProductInWishList,
+            this.toggleProductInWishList,
             this.goToProductPage
         );
+
     }
     addAddToCartEventListener(id) {
+        AuthPopupController.show("test action")
         const userId = "user-1";
         CartModel.addItem(userId, id, 1);
         console.log("Add to cart clicked for product ID:", id);
 
     }
-    toggelProductInWishList(produtId, isFavorite) {
+    toggleProductInWishList(produtId, isFavorite) {
         if (isFavorite) {
             WishlistModel.addItem("user-1", ProductModel.getById(produtId));
         }
