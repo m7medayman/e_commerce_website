@@ -27,23 +27,33 @@ const Auth = {
         return name.trim() === '' ? 'Name is required' : null;
     },
 
+    validatePhone(phone) {
+        const phoneRegex = /^(010|011|012|015)\d{8}$/;
+        return phoneRegex.test(phone) ? null : 'Phone number must be 11 digits and start with 010, 011, 012, or 015';
+    },
+
+    validateAddress(address) {
+        if (!address || typeof address !== 'string' || address.trim() === '') {
+            return 'Address is required';
+        }
+        return null;
+    },
+
     authenticateUser(email, password) {
         try {
             AuthModel.signIn(email, password);
-            return null; // نجاح
+            return null;
         } catch (error) {
-            return error.message; // خطأ زي 'Invalid email or password'
+            return error.message;
         }
     },
 
     saveUser({ email, password, role, name, address, phone }) {
         try {
-            const user = AuthModel.signUp({ email: email, password: password, role: role, name: name, address: address, phone: phone });
-            // هنستخدم AuthModel.signIn عشان نسجل المستخدم مباشرة بعد التسجيل
-            // AuthModel.signIn(data.email, data.password); // 
-            return null; // نجاح
+            const user = AuthModel.signUp({ email, password, role, name, address, phone });
+            return null;
         } catch (error) {
-            return error.message; // خطأ زي 'Email already exists'
+            return error.message;
         }
     },
 

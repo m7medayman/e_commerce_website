@@ -21,9 +21,10 @@ export class CartController {
         this.view.renderCart(items);
     }
     renderSummary() {
+        const items = this.model.getCartItems();
         this.view.renderSummary(this.model.getSubtotal(), this.model.getShippingOption());
+        this.view.updateCheckOutButtonState(items);
     }
-
     addEventListeners() {
         document.getElementById('cart-items').addEventListener('click', (e) => {
             const action = e.target.dataset.action;
