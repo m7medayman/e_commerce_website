@@ -6,10 +6,12 @@ export class OrdersView {
     render(model) {
         const orders = model.map((order, index) => {
             return `<tr class="text-center align-middle">
-                <th scope="row">${order.productId || (index + 1)}</th>
+                <th scope="row">${(index + 1)}</th>
+                <td>${order.orderId}</td>
                 <td><img src="${order.url}" alt="${order.name}" width="50px" height="50px" class="rounded"/></td>
                 <td>${order.name}</td>
-                <td>${order.price}</td>
+                <td>${order.quantity}</td>
+                <td>${order.price * order.quantity}</td>
 
             </tr>`;
         }).join('');
@@ -18,10 +20,11 @@ export class OrdersView {
             <thead>
                 <tr class="table-dark text-white">
                     <th scope="col">Order Number</th>
+                    <th scope="col">Order id</th>
                     <th scope="col">Product Image</th>
                     <th scope="col">Product Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Delivery Time</th>
+                    <th scope="col">Product quantity</th>
+                    <th scope="col">Total Price</th>
                 </tr>
             </thead>
             <tbody>

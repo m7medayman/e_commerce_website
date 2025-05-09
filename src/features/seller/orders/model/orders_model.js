@@ -36,6 +36,7 @@ export class OrdersModel {
         for (const order of allOrders) {
             for (const item of order.items) {
                 if (item.sellerId == this.sellerId) {
+                    Object.assign(item, { orderId: order.orderId });
                     itemsList.push(item);
                 }
             }

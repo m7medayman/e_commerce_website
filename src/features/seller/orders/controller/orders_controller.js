@@ -9,7 +9,7 @@ export class OrdersController {
 
     init() {
         // جلب userId بتاع المستخدم المسجّل (هنفترض إنه في localStorage)
-        const currentUserId = localStorage.getItem('currentUserId');
+        const currentUserId = localStorage.getItem('auth_user_id');
         if (!currentUserId) {
             console.error('لم يتم العثور على مستخدم مسجّل');
             this.view.render([]); // عرض جدول فاضي لو مفيش مستخدم
