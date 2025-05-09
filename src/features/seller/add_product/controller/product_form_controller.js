@@ -1,3 +1,4 @@
+import { AuthModel } from '../../../../core/models/auth_model.js';
 import { ProductModel } from '../../../../core/models/product_model.js';
 import { ProductFormView } from '../view/product_form_view.js';
 
@@ -22,8 +23,8 @@ export class ProductFormController {
       detailedImages: JSON.parse(formData.get('imagesBase64') || '[]'),
       measuarment: formData.get('productMeasurement'),
       discount: parseFloat(formData.get('productDiscount')) || 0,
-      sellerId: 'seller-1'
-    };
+      sellerId: localStorage.getItem(AuthModel.STORAGE_KEY)
+     };   
     ProductModel.add(productData);
     this.view.resetForm();
     this.onDone();

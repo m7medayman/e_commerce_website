@@ -12,7 +12,7 @@ export class HomeController {
     }
 
     init() {
-        DummyData.clearTheLocalStorage(); // to clear the old data if there is any 
+        // DummyData.clearTheLocalStorage(); // to clear the old data if there is any 
         DummyData.generateDummyProductData(); // that will generate dummy product data and add it to the cart 
         let images = this.model.getImages();
         let products = this.model.getProducts();

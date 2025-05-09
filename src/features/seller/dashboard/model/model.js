@@ -1,4 +1,6 @@
-class DashboardModel {
+import { UserModel } from "../../../../core/models/user_model.js";
+
+export class DashboardModel {
     constructor() {
       this.stats = {
         totalOrders: { value: '$2,107', change: '+3% from last month' },
@@ -26,5 +28,9 @@ class DashboardModel {
   
     getChartData() {
       return this.chartData;
+    }
+    getProfile(sellerId) {
+      
+      return  UserModel.getById(sellerId) || { name: 'Unknown', email: 'unknown@example.com' };
     }
   }
