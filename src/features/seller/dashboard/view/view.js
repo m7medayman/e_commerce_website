@@ -90,7 +90,13 @@ class DashboardView {
         <p>Content for products will be added here.</p>
       `;
     }
-  
+    renderProfile(){
+      this.app.innerHTML = `
+      <h2>Profile Section</h2>
+      
+    `;
+
+    }
     renderChart(chartData) {
       const ctx = document.getElementById('salesChart').getContext('2d');
       new Chart(ctx, {

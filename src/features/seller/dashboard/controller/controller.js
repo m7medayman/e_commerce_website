@@ -38,12 +38,17 @@ class DashboardController {
         this.productsController = new ProductsController();
       }
       this.productsController.init();
-    } else {
+    } else if(section=='orders'){
         document.getElementById('app').innerHTML = '<div id="container"></div>';
         if (!this.ordersController) {
           this.ordersController = new OrdersController ();
         }
         this.ordersController.init();
+      }
+      else if(section=='profile'){
+
+      }else{
+      
       }
 
     this.view.setActiveLink(section);
