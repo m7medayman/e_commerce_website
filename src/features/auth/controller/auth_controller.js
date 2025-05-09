@@ -52,7 +52,19 @@ const AuthController = {
                 const user = AuthModel.getUser();
                 AuthView.showSuccess('Login successful!');
                 AuthView.updateLoginState(true, user.email, user.role);
-                setTimeout(() => window.location.href = 'home.html', 3000);
+                switch (user.role) {
+                    case 'customer':
+                        setTimeout(() => window.location.href = 'home.html', 2000);
+                        break;
+                    case 'admin':
+
+                        break;
+                    case 'seller':
+                        setTimeout(() => window.location.href = 'seller/dashboard.html', 2000);
+                        break;
+
+                }
+                // setTimeout(() => window.location.href = 'home.html', 3000);
             }
         });
     },
