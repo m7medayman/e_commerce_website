@@ -1,7 +1,7 @@
 import { FooterWidget } from '../../../core/common/footer.js';
 import { NavBar } from '../../../core/common/nav_bar.js';
 import { CarouselComponent } from './components/corsaul.js';
-import { ProductComponent } from './components/product.js';
+import { ProductComponent } from '../../../core/common/product.js';
 import { ThreeImageSection } from './components/three_img_section.js';
 import { FourIconsSection } from "./components/four_icon_section.js";
 import { BigTwoPartBanner } from "./components/big_two_part_banner.js";

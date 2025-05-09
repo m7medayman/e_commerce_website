@@ -1,38 +1,64 @@
 
-
 import { ProductModel } from "../../../core/models/product_model.js";
+import { WishlistModel } from "../../../core/models/wish_model.js";
+import { CartModel } from "../../../core/models/cart_model.js";
+import { ProductView } from "../view/product_view.js"
+import { AuthModel } from "../../../core/models/auth_model.js"
+import { AuthPopupController } from "../../../core/common/auth_checker/auth_checker_controller.js"
 
 export class ProductController {
-  constructor(view) {
-    this.view = view;
+  constructor() {
+    this.view = new ProductView("product-details");
+    const params = new URLSearchParams(window.location.search);
+    this.id = params.get("id");
+    this.addToCart = this.addToCart.bind(this);
+    this.toggelProductInWishList = this.toggelProductInWishList.bind(this);
+
   }
 
   init() {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+    this.auth = AuthModel.getUser();
+    this.isLoggedIn = !(this.auth == null);
+    console.log(this.isLoggedIn);
+    this.view.renderPage();
 
-    const product = ProductModel.getById(id);
 
+    const product = ProductModel.getById(this.id);
+    let favoriteList = [];
+    if (this.isLoggedIn) {
+      favoriteList = (WishlistModel.getByUserId(this.auth.userId)["items"]).map(item => item.productId);
+
+    }
+    product.isFavorite = favoriteList.includes(product.productId);
     if (product) {
       this.view.render(product);
     }
-    // Dummy Data بدلاً من استرجاع المنتج من الـ localStorage
-    // const dummyProduct = {
-    //   id: 1,
-    //   name: "Sample Product",
-    //   img: "https://media.istockphoto.com/id/1415799772/photo/home-interior-with-vintage-furniture.jpg?s=612x612&w=0&k=20&c=E5aUyAFo5_xjHcdk0nEZGVDipOkYEtyXQmJBskUbqo8=",
-    //   description: "This is a description of the sample product.",
-    //   price: "$99.99",
-    //   discount: "$79.99",
-    //   measurements: "10 x 5 x 2 cm",
-    //   detailedImages: [
-    //     "https://media.istockphoto.com/id/1415799772/photo/home-interior-with-vintage-furniture.jpg?s=612x612&w=0&k=20&c=E5aUyAFo5_xjHcdk0nEZGVDipOkYEtyXQmJBskUbqo8=",
-    //     "https://kianegypt.com/cdn/shop/files/Kian_Furniture_-_Cover.jpg?v=1691510239",
-    //     "https://img.freepik.com/free-photo/mid-century-modern-living-room-interior-design-with-monstera-tree_53876-129805.jpg",
+    this.view.addToCartEventListner(this.addToCart.bind(this));
+    this.view.togelFavorite(this.toggelProductInWishList.bind(this));
 
-    //   ],
-    // };
-
-    // this.view.render(dummyProduct);
   }
+  addToCart(productCount) {
+    if (!this.isLoggedIn) {
+      AuthPopupController.show("to add product");
+      return;
+    }
+
+    const userId = this.auth.userId;
+    CartModel.addItem(userId, this.id, productCount);
+  };
+  toggelProductInWishList(isFavorite) {
+    if (!this.isLoggedIn) {
+      AuthPopupController.show("to add product");
+      return;
+    }
+
+    const userId = this.auth.userId;
+    if (isFavorite) {
+      WishlistModel.addItem(userId, ProductModel.getById(this.id));
+    }
+    else {
+      WishlistModel.removeItem(userId, this.id);
+    }
+  }
+
 }

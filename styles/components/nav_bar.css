@@ -214,3 +214,95 @@
     justify-content: start;
     flex: 1;
 }
+
+/* searcg result styles */
+.search-results-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 320px;
+    /* Approximates 4 items */
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    padding: 8px 0;
+}
+
+.search-item {
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: background-color 0.2s;
+}
+
+.search-item:not(:last-child) {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.search-item:hover,
+.search-item.active {
+    background-color: #f7f9fc;
+}
+
+.search-product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-product-image {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.search-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-product-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-product-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-product-price {
+    color: #333;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+/* Scrollbar customization */
+.search-results-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-results-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 8px;
+}
+
+.search-results-dropdown::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 8px;
+}
+
+.search-results-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

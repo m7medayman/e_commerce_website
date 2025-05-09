@@ -1,3 +1,4 @@
+import { ProductModel } from "../models/product_model.js";
 export class NavBar {
     constructor() {
         this.htmlcontent = `
@@ -42,7 +43,11 @@ export class NavBar {
                     <div class="search-box">
                         <button class="btn-search" type="button"><i class="fas fa-search"></i></button>
                         <input type="text" class="input-search" placeholder="Type to Search...">
+                          <div class="search-results-dropdown">
+            <!-- Search results will be added here dynamically -->
+        </div>
                     </div>
+                    
                 </form>
                 <i class="fa-solid fa-user avatar-outline m-2 cursor-pointer hover-effect clickMouse "></i>
             </div>
@@ -52,5 +57,139 @@ export class NavBar {
 
     render() {
         document.getElementById("navbar").innerHTML = this.htmlcontent;
+        this.renderSearchResult();
+    }
+    renderSearchResult() {
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.querySelector('.input-search');
+            const searchResultsDropdown = document.querySelector('.search-results-dropdown');
+
+            // For demonstration - replace with your API call
+            const fetchSearchResults = (searchTerm) => {
+
+                const allItems = ProductModel.getAll();
+                const filteredItems = allItems.filter(item =>
+                    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                return filteredItems;
+            };
+
+            // Debounce function to prevent excessive API calls
+            const debounce = (func, delay) => {
+                let debounceTimer;
+                return function () {
+                    const context = this;
+                    const args = arguments;
+                    clearTimeout(debounceTimer);
+                    debounceTimer = setTimeout(() => func.apply(context, args), delay);
+                };
+            };
+
+            // Update search results
+            const updateSearchResults = (searchTerm) => {
+                if (searchTerm.length === 0) {
+                    searchResultsDropdown.style.display = 'none';
+                    return;
+                }
+
+                try {
+                    // Get search results
+                    const results = fetchSearchResults(searchTerm);
+
+                    // Clear previous results
+                    searchResultsDropdown.innerHTML = '';
+
+                    // Display products with image, name, and price
+                    results.forEach((product) => {
+                        const resultItem = document.createElement('div');
+                        resultItem.classList.add('search-item');
+
+                        // Create product card layout
+                        resultItem.innerHTML = `
+                            <div class="search-product">
+                                <div class="search-product-image">
+                                    <img src="${product.detailedImages[0]}" alt="${product.name}">
+                                </div>
+                                <div class="search-product-info">
+                                    <div class="search-product-name">${product.name}</div>
+                                    <div class="search-product-price">price: ${product.price} $</div>
+                                </div>
+                            </div>
+                        `;
+
+                        // Handle product selection
+                        resultItem.addEventListener('click', function () {
+                            // Navigate to product page or perform other actions
+                            window.location.href = `./product_details.html?id=${product.productId}`;                            // Alternative: just fill the search box
+                            // searchInput.value = product.name;
+                            searchResultsDropdown.style.display = 'none';
+                        });
+
+                        searchResultsDropdown.appendChild(resultItem);
+                    });
+
+                    // Show dropdown if we have results
+                    if (results.length > 0) {
+                        searchResultsDropdown.style.display = 'block';
+                    } else {
+                        searchResultsDropdown.style.display = 'none';
+                    }
+                } catch (error) {
+                    console.error('Error fetching search results:', error);
+                }
+            };
+
+            // Apply debouncing to avoid excessive searches while typing
+            const debouncedSearch = debounce((searchTerm) => {
+                updateSearchResults(searchTerm);
+            }, 100); // 300ms delay
+
+            // Attach input event listener
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value;
+                debouncedSearch(searchTerm);
+            });
+
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!searchInput.contains(event.target) && !searchResultsDropdown.contains(event.target)) {
+                    searchResultsDropdown.style.display = 'none';
+                }
+            });
+
+            // Handle keyboard navigation
+            searchInput.addEventListener('keydown', function (e) {
+                if (searchResultsDropdown.style.display === 'block') {
+                    const items = searchResultsDropdown.querySelectorAll('.search-item');
+                    const activeItem = searchResultsDropdown.querySelector('.search-item.active');
+                    let index = -1;
+
+                    if (activeItem) {
+                        index = Array.from(items).indexOf(activeItem);
+                    }
+
+                    // Down arrow
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        if (activeItem) activeItem.classList.remove('active');
+                        index = (index + 1) % items.length;
+                        items[index].classList.add('active');
+                    }
+                    // Up arrow
+                    else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        if (activeItem) activeItem.classList.remove('active');
+                        index = (index - 1 + items.length) % items.length;
+                        items[index].classList.add('active');
+                    }
+                    // Enter key
+                    else if (e.key === 'Enter' && activeItem) {
+                        e.preventDefault();
+                        searchInput.value = activeItem.textContent;
+                        searchResultsDropdown.style.display = 'none';
+                    }
+                }
+            });
+        });
     }
 }
