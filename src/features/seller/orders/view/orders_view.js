@@ -42,7 +42,7 @@ export class OrdersView {
                 }
                     .table thead {
                     border-radius: 10px;
-                    overflow: hidden; /* عشان الزوايا المتقاطعة تتقطع مع الـ tbody */
+                    overflow: hidden; 
                 }
                 .table thead tr:first-child th:first-child {
                     border-top-left-radius: 10px;
