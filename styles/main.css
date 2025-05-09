@@ -3,6 +3,7 @@
 @import url('components/primary_button.css');
 @import url('components/typography.css');
 @import url('components//nav_bar.css');
+@import url('components/popup.css');
 
 :root {
     --background-color: #ffffff;

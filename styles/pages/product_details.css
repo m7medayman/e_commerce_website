@@ -1,27 +1,32 @@
 /* @import url('components/outline_buttons.css');
 @import url('components/primary_button.css'); */
 
-.imgs-details>img{
-    width: 30% ;
-    height: 150px ;
+.imgs-details>img {
+    width: 30%;
+    height: 150px;
     cursor: pointer;
 }
+
 .product-description {
     color: rgba(108, 114, 117, 1);
 }
-.discount{
+
+.discount {
     color: rgba(108, 114, 117, 1);
     text-decoration: line-through;
-    
+
 }
+
 .product-measurements {
     color: rgba(108, 114, 117, 1);
 }
+
 .measurements_value {
     color: black;
     font-size: 22px;
 }
-button{
+
+.details_button {
     width: 100%;
     height: 52px;
 }
@@ -30,12 +35,41 @@ button{
     height: 52px;
     margin-right: 8px;
 }
+
 .small-image {
     filter: grayscale(100%);
     cursor: pointer;
     transition: filter 0.3s ease;
-  }
-  
-  .small-image.active {
+}
+
+.small-image.active {
     filter: none;
-  }
+}
+
+.fas {
+    color: #1a1a1a !important;
+}
+
+.fixed-height-img {
+    height: 400px;
+    object-fit: contain;
+}
+
+#main-image {
+    height: 300px;
+    /* Your desired fixed height */
+    object-fit: cover;
+    /* How the image should fit */
+    /* The w-100 class from Bootstrap already handles width: 100% */
+}
+
+/* Optional: If you want all small images to also have a fixed height and consistent look */
+.small-image {
+    height: 80px;
+    /* Example height for thumbnails */
+    width: 80px;
+    /* Example width for thumbnails, making them square */
+    object-fit: cover;
+    cursor: pointer;
+    /* Good for clickable thumbnails */
+}

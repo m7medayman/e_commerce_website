@@ -1,0 +1,125 @@
+/* auth-popup.css */
+
+/* Modal styling */
+#auth-popup-modal .modal-content {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Header styling with your specified color */
+#auth-popup-modal .modal-header {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-bottom: none;
+    padding: 1.25rem 1.5rem;
+}
+
+#auth-popup-modal .modal-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+/* Override Bootstrap's close button */
+#auth-popup-modal .btn-close-white {
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+#auth-popup-modal .btn-close-white:hover {
+    opacity: 1;
+}
+
+/* Body styling */
+#auth-popup-modal .modal-body {
+    padding: 1.75rem 1.5rem;
+    background-color: #ffffff;
+}
+
+#auth-popup-modal .message-text {
+    font-size: 1rem;
+    color: #333333;
+    line-height: 1.5;
+}
+
+/* Warning icon styling */
+#auth-popup-modal .fa-exclamation-circle {
+    color: #ff9800;
+    font-size: 2.5rem;
+}
+
+/* Footer styling */
+#auth-popup-modal .modal-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
+    padding: 1rem 1.5rem;
+}
+
+/* Button styling */
+#auth-popup-modal .btn-secondary {
+    background-color: #e0e0e0;
+    color: #333333;
+    border: none;
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.2s;
+}
+
+#auth-popup-modal .btn-secondary:hover {
+    background-color: #d0d0d0;
+}
+
+#auth-popup-modal .btn-primary {
+    background-color: #1a1a1a;
+    border: none;
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.2s;
+}
+
+#auth-popup-modal .btn-primary:hover {
+    background-color: #333333;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for the modal */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+}
+
+.modal.fade.show .modal-dialog {
+    transform: none;
+}
+
+/* Optional: Add a subtle scale animation when modal opens */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#auth-popup-modal.show .modal-content {
+    animation: modalFadeIn 0.3s;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 576px) {
+    #auth-popup-modal .modal-dialog {
+        margin: 1rem;
+    }
+    
+    #auth-popup-modal .modal-body {
+        padding: 1.25rem 1rem;
+    }
+    
+    #auth-popup-modal .modal-footer {
+        padding: 0.75rem 1rem;
+    }
+}
