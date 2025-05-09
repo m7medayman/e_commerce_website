@@ -6,11 +6,11 @@ export class OrdersView {
     render(model) {
         const orders = model.map((order, index) => {
             return `<tr class="text-center align-middle">
-                <th scope="row">${order.orderId || (index + 1)}</th>
-                <td><img src="${order.productImage}" alt="${order.productName}" width="50px" height="50px" class="rounded"/></td>
-                <td>${order.productName}</td>
+                <th scope="row">${order.productId || (index + 1)}</th>
+                <td><img src="${order.url}" alt="${order.name}" width="50px" height="50px" class="rounded"/></td>
+                <td>${order.name}</td>
                 <td>${order.price}</td>
-                <td>${order.deliveryTime}</td>
+
             </tr>`;
         }).join('');
 

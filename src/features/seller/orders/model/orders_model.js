@@ -11,9 +11,38 @@ export class OrdersModel {
     }
 
     // جلب الـ orders المؤكدة لـ seller معين
+    /*
+    name
+  : 
+  "Product 2"
+  price
+  : 
+  20
+  productId
+  : 
+  "9a08e1b3-c339-4b15-b6c5-e35f35397b8d"
+  quantity
+  : 
+  1
+  sellerId
+  : 
+  "seller-1"
+  url
+  : 
+  "./assets/images/test_product_img.png" */
     getBySellerId() {
-        return OrdersModel.getAll().filter(
-            order => order.sellerId === this.sellerId && order.status === 'confirmed'
-        );
+        const allOrders = OrdersModel.getAll();
+        const itemsList = []
+        for (const order of allOrders) {
+            for (const item of order.items) {
+                if (item.sellerId == this.sellerId) {
+                    itemsList.push(item);
+                }
+            }
+
+        }
+        return itemsList;
+
+
     }
 }
