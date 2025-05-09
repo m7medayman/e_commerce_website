@@ -9,7 +9,7 @@ import { Toast } from '../../../core/common/toast.js';
 export class HomeView {
     renderPage() {
         new FooterWidget().render();
-        new NavBar().render();
+        new NavBar("home").render();
         this.toast = new Toast();
         this.toast.render();
 

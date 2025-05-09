@@ -7,7 +7,7 @@ export class ProductView {
   }
   renderPage() {
     new FooterWidget().render();
-    new NavBar().render();
+    new NavBar("shop").render();
     this.toast = new Toast();
     this.toast.render();
 
