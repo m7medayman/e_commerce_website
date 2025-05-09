@@ -122,14 +122,14 @@ const AuthController = {
             }
         });
 
-        $('#adress').on('input', function () {
-            AuthView.clearValidation('adress');
+        $('#address').on('input', function () {
+            AuthView.clearValidation('address');
             const address = $(this).val() || '';
             const addressError = Auth.validateAddress(address);
             if (addressError) {
-                AuthView.showError('adress', addressError);
+                AuthView.showError('address', addressError);
             } else if (address) {
-                AuthView.showValid('adress');
+                AuthView.showValid('address');
             }
         });
 
@@ -141,7 +141,7 @@ const AuthController = {
             const email = $(this).find('#email').val() || '';
             const password = $(this).find('#password').val() || '';
             const phone = $(this).find('#phone').val() || '';
-            const address = $(this).find('#adress').val() || '';
+            const address = $(this).find('#address').val() || '';
             const businessName = role === 'seller' ? $(this).find('#business_name').val() || '' : null;
 
             const nameError = Auth.validateName(name);
@@ -150,7 +150,7 @@ const AuthController = {
             const phoneError = Auth.validatePhone(phone);
             const addressError = Auth.validateAddress(address);
             const businessNameError = role === 'seller' ? Auth.validateBusinessName(businessName) : null;
-            const saveError = Auth.saveUser({ email, password, role, name, phone, address });
+            const saveError = Auth.saveUser({ email, password, role, name, phone, address, businessName });
 
             console.log('Validation Results:', {
                 nameError,
@@ -166,7 +166,7 @@ const AuthController = {
             AuthView.clearError('email');
             AuthView.clearError('password');
             AuthView.clearError('phone');
-            AuthView.clearError('adress');
+            AuthView.clearError('address');
             if (role === 'seller') AuthView.clearError('business_name');
 
             let isValid = true;
@@ -192,7 +192,7 @@ const AuthController = {
             }
             if (addressError) {
                 console.log('Address Error:', addressError);
-                AuthView.showError('adress', addressError);
+                AuthView.showError('address', addressError);
                 isValid = false;
             }
             if (businessNameError) {
