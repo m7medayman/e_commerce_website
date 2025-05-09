@@ -5,11 +5,12 @@ import { ProductComponent } from '../../../core/common/product.js';
 
 
 export class ShopView {
-    renderPage() {
+    renderPage(categories) {
         new FooterWidget().render();
         new NavBar().render();
         this.toast = new Toast();
         this.toast.render();
+        this.renderFilterSection(categories);
 
     }
     addEventListenerToProductCard(addToCartFunction, addTofavoriteFuction, goToProductPageFunction) {
@@ -79,8 +80,12 @@ export class ShopView {
     renderNewProducts(punchOfProducts) {
         const productsSliders = this.builedProductsSlider(punchOfProducts);
         const newProductsContainer = document.getElementById("products");
-        newProductsContainer.appendChild(productsSliders);
 
+        // Clear previous products
+        newProductsContainer.innerHTML = '';
+
+        // Add products
+        newProductsContainer.appendChild(productsSliders);
     }
     builedProductsSlider(punchOfProducts) {
         const mainContainer = document.createElement("div");
@@ -95,4 +100,91 @@ export class ShopView {
         return wrapper;
 
     }
+    renderFilterSection(categories) {
+        const filterContainer = document.createElement('div');
+        filterContainer.className = 'container mb-4 mt-4';
+        filterContainer.innerHTML = `
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Our Products</h2>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <!-- Category Dropdown -->
+                    <div class="dropdown me-2">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="categoryDropdown" 
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </button>
+                        <ul class="dropdown-menu" id="categoryMenu" aria-labelledby="categoryDropdown">
+                            <li><a class="dropdown-item active" href="#" data-category="all">All Categories</a></li>
+                            ${categories.map(category =>
+            `<li><a class="dropdown-item" href="#" data-category="${category}">${category}</a></li>`
+        ).join('')}
+                        </ul>
+                    </div>
+                    
+                    <!-- Price Range Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="priceDropdown" 
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Price Range
+                        </button>
+                        <ul class="dropdown-menu" id="priceMenu" aria-labelledby="priceDropdown">
+                            <li><a class="dropdown-item active" href="#" data-price="all">All Prices</a></li>
+                            <li><a class="dropdown-item" href="#" data-price="under50">Under $50</a></li>
+                            <li><a class="dropdown-item" href="#" data-price="50to100">$50 - $100</a></li>
+                            <li><a class="dropdown-item" href="#" data-price="100to200">$100 - $200</a></li>
+                            <li><a class="dropdown-item" href="#" data-price="over200">Over $200</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Insert filter section before products container
+        const productsContainer = document.getElementById('products');
+        productsContainer.parentNode.insertBefore(filterContainer, productsContainer);
+    }
+    addFilterEventListeners(filterCallback) {
+        // Category filter
+        document.querySelectorAll('#categoryMenu .dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Update active state
+                document.querySelectorAll('#categoryMenu .dropdown-item').forEach(i =>
+                    i.classList.remove('active'));
+                e.target.classList.add('active');
+
+                // Update dropdown button text
+                const category = e.target.dataset.category;
+                document.getElementById('categoryDropdown').textContent =
+                    category === 'all' ? 'Category' : e.target.textContent;
+
+                // Call the callback
+                filterCallback('category', category);
+            });
+        });
+
+        // Price range filter
+        document.querySelectorAll('#priceMenu .dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Update active state
+                document.querySelectorAll('#priceMenu .dropdown-item').forEach(i =>
+                    i.classList.remove('active'));
+                e.target.classList.add('active');
+
+                // Update dropdown button text
+                const priceRange = e.target.dataset.price;
+                document.getElementById('priceDropdown').textContent =
+                    priceRange === 'all' ? 'Price Range' : e.target.textContent;
+
+                // Call the callback
+                filterCallback('priceRange', priceRange);
+            });
+        });
+    }
+
 }

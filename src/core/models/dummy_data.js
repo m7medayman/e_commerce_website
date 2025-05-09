@@ -28,7 +28,7 @@ export class DummyData {
                 price: (i + 1) * 10,
                 detailedImages: ["./assets/images/test_product_img.png", "assets/images/carousalTestIimg.png"], //add your test images here 
 
-                category: "Category 1",
+                category: "Category 2",
                 stock: 10,
                 sellerId: "seller-1",
                 measuarment: "10x10x10",

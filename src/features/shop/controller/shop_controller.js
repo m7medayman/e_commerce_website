@@ -7,25 +7,61 @@ export class ShopController {
     constructor() {
         this.model = new ShopModel();
         this.view = new ShopView();
-
+        this.filters = {
+            category: 'all',
+            priceRange: 'all'
+        };
     }
-    init() {
-        let products = this.model.getProducts();
-        // Get the favorite list once before mapping products
-        let favoriteList = (WishlistModel.getByUserId("user-1")["items"]).map(item => item.productId);
 
-        products = products.map(function (product) {
-            let f = favoriteList.includes(product.id);
+    init() {
+        // Get categories for filter dropdown
+        const categories = this.model.getCategories();
+
+        // Render the page with filter options
+        this.view.renderPage(categories);
+
+        // Load initial products
+        this.loadProducts();
+
+        // Add filter event listeners
+        this.view.addFilterEventListeners(this.handleFilter.bind(this));
+
+        // Add product card event listeners
+        this.view.addEventListenerToProductCard(
+            this.addAddToCartEventListener,
+            this.toggelProductInWishList,
+            this.goToProductPage
+        );
+    }
+
+    handleFilter(filterType, value) {
+        // Update filter state
+        this.filters[filterType] = value;
+
+        // Reload products with new filters
+        this.loadProducts();
+    }
+
+    loadProducts() {
+        // Get filtered products
+        let products = this.model.getProducts(this.filters);
+
+        // Apply wishlist status
+        let favoriteList = (WishlistModel.getByUserId("user-1")["items"]).map(item => item.productId);
+        products = products.map(product => {
             product.isFavorite = favoriteList.includes(product.id);
             return product;
         });
-        console.log(products);
-        this.view.renderPage();
+
+        // Render products
         this.view.renderNewProducts(products);
-        this.view.addEventListenerToProductCard(this.addAddToCartEventListener, this.toggelProductInWishList, this.goToProductPage);
 
-
-
+        // Re-add event listeners to new product cards
+        this.view.addEventListenerToProductCard(
+            this.addAddToCartEventListener,
+            this.toggelProductInWishList,
+            this.goToProductPage
+        );
     }
     addAddToCartEventListener(id) {
         const userId = "user-1";
