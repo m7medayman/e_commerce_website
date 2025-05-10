@@ -40,16 +40,17 @@ export class ProductController {
   addToCart(productCount) {
     if (!this.isLoggedIn) {
       AuthPopupController.show("to add product");
-      return;
+      return false;
     }
 
     const userId = this.auth.userId;
     CartModel.addItem(userId, this.id, productCount);
+    return true;
   };
   toggelProductInWishList(isFavorite) {
     if (!this.isLoggedIn) {
       AuthPopupController.show("to add product");
-      return;
+      return false;
     }
 
     const userId = this.auth.userId;
@@ -59,6 +60,8 @@ export class ProductController {
     else {
       WishlistModel.removeItem(userId, this.id);
     }
+    return true;
   }
+
 
 }

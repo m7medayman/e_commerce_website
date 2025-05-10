@@ -1,19 +1,17 @@
 import { ProductModel } from '../../../core/models/product_model.js';
 export class HomeModel {
-    
+
     constructor() {
-        
+
         this.images = [
-            { url: 'assets/images/carousalTestIimg.png', description: 'Image 1' },
-            { url: 'assets/images/carousalTestIimg.png', description: 'Image 1' },
+            { url: 'assets/images/carousalTestIimg.png', description: 'Living room' },
+            { url: 'assets/images/c1.jpg', description: '' },
+            { url: 'assets/images/c2.jpg', description: '' },
+            { url: 'assets/images/c3.jpg', description: '' },
+            { url: 'assets/images/c4.jpg', description: '' },
+            
 
-            { url: 'assets/images/carousalTestIimg.png', description: 'Image 1' },
-
-            { url: 'assets/images/carousalTestIimg.png', description: 'Image 1' },
-
-            { url: 'assets/images/carousalTestIimg.png', description: 'Image 1' },
-
-            { url: 'assets/images/carousalTestIimg.png', description: 'Image 1' },
+      
         ];
     }
     getImages() {
@@ -23,17 +21,17 @@ export class HomeModel {
         return [
             {
                 title: 'Living Room',
-                url: '#',
+                url: 'shop.html',
                 img: 'assets/images/panner1.png'
             },
             {
                 title: 'Bed Room',
-                url: '#',
+                url: 'shop.html',
                 img: 'assets/images/panner2.png'
             },
             {
                 title: 'kitchen',
-                url: '#',
+                url: 'shop.html',
                 img: 'assets/images/panner3.png'
             }
         ]
@@ -50,7 +48,7 @@ export class HomeModel {
     //     originalPrice: '$400.00',
     //     rating: 5
     // },
-    
+
     getProducts() {
         const products = [];
         ProductModel.getAll().forEach((product) => {

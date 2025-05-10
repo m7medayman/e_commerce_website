@@ -107,7 +107,9 @@ export class ProductView {
       let count = document.getElementById("count").value;
 
       count = Number.parseInt(count);
-      addToCart(count);
+      if (!addToCart(count)) {
+        return;
+      };
       // Add the product to cart using the id
       this.toast.showToast("Product added to cart", "Success");
     });
@@ -117,7 +119,9 @@ export class ProductView {
     button.addEventListener("click", function (event) {
       const isFavorite = button.classList.contains('btn-primary');
 
-      favoriteFunc(!isFavorite);
+      if (!favoriteFunc(!isFavorite)) {
+        return;
+      };
       // Toggle the class
       if (isFavorite) {
         button.classList.remove('btn-primary');
