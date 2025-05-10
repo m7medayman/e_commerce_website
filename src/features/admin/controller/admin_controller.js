@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initializeEventListeners(view) {
-
+  document.getElementById("total_users").innerText = UserModel.getAll().length;
+  document.getElementById("total-products").innerText = ProductModel.getAll().length;
+  document.getElementById("total-sellers").innerText = UserModel.getAll().filter(user => user.role === 'seller').length;
+  document.getElementById("total-customers").innerText = UserModel.getAll().filter(user => user.role === 'customer').length; 
   document.getElementById("add-user-btn").addEventListener("click", () => {
     view.renderAddUserForm();
 
