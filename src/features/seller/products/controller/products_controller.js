@@ -42,13 +42,13 @@ export class ProductsController {
                 this.handleDeleteClick(productId);
             }
         });
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('change', () => {
-                const searchTerm = searchInput.value.toLowerCase();
-                this.filterProducts(searchTerm);
-            });
-        }
+        // const searchInput = document.getElementById('searchInput');
+        // if (searchInput) {
+        //     searchInput.addEventListener('change', () => {
+        //         const searchTerm = searchInput.value.toLowerCase();
+        //         this.filterProducts(searchTerm);
+        //     });
+        // }
     }
 
     handleEditClick(productId) {
@@ -68,18 +68,18 @@ export class ProductsController {
 
 
 
-    filterProducts(searchTerm) {
-        console.log('Filtering for:', searchTerm);
-        let filteredProducts = this.data;
-        if (searchTerm) {
-             filteredProducts = this.data.filter(product =>
-                product.name.toLowerCase().includes(searchTerm) ||
-                product.category.toLowerCase().includes(searchTerm)
-            );
-            this.view.render(filteredProducts,searchTerm);
-        }
+    // filterProducts(searchTerm) {
+    //     console.log('Filtering for:', searchTerm);
+    //     let filteredProducts = this.data;
+    //     if (searchTerm) {
+    //          filteredProducts = this.data.filter(product =>
+    //             product.name.toLowerCase().includes(searchTerm) ||
+    //             product.category.toLowerCase().includes(searchTerm)
+    //         );
+    //         this.view.render(filteredProducts,searchTerm);
+    //     }
         
-    }
+    // }
 
 
 }
