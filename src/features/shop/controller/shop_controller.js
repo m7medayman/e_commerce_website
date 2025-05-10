@@ -72,18 +72,19 @@ export class ShopController {
     addAddToCartEventListener(id) {
         if (!this.isLoggedIn) {
             AuthPopupController.show("to add product");
-            return;
+            return false;
         }
 
         const userId = this.auth.userId;
         CartModel.addItem(userId, id, 1);
         console.log("Add to cart clicked for product ID:", id);
+        return true;
 
     }
     toggleProductInWishList(produtId, isFavorite) {
         if (!this.isLoggedIn) {
             AuthPopupController.show("to add product");
-            return;
+            return false;
         }
 
         const userId = this.auth.userId;
@@ -93,6 +94,7 @@ export class ShopController {
         else {
             WishlistModel.removeItem(userId, produtId);
         }
+        return true;
     }
     goToProductPage(id) {
         window.location.href = `./product_details.html?id=${id}`;

@@ -1,18 +1,20 @@
-import {CheckoutModel} from '../model/checkout_model.js';
+import { CheckoutModel } from '../model/checkout_model.js';
 import CheckoutView from '../view/checkout_view.js';
 import { AuthModel } from '../../../core/models/auth_model.js';
+import { CartModel } from "../../../core/models/cart_model.js";
+import { ProductModel } from "../../../core/models/product_model.js";
 class CheckoutController {
     constructor() {
-         // Check if user is signed in
-         if (!AuthModel.isSignedIn()) {
+        // Check if user is signed in
+        if (!AuthModel.isSignedIn()) {
             window.location.href = 'login.html';
             return;
         }
 
         this.model = new CheckoutModel();
-         this.view = new CheckoutView();
+        this.view = new CheckoutView();
         this.view.render(this.model);
-        
+
         this.setupStaticEventListeners();
     }
     setupStaticEventListeners() {
@@ -58,9 +60,22 @@ class CheckoutController {
                         state: document.getElementById('state').value,
                         zip: document.getElementById('zip').value,
                     },
-                
+
                 };
                 const order = this.model.saveOrderWithOrderModel();
+                for (let item of order.items) {
+                    debugger;
+                    let itemInStorage = ProductModel.getById(item.productId);
+
+                    if (itemInStorage.stock < item.quantity) {
+                        alert(`there is not enough stock of product ${itemInStorage.name} `);
+                        return;
+                    }
+                    else {
+                        ProductModel.update(itemInStorage.productId, { stock: itemInStorage.stock - item.quantity })
+                    }
+                }
+                CartModel.clear(AuthModel.getUser().userId);
                 window.location.href = 'order_confirmation.html';
             }
         });

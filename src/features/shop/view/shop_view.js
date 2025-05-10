@@ -31,7 +31,9 @@ export class ShopView {
 
                 console.log(action);
                 if (action === ProductComponent.addtoCartAction) {
-                    addToCartFunction(productId);
+                    if (!addToCartFunction(productId)) {
+                        return;
+                    }
                     this.toast.showToast("product added to cart", "Success");
                     return;
 
@@ -53,7 +55,11 @@ export class ShopView {
 
                     // Update the card attribute with the new state
                     card.setAttribute(ProductComponent.dataIsFavorite, newIsFavorite);
-
+                    if (addTofavoriteFuction) {
+                        if (!addTofavoriteFuction(productId, newIsFavorite)) {
+                            return;
+                        };
+                    }
                     // Update icon classes based on new state
                     if (newIsFavorite) {
                         icon.classList.remove("far");
@@ -63,10 +69,7 @@ export class ShopView {
                         icon.classList.add("far");
                     }
 
-                    // Call the callback function
-                    if (addTofavoriteFuction) {
-                        addTofavoriteFuction(productId, newIsFavorite);
-                    }
+
 
                     console.log("Wishlist toggled for product ID:", productId, "New state:", newIsFavorite);
 
