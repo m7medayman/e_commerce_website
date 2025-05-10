@@ -15,7 +15,71 @@ export class DummyData {
                     "./assets/images/products/p1_4.avif"
 
                 ], category: "living", stock: 10, sellerId: seller1.userId, measurement: "10 x 10 x10", rate: 3, numberOfReviews: 10, discount: 10
-            }
+            },
+            {
+                name: " bathcorner ", description: "this is discription about the bathcorner ", price: 200,
+                detailedImages: [
+                    "./assets/images/products/bathcorner1",
+                    "./assets/images/products/bathcorner2",
+                    "./assets/images/products/bathcorner3"
+
+                ], category: "bathroom", stock: 8, sellerId: seller1.userId, measurement: "10 x 10 x10", rate: 4, numberOfReviews: 10, discount: 10
+            },
+            {
+                name: " bathwaste ", description: "this is discription about the bathwaste ", price: 150,
+                detailedImages: [
+                    "./assets/images/products/bathwaste1",
+                    "./assets/images/products/bathwaste2",
+                    "./assets/images/products/bathwaste3"
+
+                ], category: "bathroom", stock: 20, sellerId: seller1.userId, measurement: "10 x 15 x10", rate: 2, numberOfReviews: 10, discount: 10
+            },
+             {
+                name: " bathroom ", description: "this is discription about the bathroom ", price: 3000,
+                detailedImages: [
+                    "./assets/images/products/bathroom1",
+                    "./assets/images/products/bathroom2",
+                    "./assets/images/products/bathroom3"
+
+                ], category: "bathroom", stock: 5, sellerId: seller1.userId, measurement: "20 x 15 x10", rate: 2, numberOfReviews: 10, discount: 10
+            },
+             {
+                name: " bedroom ", description: "this is discription about the bedroom ", price: 5000,
+                detailedImages: [
+                    "./assets/images/products/bedroom1",
+                    "./assets/images/products/bedroom2",
+                    "./assets/images/products/bedroom3"
+
+                ], category: "bedroom", stock: 6, sellerId: seller1.userId, measurement: "200 x 15 x10", rate: 5, numberOfReviews: 10, discount: 10
+            },
+             {
+                name: " bed ", description: "this is discription about the bed ", price: 150,
+                detailedImages: [
+                    "./assets/images/products/bed1",
+                    "./assets/images/products/bed2",
+                    "./assets/images/products/bed3"
+
+                ], category: "bedroom", stock: 4, sellerId: seller1.userId, measurement: "10 x 15 x10", rate: 5, numberOfReviews: 10, discount: 10
+            },
+             {
+                name: " mirror ", description: "this is discription about the mirror ", price: 150,
+                detailedImages: [
+                    "./assets/images/products/mirror1",
+                    "./assets/images/products/mirror2",
+                    "./assets/images/products/mirror3"
+
+                ], category: "bedroom", stock: 20, sellerId: seller1.userId, measurement: "10 x 15 x10", rate: 2, numberOfReviews: 10, discount: 10
+            },
+             {
+                name: " waredrobe ", description: "this is discription about the bedroom ", price: 150,
+                detailedImages: [
+                    "./assets/images/products/waredrob1",
+                    "./assets/images/products/waredrob2",
+                    "./assets/images/products/waredrob3"
+
+                ], category: "bedroom", stock: 20, sellerId: seller1.userId, measurement: "10 x 15 x10", rate: 2, numberOfReviews: 10, discount: 10
+            },
+
         ]
         // const userId = "user-1";
         // const userId2 = "user-2";
