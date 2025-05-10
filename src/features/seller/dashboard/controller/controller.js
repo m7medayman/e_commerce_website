@@ -2,13 +2,13 @@ import { ProductsController } from "../../products/controller/products_controlle
 import { OrdersController } from "../../orders/controller/orders_controller.js";
 import { AuthModel } from "../../../../core/models/auth_model.js";
 import { DashboardModel } from "../model/model.js";
-import {DashboardView} from "../view/view.js"
+import { DashboardView } from "../view/view.js"
 class DashboardController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
-    this.productsController = null; 
-    this.ordersController=null;
+    this.productsController = null;
+    this.ordersController = null;
     this.init();
   }
 
@@ -25,7 +25,7 @@ class DashboardController {
         this.showSection(section);
       });
     });
-const logoutLink = document.querySelector('[data-section="logout"]');
+    const logoutLink = document.querySelector('[data-section="logout"]');
     if (logoutLink) {
       logoutLink.addEventListener('click', (e) => {
         e.preventDefault();
@@ -50,13 +50,13 @@ const logoutLink = document.querySelector('[data-section="logout"]');
         this.productsController = new ProductsController();
       }
       this.productsController.init();
-    } else if(section=='orders'){
-        document.getElementById('app').innerHTML = '<div id="container"></div>';
-        if (!this.ordersController) {
-          this.ordersController = new OrdersController ();
-        }
-        this.ordersController.init();
-      }else if (section === 'profile') {
+    } else if (section === 'orders') {
+      document.getElementById('app').innerHTML = '<div id="container"></div>';
+      if (!this.ordersController) {
+        this.ordersController = new OrdersController();
+      }
+      this.ordersController.init();
+    } else if (section === 'profile') {
       const sellerId = localStorage.getItem(AuthModel.STORAGE_KEY);
       const profileData = this.model.getProfile(sellerId);
       this.view.renderSection('profile', profileData);

@@ -1,9 +1,9 @@
 export class OrdersView {
     constructor() {
-        this.app = document.getElementById('container');
     }
 
     render(model) {
+        this.app = document.getElementById('container');
         const orders = model.map((order, index) => {
             return `<tr class="text-center align-middle">
                 <th scope="row">${(index + 1)}</th>
