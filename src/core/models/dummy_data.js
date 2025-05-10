@@ -9,107 +9,107 @@ export class DummyData {
         const prodcts = [
             {
                 name: " chair ", description: "this is discription about the chair ", price: 100,
-                detailedImages: ["./assets/images/products/p1_1.webp",
-                    "./assets/images/products/p1_2.avif",
-                    "./assets/images/products/p1_3.avif",
-                    "./assets/images/products/p1_4.avif"
+                detailedImages: ["/public/assets/images/products/p1_1.webp",
+                    "/public/assets/images/products/p1_2.avif",
+                    "/public/assets/images/products/p1_3.avif",
+                    "/public/assets/images/products/p1_4.avif"
 
                 ], category: "living", stock: 10, sellerId: seller1.userId, measurement: "10 x 10 x10", rate: 5, numberOfReviews: 10, discount: 10
             },
             {
                 name: " white chair", description: "this is discription about the chair ", price: 200,
-                detailedImages: ["./assets/images/products/p2_1.avif",
-                    "./assets/images/products/p2_2.avif",
+                detailedImages: ["/public/assets/images/products/p2_1.avif",
+                    "/public/assets/images/products/p2_2.avif",
 
 
                 ], category: "living", stock: 10, sellerId: seller1.userId, measurement: "10 x 10 x10", rate: 3, numberOfReviews: 10, discount: 20
             },
             {
                 name: " black table ", description: "this is discription about the black table ", price: 300,
-                detailedImages: ["./assets/images/products/p_l_1_1.avif",
-                    "./assets/images/products/p_l_1_2.avif",
-                    "./assets/images/products/p_l_1_3.webp",
+                detailedImages: ["/public/assets/images/products/p_l_1_1.avif",
+                    "/public/assets/images/products/p_l_1_2.avif",
+                    "/public/assets/images/products/p_l_1_3.webp",
 
 
                 ], category: "living", stock: 10, sellerId: seller2.userId, measurement: "10 x 10 x10", rate: 4, numberOfReviews: 30, discount: 40
             },
             {
                 name: " kitchen capin ", description: "this is discription about the kitchen capin ", price: 700,
-                detailedImages: ["./assets/images/products/p_k_1_1.avif",
-                    "./assets/images/products/p_k_1_2.avif",
-                    "./assets/images/products/p_k_1_3.avif",
-                    "./assets/images/products/p_k_1_4.avif",
+                detailedImages: ["/public/assets/images/products/p_k_1_1.avif",
+                    "/public/assets/images/products/p_k_1_2.avif",
+                    "/public/assets/images/products/p_k_1_3.avif",
+                    "/public/assets/images/products/p_k_1_4.avif",
 
 
                 ], category: "kitchen", stock: 5, sellerId: seller2.userId, measurement: "100 x 100 x100", rate: 4, numberOfReviews: 30, discount: 30
             },
             {
                 name: " kitchen counter ", description: "this is discription about the kitchen counter ", price: 800,
-                detailedImages: ["./assets/images/products/p_k_3_1.avif",
-                    "./assets/images/products/p_k_3_2.avif",
+                detailedImages: ["/public/assets/images/products/p_k_3_1.avif",
+                    "/public/assets/images/products/p_k_3_2.avif",
 
                 ], category: "kitchen", stock: 5, sellerId: seller2.userId, measurement: "100 x 100 x100", rate: 4, numberOfReviews: 30, discount: 30
             },
             {
                 name: " bathcorner ", description: "this is discription about the bathcorner ", price: 200,
                 detailedImages: [
-                    "./assets/images/products/bathcorner1.avif",
-                    "./assets/images/products/bathcorner2.avif",
-                    "./assets/images/products/bathcorner3.avif"
+                    "/public/assets/images/products/bathcorner1.avif",
+                    "/public/assets/images/products/bathcorner2.avif",
+                    "/public/assets/images/products/bathcorner3.avif"
 
                 ], category: "bathroom", stock: 8, sellerId: seller1.userId, measurement: "10 x 10 x10", rate: 4, numberOfReviews: 10, discount: 10
             },
             {
                 name: " bathwaste ", description: "this is discription about the bathwaste ", price: 150,
                 detailedImages: [
-                    "./assets/images/products/bathwaste1.avif",
-                    "./assets/images/products/bathwaste2.avif",
-                    "./assets/images/products/bathwaste3.avif"
+                    "/public/assets/images/products/bathwaste1.avif",
+                    "/public/assets/images/products/bathwaste2.avif",
+                    "/public/assets/images/products/bathwaste3.avif"
 
                 ], category: "bathroom", stock: 20, sellerId: seller1.userId, measurement: "10 x 15 x10", rate: 2, numberOfReviews: 10, discount: 10
             },
-             {
+            {
                 name: " bathroom ", description: "this is discription about the bathroom ", price: 3000,
                 detailedImages: [
-                    "./assets/images/products/bathroom1.avif",
-                    "./assets/images/products/bathroom2.avif",
-                    "./assets/images/products/bathroom3.avif"
+                    "/public/assets/images/products/bathroom1.avif",
+                    "/public/assets/images/products/bathroom2.avif",
+                    "/public/assets/images/products/bathroom3.avif"
 
                 ], category: "bathroom", stock: 5, sellerId: seller1.userId, measurement: "20 x 15 x10", rate: 2, numberOfReviews: 10, discount: 10
             },
-             {
+            {
                 name: " bedroom ", description: "this is discription about the bedroom ", price: 5000,
                 detailedImages: [
-                    "./assets/images/products/bedroom1.avif",
-                    "./assets/images/products/bedroom2.avif",
-                    "./assets/images/products/bedroom3.avif"
+                    "/public/assets/images/products/bedroom1.avif",
+                    "/public/assets/images/products/bedroom2.avif",
+                    "/public/assets/images/products/bedroom3.avif"
 
                 ], category: "bedroom", stock: 6, sellerId: seller1.userId, measurement: "200 x 15 x10", rate: 5, numberOfReviews: 10, discount: 10
             },
-             {
+            {
                 name: " bed ", description: "this is discription about the bed ", price: 150,
                 detailedImages: [
-                    "./assets/images/products/bed1.avif",
-                    "./assets/images/products/bed2.avif",
-                    "./assets/images/products/bed3.avif"
+                    "/public/assets/images/products/bed1.avif",
+                    "/public/assets/images/products/bed2.avif",
+                    "/public/assets/images/products/bed3.avif"
 
                 ], category: "bedroom", stock: 4, sellerId: seller1.userId, measurement: "10 x 15 x10", rate: 5, numberOfReviews: 10, discount: 10
             },
-             {
+            {
                 name: " mirror ", description: "this is discription about the mirror ", price: 150,
                 detailedImages: [
-                    "./assets/images/products/mirror1.avif",
-                    "./assets/images/products/mirror2.avif",
-                    "./assets/images/products/mirror3.avif"
+                    "/public/assets/images/products/mirror1.avif",
+                    "/public/assets/images/products/mirror2.avif",
+                    "/public/assets/images/products/mirror3.avif"
 
                 ], category: "bedroom", stock: 20, sellerId: seller1.userId, measurement: "10 x 15 x10", rate: 2, numberOfReviews: 10, discount: 10
             },
-             {
+            {
                 name: " waredrobe ", description: "this is discription about the bedroom ", price: 150,
                 detailedImages: [
-                    "./assets/images/products/waredrob1.avif",
-                    "./assets/images/products/waredrob2.avif",
-                    "./assets/images/products/waredrob3.avif"
+                    "/public/assets/images/products/wardrobe1.avif",
+                    "/public/assets/images/products/wardrobe2.avif",
+                    "/public/assets/images/products/wardrobe3.avif"
 
                 ], category: "bedroom", stock: 20, sellerId: seller1.userId, measurement: "10 x 15 x10", rate: 2, numberOfReviews: 10, discount: 10
             },
@@ -153,7 +153,7 @@ export class DummyData {
         //         name: `Product ${i + 1}`,
         //         description: `Description for Product ${i + 1}`,
         //         price: (i + 1) * 10,
-        //         detailedImages: ["./assets/images/test_product_img.png", "assets/images/carousalTestIimg.png"], //add your test images here 
+        //         detailedImages: ["/public/assets/images/test_product_img.png", "assets/images/carousalTestIimg.png"], //add your test images here 
 
         //         category: "Category 2",
         //         stock: 10,
