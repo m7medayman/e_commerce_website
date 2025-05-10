@@ -9,16 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const users = UserModel.getAll();
   const products = ProductModel.getAll();
   const user = AuthModel.getUser();
-  const view = new AdminView("users-panel", "products-panel",'profile');
+  const view = new AdminView("users-panel", "products-panel", 'profile');
 
   view.renderProducts(products);
   view.renderUsers(users);
   view.renderProfile(user);
   initializeEventListeners(view);
 });
- 
+
 function initializeEventListeners(view) {
-  
+
   document.getElementById("add-user-btn").addEventListener("click", () => {
     view.renderAddUserForm();
 
@@ -41,28 +41,28 @@ function initializeEventListeners(view) {
 
   });
 
-  document.getElementById("add-product-btn").addEventListener("click", () => {
-    view.renderAddProductForm();
+  // document.getElementById("add-product-btn").addEventListener("click", () => {
+  //   view.renderAddProductForm();
 
-    document.getElementById("add-product-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const newProduct = {
-        name: document.getElementById("product-name").value,
-        price: document.getElementById("product-price").value,
-        description: document.getElementById("product-description").value,
-        category: document.getElementById("product-category").value,
-        stock: document.getElementById("product-stock").value,
-        sellerId: document.getElementById("product-sellerId").value,
-        measures: document.getElementById("product-measures").value,
-      };
-      ProductModel.add(newProduct);
-      const products = ProductModel.getAll();
-      view.renderProducts(products);
-      alert("Product added successfully!");
+  //   document.getElementById("add-product-form").addEventListener("submit", (e) => {
+  //     e.preventDefault();
+  //     const newProduct = {
+  //       name: document.getElementById("product-name").value,
+  //       price: document.getElementById("product-price").value,
+  //       description: document.getElementById("product-description").value,
+  //       category: document.getElementById("product-category").value,
+  //       stock: document.getElementById("product-stock").value,
+  //       sellerId: document.getElementById("product-sellerId").value,
+  //       measures: document.getElementById("product-measures").value,
+  //     };
+  //     ProductModel.add(newProduct);
+  //     const products = ProductModel.getAll();
+  //     view.renderProducts(products);
+  //     alert("Product added successfully!");
 
-      initializeEventListeners(view);
-    });
-  });
+  //     initializeEventListeners(view);
+  //   });
+  // });
 
   document.getElementById("users-panel").addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-user")) {
@@ -76,23 +76,24 @@ function initializeEventListeners(view) {
   });
 
   document.getElementById("products-panel").addEventListener("click", (e) => {
-    if (e.target.classList.contains("delete-product")) {
-      const productId = e.target.dataset.id;
-      ProductModel.delete(productId);
-      const products = ProductModel.getAll();
-      view.renderProducts(products);
-      
 
-      initializeEventListeners(view);
-    }
+  if (e.target.classList.contains("delete-product")) {
+    const productId = e.target.dataset.id;
+if (confirm("Are you sure you want to delete this product?")) {
+        ProductModel.delete(productId);
+        const products = ProductModel.getAll();
+        view.renderProducts(products);
+        initializeEventListeners(view);
+ }
+  }
+});
+const logoutLink = document.getElementById('logout');
+if (logoutLink) {
+  logoutLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    logoutLink.classList.add('text-light');
+    localStorage.removeItem(AuthModel.STORAGE_KEY);
+    window.location.href = 'login.html';
   });
-  const logoutLink = document.getElementById('logout');
-    if (logoutLink) {
-      logoutLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        logoutLink.classList.add('text-light');
-        localStorage.removeItem(AuthModel.STORAGE_KEY);
-        window.location.href = 'login.html';
-      });
-    }
+}
 }
