@@ -2,20 +2,20 @@ import { ProgressBar } from '../../cart/view/components/progress_bar.js'
 import { FooterWidget } from '../../../core/common/footer.js';
 import { NavBar } from '../../../core/common/nav_bar.js';
 class OrderCompleteView {
-  constructor() {
-      this.container = document.querySelector('.container');
-      this.styles = document.createElement('link');
-    //   this.styles.rel = 'stylesheet';
-    //   this.styles.href = '../styles/pages/order_confirmation.css';
-      document.head.appendChild(this.styles);
-      this.progressBar = new ProgressBar(3);
-      new NavBar().render();
-      new FooterWidget().render();
-  }
+    constructor() {
+        this.container = document.querySelector('.container');
+        this.styles = document.createElement('link');
+        //   this.styles.rel = 'stylesheet';
+        //   this.styles.href = '../styles/pages/order_confirmation.css';
+        document.head.appendChild(this.styles);
+        this.progressBar = new ProgressBar(3);
+        new NavBar().render();
+        new FooterWidget().render();
+    }
 
-  render(model) {
-      const order = model.getOrder();
-      const html = `
+    render(model) {
+        const order = model.getOrder();
+        const html = `
           <div class="my-5">
               <div class="mb-4 d-block d-md-none">
                   <a href="#" id="homeLink" class="text-dark">← Home</a>
@@ -52,14 +52,14 @@ class OrderCompleteView {
                                   <span>${order.paymentMethod}</span>
                               </div>
                           </div>
-                          <a href="#" id="purchaseHistoryBtn" class="btn btn-dark w-100">PURCHASE HISTORY</a>
+                          <a href="shop.html" id="purchaseHistoryBtn" class="btn btn-dark w-100">containue shopping</a>
                       </div>
                   </div>
               </div>
           </div>
       `;
-      this.container.innerHTML = html;
-  }
+        this.container.innerHTML = html;
+    }
 }
 
 export default OrderCompleteView;
