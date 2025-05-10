@@ -1,7 +1,7 @@
 export class FooterWidget {
-     render() {
+    render() {
         let footerHtml = `
-        <footer class="footer">
+        <footer class="footer" id="footerId">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -10,11 +10,8 @@ export class FooterWidget {
                 </div>
                 <div class="col-md-6 text-md-end mt-4 mt-md-0">
                     <div class="nav-links">
-                        <a href="#">Home</a>
-                        <a href="#">Shop</a>
-                        <a href="#">Product</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Contact Us</a>
+                        <a href="home.html">Home</a>
+                        <a href="shop.html">Shop</a>
                     </div>
                 </div>
             </div>
@@ -36,7 +33,7 @@ export class FooterWidget {
         </div>
     </footer>`;
         document.getElementById("footer").innerHTML = footerHtml;
-        
+
 
     }
 

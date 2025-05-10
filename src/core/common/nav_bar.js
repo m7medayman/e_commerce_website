@@ -31,7 +31,7 @@ export class NavBar {
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link ${current == "contact" ? "active" : ""}" href="#">contact us</a>
+                        <a class="nav-link ${current == "contact" ? "active" : ""}" href="#footerId">contact us</a>
                     </li>
 
 

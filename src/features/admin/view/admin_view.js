@@ -1,9 +1,9 @@
 
 export class AdminView {
-  constructor(usersContainerId, productsContainerId,profileId) {
+  constructor(usersContainerId, productsContainerId, profileId) {
     this.usersContainer = document.getElementById(usersContainerId);
     this.productsContainer = document.getElementById(productsContainerId);
-    this.profileContainer=document.getElementById(profileId);
+    this.profileContainer = document.getElementById(profileId);
   }
 
   renderUsers(users) {
@@ -126,7 +126,7 @@ export class AdminView {
       const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchTerm));
       this.updateProductsTable(filteredProducts);
     });
-    
+
   }
   createProductRow(product) {
     return `
@@ -138,7 +138,7 @@ export class AdminView {
         <td>${product.category}</td>
         <td>${product.stock}</td>
         <td>${product.sellerId}</td>
-        <td>${product.measuarment}</td>
+        <td>${product.measurement}</td>
         <td>
           <button class="btn btn-danger btn-sm delete-product" data-id="${product.productId}">Delete</button>
         </td>
@@ -187,7 +187,7 @@ export class AdminView {
   //   this.productsContainer.innerHTML = formHTML;
   // }
   renderProfile(data) {
-      this.profileContainer.innerHTML = `
+    this.profileContainer.innerHTML = `
       <h3>My Account</h3>
         <form id="account-details-form" class="needs-validation" novalidate>
                       <div class="row">
@@ -251,84 +251,84 @@ export class AdminView {
                   <div id="validation-message" class="mt-3" style="display: none;"></div>
               </div>
       `;
-      const form = document.getElementById('account-details-form');
-          const newPasswordInput = document.getElementById('new-password');
-          const repeatPasswordInput = document.getElementById('repeat-password');
-          const validationMessage = document.getElementById('validation-message');
-  
-          // Real-time password match validation
-          const validatePasswords = () => {
-              const newPassword = newPasswordInput.value;
-              const repeatPassword = repeatPasswordInput.value;
-              if (newPassword && newPassword !== repeatPassword) {
-                  repeatPasswordInput.setCustomValidity('Passwords must match');
-                  repeatPasswordInput.classList.add('is-invalid');
-              } else {
-                  repeatPasswordInput.setCustomValidity('');
-                  repeatPasswordInput.classList.remove('is-invalid');
-                  if (repeatPassword) repeatPasswordInput.classList.add('is-valid');
-              }
-          };
-  
-          newPasswordInput.addEventListener('input', validatePasswords);
-          repeatPasswordInput.addEventListener('input', validatePasswords);
-  
-          // Form submission handler
-          form.addEventListener('submit', (e) => {
-              e.preventDefault();
-  
-              if (!form.checkValidity()) {
-                  e.stopPropagation();
-                  form.classList.add('was-validated');
-                  validationMessage.style.display = 'block';
-                  validationMessage.innerHTML = '<div class="alert alert-danger" role="alert">Please fix the errors in the form before submitting.</div>';
-              } else {
-                  const firstName = document.getElementById('first-name').value;
-                  const lastName = document.getElementById('last-name').value;
-                  const email = document.getElementById('email').value;
-                  const phone = document.getElementById('phone').value;
-                  const newPassword = document.getElementById('new-password').value;
-                  const oldPassword = document.getElementById('old-password').value;
-  
-                  if (newPassword && oldPassword !== data.password) {
-                      validationMessage.style.display = 'block';
-                      validationMessage.innerHTML = '<div class="alert alert-danger" role="alert">Current password is incorrect.</div>';
-                      return;
-                  }
-  
-                  const updates = {
-                      name: `${firstName} ${lastName}`,
-                      email,
-                      phone: phone || null
-                  };
-                  if (newPassword) {
-                      updates.password = newPassword; // In production, hash this
-                  }
-  
-                  try {
-                      UserModel.update(data.userId, updates);
-                      AuthModel.signIn(email, newPassword || data.password); // Re-sign in with updated credentials
-                      form.classList.remove('was-validated');
-                      validationMessage.style.display = 'block';
-                      validationMessage.innerHTML = '<div class="alert alert-success" role="alert">Account details updated successfully!</div>';
-                      setTimeout(() => {
-                          validationMessage.style.display = 'none';
-                          this.render(); // Re-render to show updated details
-                      }, 3000);
-                  } catch (error) {
-                      validationMessage.style.display = 'block';
-                      validationMessage.innerHTML = `<div class="alert alert-danger" role="alert">${error.message}</div>`;
-                  }
-              }
-          });
-  
-          // Prevent submission if invalid on change
-          form.querySelectorAll('input').forEach(input => {
-              input.addEventListener('input', () => {
-                  if (!form.checkValidity()) {
-                      form.classList.add('was-validated');
-                  }
-              });
-          });
-    }
+    const form = document.getElementById('account-details-form');
+    const newPasswordInput = document.getElementById('new-password');
+    const repeatPasswordInput = document.getElementById('repeat-password');
+    const validationMessage = document.getElementById('validation-message');
+
+    // Real-time password match validation
+    const validatePasswords = () => {
+      const newPassword = newPasswordInput.value;
+      const repeatPassword = repeatPasswordInput.value;
+      if (newPassword && newPassword !== repeatPassword) {
+        repeatPasswordInput.setCustomValidity('Passwords must match');
+        repeatPasswordInput.classList.add('is-invalid');
+      } else {
+        repeatPasswordInput.setCustomValidity('');
+        repeatPasswordInput.classList.remove('is-invalid');
+        if (repeatPassword) repeatPasswordInput.classList.add('is-valid');
+      }
+    };
+
+    newPasswordInput.addEventListener('input', validatePasswords);
+    repeatPasswordInput.addEventListener('input', validatePasswords);
+
+    // Form submission handler
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        e.stopPropagation();
+        form.classList.add('was-validated');
+        validationMessage.style.display = 'block';
+        validationMessage.innerHTML = '<div class="alert alert-danger" role="alert">Please fix the errors in the form before submitting.</div>';
+      } else {
+        const firstName = document.getElementById('first-name').value;
+        const lastName = document.getElementById('last-name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const newPassword = document.getElementById('new-password').value;
+        const oldPassword = document.getElementById('old-password').value;
+
+        if (newPassword && oldPassword !== data.password) {
+          validationMessage.style.display = 'block';
+          validationMessage.innerHTML = '<div class="alert alert-danger" role="alert">Current password is incorrect.</div>';
+          return;
+        }
+
+        const updates = {
+          name: `${firstName} ${lastName}`,
+          email,
+          phone: phone || null
+        };
+        if (newPassword) {
+          updates.password = newPassword; // In production, hash this
+        }
+
+        try {
+          UserModel.update(data.userId, updates);
+          AuthModel.signIn(email, newPassword || data.password); // Re-sign in with updated credentials
+          form.classList.remove('was-validated');
+          validationMessage.style.display = 'block';
+          validationMessage.innerHTML = '<div class="alert alert-success" role="alert">Account details updated successfully!</div>';
+          setTimeout(() => {
+            validationMessage.style.display = 'none';
+            this.render(); // Re-render to show updated details
+          }, 3000);
+        } catch (error) {
+          validationMessage.style.display = 'block';
+          validationMessage.innerHTML = `<div class="alert alert-danger" role="alert">${error.message}</div>`;
+        }
+      }
+    });
+
+    // Prevent submission if invalid on change
+    form.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', () => {
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+        }
+      });
+    });
+  }
 }

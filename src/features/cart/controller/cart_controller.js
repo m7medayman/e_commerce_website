@@ -1,13 +1,21 @@
 import { CartDataModel } from '../model/cart_data_model.js';
 import { CartView } from '../view/cart_view.js';
+import { AuthModel } from "../../../core/models/auth_model.js";
 import { DummyData } from '../../../core/models/dummy_data.js';
 export class CartController {
     constructor() {
+        const user = AuthModel.getUser();
+        if (!user) {
+            console.warn("No user logged in, redirecting to login.");
+            window.location.href = 'login.html';
+            return;
+        }
         this.model = new CartDataModel();
         this.view = new CartView();
     }
- 
+
     init() {
+
         // DummyData.clearTheLocalStorage();
         // DummyData.generateDummyCartData();
         this.view.renderPage();
@@ -49,7 +57,7 @@ export class CartController {
             if (e.target.name === 'shipping') {
                 const option = e.target.value;
                 this.model.setShipping(option);
-                this.renderSummary(); 
+                this.renderSummary();
             }
         });
 
@@ -62,7 +70,7 @@ export class CartController {
     handleCheckout() {
         this.view.renderProgress(2);
         const checkoutObj = this.model.getCheckoutData();
-        localStorage.setItem('checkoutData', JSON.stringify(checkoutObj)); 
+        localStorage.setItem('checkoutData', JSON.stringify(checkoutObj));
         // document.getElementById('shopping').style.display = 'none';
         window.location.href = 'checkout.html';
     }
