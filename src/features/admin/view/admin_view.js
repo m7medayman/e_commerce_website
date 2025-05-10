@@ -9,9 +9,14 @@ export class AdminView {
   renderUsers(users) {
     const usersHTML = `
       <h2>Users</h2>
-      <div class=" col-12 col-md-3 ">
-      <button id="add-user-btn" class="btn btn-primary mb-3">Add User</button> </div>
-      <input type="text" id="user-search" class="form-control mb-3" placeholder="Search users by name...">
+      <div class="row mb-3">
+          <div class="col-12 col-md-6 col-lg-4 mb-2 mb-md-0">
+            <button id="add-user-btn" class="btn btn-primary w-100">Add User</button>
+          </div>
+          <div class="col-12 col-md-6 col-lg-8">
+            <input type="text" id="user-search" class="form-control" placeholder="Search users by name...">
+          </div>
+        </div>
       <div class="overflow-x-auto">
       <table class="table">
         <thead class="table-dark text-white">
