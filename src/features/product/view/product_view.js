@@ -60,7 +60,7 @@ export class ProductView {
                 
                 <div class="product-measurements mb-3">
                     <div class="fw-bold mb-2">Measurements</div>
-                    <div class="measurements_value text-dark"> ${product.measurements}</div>
+                    <div class="measurements_value text-dark"> ${product.measurement}</div>
             </div>
             
             <div class="d-flex">
