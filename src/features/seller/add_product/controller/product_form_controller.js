@@ -21,10 +21,10 @@ export class ProductFormController {
       price: parseFloat(formData.get('productPrice')),
       stock: parseInt(formData.get('productStock')),
       detailedImages: JSON.parse(formData.get('imagesBase64') || '[]'),
-      measuarment: formData.get('productMeasurement'),
+      measurement: formData.get('productMeasurement'),
       discount: parseFloat(formData.get('productDiscount')) || 0,
       sellerId: localStorage.getItem(AuthModel.STORAGE_KEY)
-     };   
+    };
     ProductModel.add(productData);
     this.view.resetForm();
     this.onDone();

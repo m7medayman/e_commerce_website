@@ -45,7 +45,7 @@ export class EditProductController {
             category: document.getElementById('category').value,
             discount: parseInt(document.getElementById('discount').value) || 0,
             detailedImages: parsedNewImages?.length ? parsedNewImages : this.product.detailedImages,
-            measuarment: parseFloat(document.getElementById('measuarment').value),
+            measurement: parseFloat(document.getElementById('measurement').value),
             sellerId: localStorage.getItem(AuthModel.STORAGE_KEY)
         };
         console.log(updates);
