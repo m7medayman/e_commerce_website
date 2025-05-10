@@ -9,7 +9,7 @@ export class ProductModel {
     return this.getAll().find(product => product.productId === productId);
   }
 
-  static add({ name, description, price, detailedImages, category, stock, sellerId, measures, rate, numberOfReviews, discount }) {
+  static add({ name, description, price, detailedImages, category, stock, sellerId, measurement, rate, numberOfReviews, discount }) {
     const products = this.getAll();
     if (discount > 100 || discount < 0) {
       throw new Error('Discount must be between 0 and 100');
@@ -23,7 +23,7 @@ export class ProductModel {
       category,
       stock: parseInt(stock),
       sellerId,
-      measures, //string 10 15 20
+      measurement, //string 10 15 20
       rate: parseInt(rate) || 0,
       discount: parseInt(discount) || 0,
       numberOfReviews: parseInt(numberOfReviews) || 0,

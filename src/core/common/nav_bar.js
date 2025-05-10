@@ -1,6 +1,6 @@
 import { ProductModel } from "../models/product_model.js";
 export class NavBar {
-    constructor() {
+    constructor(current) {
         this.htmlcontent = `
     <nav class="navbar navbar-expand-lg " style="background-color: #fff;">
         <div class="container-fluid align-items-center">
@@ -10,7 +10,7 @@ export class NavBar {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Brand/name -->
-            <a class="navbar-brand" href="#">3legant</a>
+            <a class="navbar-brand" href="/public/home.html">3legant</a>
 
             <!-- THIS DIV: flex container for trailing icons; put it after brand for mobile alignment -->
             <div class="d-flex align-items-center ms-auto order-lg-3">
@@ -24,16 +24,14 @@ export class NavBar {
             <div class="collapse navbar-collapse order-lg-2" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link ${current == "home" ? "active" : ""}" aria-current="page" href="/public/home.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">shop</a>
+                        <a class="nav-link ${current == "shop" ? "active" : ""}" href="/public/shop.html">shop</a>
                     </li>
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="#">product</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">contact us</a>
+                        <a class="nav-link ${current == "contact" ? "active" : ""}" href="#">contact us</a>
                     </li>
 
 
@@ -49,7 +47,9 @@ export class NavBar {
                     </div>
                     
                 </form>
-                <i class="fa-solid fa-user avatar-outline m-2 cursor-pointer hover-effect clickMouse "></i>
+                                <a href="/public/profile.html" style="text-decoration: none; color: inherit;">
+
+                <i class="fa-solid fa-user avatar-outline m-2 cursor-pointer hover-effect clickMouse "></i></a>
             </div>
         </div>
     </nav>`;

@@ -31,7 +31,7 @@ export class DummyData {
                 category: "Category 2",
                 stock: 10,
                 sellerId: "seller-1",
-                measuarment: "10x10x10",
+                measurement: "10x10x10",
                 rate: rate,
                 numberOfReviews: reviews,
                 discount: Math.floor(Math.random() * 100) // Random discount between 0 and 100
