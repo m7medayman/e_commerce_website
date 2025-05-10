@@ -53,7 +53,6 @@ export class UserModel {
     static add({ email, password, role, name, address, phone }) {
         const users = this.getAll();
         if (this.getByEmail(email)) {
-            alert('Email already exists');
 
             throw new Error('Email already exists');
         }

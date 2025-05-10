@@ -20,7 +20,11 @@ export class HomeController {
         this.isLoggedIn = !(this.auth == null);
         console.log(this.isLoggedIn);
         // DummyData.clearTheLocalStorage(); // to clear the old data if there is any 
-        DummyData.generateDummyData(); // that will generate dummy product data and add it to the cart 
+        try {
+            DummyData.generateDummyData();
+        } catch (error) {
+            console.log("email is exsist");
+        }// that will generate dummy product data and add it to the cart 
         let images = this.model.getImages();
         let products = this.model.getProducts();
         // Get the favorite list once before mapping products

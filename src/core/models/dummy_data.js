@@ -14,7 +14,41 @@ export class DummyData {
                     "./assets/images/products/p1_3.avif",
                     "./assets/images/products/p1_4.avif"
 
-                ], category: "living", stock: 10, sellerId: seller1.userId, measurement: "10 x 10 x10", rate: 3, numberOfReviews: 10, discount: 10
+                ], category: "living", stock: 10, sellerId: seller1.userId, measurement: "10 x 10 x10", rate: 5, numberOfReviews: 10, discount: 10
+            },
+            {
+                name: " white chair", description: "this is discription about the chair ", price: 200,
+                detailedImages: ["./assets/images/products/p2_1.avif",
+                    "./assets/images/products/p2_2.avif",
+
+
+                ], category: "living", stock: 10, sellerId: seller1.userId, measurement: "10 x 10 x10", rate: 3, numberOfReviews: 10, discount: 20
+            },
+            {
+                name: " black table ", description: "this is discription about the black table ", price: 300,
+                detailedImages: ["./assets/images/products/p_l_1_1.avif",
+                    "./assets/images/products/p_l_1_2.avif",
+                    "./assets/images/products/p_l_1_3.webp",
+
+
+                ], category: "living", stock: 10, sellerId: seller2.userId, measurement: "10 x 10 x10", rate: 4, numberOfReviews: 30, discount: 40
+            },
+            {
+                name: " kitchen capin ", description: "this is discription about the kitchen capin ", price: 700,
+                detailedImages: ["./assets/images/products/p_k_1_1.avif",
+                    "./assets/images/products/p_k_1_2.avif",
+                    "./assets/images/products/p_k_1_3.avif",
+                    "./assets/images/products/p_k_1_4.avif",
+
+
+                ], category: "kitchen", stock: 5, sellerId: seller2.userId, measurement: "100 x 100 x100", rate: 4, numberOfReviews: 30, discount: 30
+            },
+            {
+                name: " kitchen counter ", description: "this is discription about the kitchen counter ", price: 800,
+                detailedImages: ["./assets/images/products/p_k_3_1.avif",
+                    "./assets/images/products/p_k_3_2.avif",
+
+                ], category: "kitchen", stock: 5, sellerId: seller2.userId, measurement: "100 x 100 x100", rate: 4, numberOfReviews: 30, discount: 30
             },
             {
                 name: " bathcorner ", description: "this is discription about the bathcorner ", price: 200,
@@ -106,6 +140,7 @@ export class DummyData {
                 category: prdoct.category, stock: prdoct.stock,
                 sellerId: prdoct.sellerId,
                 measurement: prdoct.measurement,
+                discount: prdoct.discount,
                 rate: prdoct.rate,
                 numberOfReviews: prdoct.numberOfReviews
             })
