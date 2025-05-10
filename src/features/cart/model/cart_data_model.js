@@ -8,7 +8,6 @@ export class CartDataModel {
     //   { id: 2, name: 'Tray Table', price: 19.00, quantity: 2, url: 'https://images.pexels.com/photos/923192/pexels-photo-923192.jpeg?auto=compress&cs=tinysrgb&w=600' },
     //   { id: 3, name: 'Table Lamp', price: 39.00, quantity: 1, url: 'https://images.pexels.com/photos/923192/pexels-photo-923192.jpeg?auto=compress&cs=tinysrgb&w=600' }
     // ];
-    debugger;
     this.userId = AuthModel.getUser().userId;
     const cart = CartModel.getByUserId(this.userId);
     this.items = cart.items.map(item => {
@@ -49,7 +48,6 @@ export class CartDataModel {
     CartModel.addItem(this.userId, this.items[index].productId, change);
   }
   removeItem(index) {
-    debugger;
     console.log(`removing item at index: ${index}`);
     CartModel.removeItem(this.userId, this.items[index].productId);
     this.items.splice(index, 1);

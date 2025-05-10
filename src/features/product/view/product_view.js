@@ -7,7 +7,7 @@ export class ProductView {
   }
   renderPage() {
     new FooterWidget().render();
-    new NavBar().render();
+    new NavBar("shop").render();
     this.toast = new Toast();
     this.toast.render();
 
@@ -60,7 +60,7 @@ export class ProductView {
                 
                 <div class="product-measurements mb-3">
                     <div class="fw-bold mb-2">Measurements</div>
-                    <div class="measurements_value text-dark"> ${product.measurements}</div>
+                    <div class="measurements_value text-dark"> ${product.measurement}</div>
             </div>
             
             <div class="d-flex">
@@ -107,7 +107,9 @@ export class ProductView {
       let count = document.getElementById("count").value;
 
       count = Number.parseInt(count);
-      addToCart(count);
+      if (!addToCart(count)) {
+        return;
+      };
       // Add the product to cart using the id
       this.toast.showToast("Product added to cart", "Success");
     });
@@ -117,7 +119,9 @@ export class ProductView {
     button.addEventListener("click", function (event) {
       const isFavorite = button.classList.contains('btn-primary');
 
-      favoriteFunc(!isFavorite);
+      if (!favoriteFunc(!isFavorite)) {
+        return;
+      };
       // Toggle the class
       if (isFavorite) {
         button.classList.remove('btn-primary');

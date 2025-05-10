@@ -1,9 +1,9 @@
 export class OrdersView {
     constructor() {
-        this.app = document.getElementById('container');
     }
 
     render(model) {
+        this.app = document.getElementById('container');
         const orders = model.map((order, index) => {
             return `<tr class="text-center align-middle">
                 <th scope="row">${(index + 1)}</th>
@@ -45,7 +45,7 @@ export class OrdersView {
                 }
                     .table thead {
                     border-radius: 10px;
-                    overflow: hidden; /* عشان الزوايا المتقاطعة تتقطع مع الـ tbody */
+                    overflow: hidden; 
                 }
                 .table thead tr:first-child th:first-child {
                     border-top-left-radius: 10px;
