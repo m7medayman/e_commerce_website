@@ -18,13 +18,13 @@ export class ProductsView {
           </tr>`;
         }).join('');
 
-        const container = `<table class="table text-center mt-5">
-          <thead>
+        const container = `<table class="table text-center mt-5 table-hover rounded">
+          <thead style="border-radius: 10px !important; ">
               <tr class="table-dark text-white">
                   <th scope="col">#</th>
-                  <th scope="col">Product Image</th>
-                  <th scope="col">Product Name</th>
-                  <th scope="col">Product Price</th>
+                  <th scope="col"> Image</th>
+                  <th scope="col"> Name</th>
+                  <th scope="col"> Price</th>
                   <th scope="col">Stock</th>
                   <th scope="col">Category</th>
                   <th scope="col">Discount</th>
@@ -38,7 +38,7 @@ export class ProductsView {
       </table>`;
 
         this.app.innerHTML = `
-          <div class="d-flex justify-content-around my-3">
+          <div class="d-flex justify-content-around my-3 table-responsive">
              <div class="w-50">
                     <div class="input-group">
                         <span class="input-group-text">

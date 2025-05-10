@@ -15,16 +15,23 @@
 </head>
 <body>
   <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h3>3elegent</h3>
+  <nav class="sidebar navbar navbar-expand-lg navbar-light bg-dark bg-md-secondary text-light flex-lg-column p-0">
+    <div class="sidebar-header px-3 py-2 w-100 d-flex justify-content-between align-items-center">
+      <h3 class="m-0">3elegent</h3>
+      <button class="navbar-toggler d-lg-none bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+        <span class="navbar-toggler-icon "></span>
+      </button>
     </div>
-    <a href="#" class="active" data-section="dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
-    <a href="orders.html" data-section="orders"><i class="bi bi-cart"></i> Orders</a>
-    <a href="products.html" data-section="products"><i class="bi bi-box"></i> Products</a>
-    <a href="#" data-section="profile"><i class="fa-solid fa-user m-1"></i> Profile</a>
-    <a href="" data-section="logout" class="text-danger">LogOut</a>
-  </div>
+    <div class="collapse navbar-collapse w-100 bg-light bg-md-secondary " id="sidebarMenu">
+      <ul class="navbar-nav flex-column flex-lg-column w-100 h-100 align-items-center mt-3 ">
+        <li class="nav-item"><a href="#" class="nav-link active my-2 px-5" data-section="dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+        <li class="nav-item"><a href="orders.html" class="nav-link w-100 my-2  px-5" data-section="orders"><i class="bi bi-cart"></i> Orders</a></li>
+        <li class="nav-item"><a href="products.html" class="nav-link w-100 my-2 px-5" data-section="products"><i class="bi bi-box"></i> Products</a></li>
+        <li class="nav-item"><a href="#" class="nav-link w-100 my-2 px-5" data-section="profile"><i class="fa-solid fa-user m-1"></i> Profile</a></li>
+        <li class="nav-item"><a href="#" class="nav-link text-danger w-100 my-2 px-5" data-section="logout">LogOut</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- Content -->
   <div class="content" id="app">
