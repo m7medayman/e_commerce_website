@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <link rel="stylesheet" href="../styles/main.css">
   <link rel="stylesheet" href="../styles/pages/signup.css">
 </head>
+
 <body class="bg-white">
   <div class="container-fluid">
     <div class="row" style="min-height: 100vh;">
@@ -28,7 +30,6 @@
               <select class="form-control" id="role" name="role" required>
                 <option value="customer">Customer</option>
                 <option value="seller">Seller</option>
-                <option value="admin">Admin</option>
               </select>
             </div>
             <div class="mb-3">
@@ -43,7 +44,8 @@
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required style="background: transparent;">
+              <input type="password" class="form-control" id="password" name="password" required
+                style="background: transparent;">
               <div id="password_error" class="invalid-feedback"></div>
             </div>
             <div class="mb-3">
@@ -53,7 +55,8 @@
             </div>
             <div class="mb-3">
               <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" name="address" required style="background: transparent;">
+              <input type="text" class="form-control" id="address" name="address" required
+                style="background: transparent;">
               <div id="address_error" class="invalid-feedback"></div>
             </div>
             <div class="mb-3">
@@ -75,4 +78,5 @@
   <script type="module" src="../src/features/auth/controller/auth_controller.js"></script>
   <script type="module" src="../src/features/auth/authentication_app.js"></script>
 </body>
+
 </html>

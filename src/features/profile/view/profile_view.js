@@ -2,14 +2,14 @@ import { AuthModel } from '../../../core/models/auth_model.js';
 import { FooterWidget } from '../../../core/common/footer.js';
 import { NavBar } from '../../../core/common/nav_bar.js';
 export class ProfileView {
-    constructor(){
-        
-                this.styles = document.createElement('link');
-                this.styles.rel = 'stylesheet';
-                this.styles.href = '../styles/pages/profile.css';
-                document.head.appendChild(this.styles);
-                new FooterWidget().render();
-                new NavBar().render();
+    constructor() {
+
+        this.styles = document.createElement('link');
+        this.styles.rel = 'stylesheet';
+        this.styles.href = '../styles/pages/profile.css';
+        document.head.appendChild(this.styles);
+        new FooterWidget().render();
+        new NavBar().render();
 
     }
     renderPage() {
@@ -77,7 +77,7 @@ export class ProfileView {
                         window.location.href = 'login.html';
                     } else if (section === 'dashboard') {
                         const role = link.getAttribute('data-role');
-                        const dashboardUrl = role === 'admin' ? 'admin.html' : '../../../../public/seller/dashboard.html';
+                        const dashboardUrl = role === 'admin' ? 'admin_panel.html' : '../../../../public/seller/dashboard.html';
                         window.location.href = dashboardUrl;
                     } else {
                         handleNavigation(section);
