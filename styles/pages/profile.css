@@ -1,0 +1,210 @@
+/* Sidebar Styling */
+#profile #sidebar {
+  min-height: 100vh;
+  background-color: #F8F9FA !important;
+  padding: 0 !important;
+}
+#profile #sidebar h5 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #000;
+  padding: 16px 24px;
+  margin: 0;
+  border-bottom: 1px solid #E5E7EB;
+}
+#profile #sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#profile #sidebar li {
+  margin-bottom: 0;
+}
+#profile #sidebar a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000 !important;
+  padding: 12px 24px !important;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+#profile #sidebar a:hover {
+  background-color: #E5E7EB;
+}
+#profile #sidebar a.active {
+  font-weight: 600;
+  background-color: #E5E7EB;
+}
+#profile #sidebar a.logout {
+  color: #E73C17 !important;
+}
+
+/* Main Content Styling */
+#profile h1 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 44px;
+  color: #000;
+}
+#profile h3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #000;
+}
+#profile h4 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  color: #000;
+}
+
+/* Account Section Styling */
+#account-section h3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #000;
+  margin-bottom: 24px;
+}
+#account-section h4 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  color: #000;
+  margin-bottom: 24px;
+}
+#account-section .user-details p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  margin-bottom: 8px;
+}
+#account-section .user-details p strong {
+  font-weight: 600;
+}
+#account-section label {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  margin-bottom: 8px;
+}
+#account-section input {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  border: 1px solid #E5E7EB;
+  border-radius: 0;
+  height: 48px;
+  padding: 12px;
+}
+#account-section input:focus {
+  border-color: #000;
+  box-shadow: none;
+}
+#account-section .invalid-feedback {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #E73C17;
+}
+#account-section button {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  background-color: #000;
+  border-color: #000;
+  border-radius: 0;
+  padding: 12px 24px;
+  width: 100%;
+  max-width: 200px;
+}
+#account-section button:hover {
+  background-color: #333;
+  border-color: #333;
+}
+
+/* Orders Section Styling */
+#orders-section table th, #orders-section table td {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  vertical-align: middle;
+}
+
+/* Wishlist Section Styling */
+#wishlist-section table th, #wishlist-section table td {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000;
+  vertical-align: middle;
+}
+#wishlist-section button {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  background-color: #000;
+  border-color: #000;
+  border-radius: 0;
+  padding: 8px 16px;
+}
+#wishlist-section button:hover {
+  background-color: #333;
+  border-color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  #profile #sidebar {
+      min-height: auto;
+      margin-bottom: 24px;
+  }
+  #profile #sidebar h5 {
+      padding: 16px 16px;
+  }
+  #profile #sidebar a {
+      padding: 12px 16px !important;
+  }
+  #profile h1 {
+      font-size: 28px;
+      line-height: 36px;
+  }
+  #account-section h3 {
+      font-size: 20px;
+      line-height: 28px;
+  }
+  #account-section h4 {
+      font-size: 16px;
+      line-height: 24px;
+  }
+  #account-section .user-details p {
+      font-size: 14px;
+      line-height: 20px;
+  }
+  #account-section label {
+      font-size: 14px;
+      line-height: 20px;
+  }
+  #account-section input {
+      font-size: 14px;
+      line-height: 20px;
+      height: 40px;
+      padding: 8px;
+  }
+  #account-section button {
+      font-size: 14px;
+      line-height: 20px;
+      padding: 8px 16px;
+      max-width: 160px;
+  }
+}

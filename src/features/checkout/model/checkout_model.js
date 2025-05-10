@@ -1,4 +1,5 @@
-import {OrderModel} from '../../../core/models/order_model.js';
+import { OrderModel } from '../../../core/models/order_model.js';
+import { AuthModel } from '../../../core/models/auth_model.js';
 export class CheckoutModel {
   constructor() {
     const data = JSON.parse(localStorage.getItem('checkoutData')) || {
@@ -46,17 +47,33 @@ export class CheckoutModel {
   applyCoupon(code) {
     this.couponDiscount = code.toUpperCase() === 'JENKAMW' ? 25.00 : 0;
   }
-  saveOrder() {
-    const order = {
+  saveOrderWithOrderModel() {
+    const user = AuthModel.getUser();
+    if (!user) {
+      throw new Error('No user is signed in');
+    }
+
+    const orderData = {
+      userId: user.userId,
       items: this.getItems(),
-       total: this.calculateDiscountedTotal(),
-      orderCode: `M${Math.floor(Math.random() * 1000)}.AS${Math.floor(Math.random() * 1000)}`,
-      date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
-      paymentMethod: 'Cash on Delivery (COD)',
-      customer: { ...this.customer },
+      shippingAddress: { ...this.customer.shippingAddress },
+      paymentDetails: {
+        method: 'Cash on Delivery (COD)',
+        subtotal: this.getSubtotal(),
+        shippingCost: this.getShippingCost(),
+        couponDiscount: this.couponDiscount,
+        total: this.getTotal()
+      },
+      customer: {
+        firstName: this.customer.firstName,
+        lastName: this.customer.lastName,
+        phone: this.customer.phone,
+        email: this.customer.email
+      }
     };
-    localStorage.setItem('orderData', JSON.stringify(order)); // use order_model
-    //OrderModel.add();
-    return order;
+
+    const savedOrder = OrderModel.add(orderData);
+    localStorage.setItem('latestOrderId', savedOrder.orderId);
+    return savedOrder;
   }
 }

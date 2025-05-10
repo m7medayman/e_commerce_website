@@ -8,8 +8,13 @@ export class OrdersController {
     }
 
     init() {
+<<<<<<< HEAD
         // Retrieve the userId of the logged-in user (assuming it's in localStorage)
         const currentUserId = localStorage.getItem('currentUserId');
+=======
+        // جلب userId بتاع المستخدم المسجّل (هنفترض إنه في localStorage)
+        const currentUserId = localStorage.getItem('auth_user_id');
+>>>>>>> development
         if (!currentUserId) {
             console.error('No logged-in user found');
             this.view.render([]); // Render an empty table if no user is found

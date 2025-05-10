@@ -96,3 +96,45 @@
     font-size: 14px;
     line-height: 1.4;
 }
+
+.branding-container {
+    position: relative;
+}
+
+.tagline {
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.tagline-divider {
+    color: #666;
+    font-weight: 300;
+    position: absolute;
+    right: -15px;
+    top: 0;
+    font-size: 3.5rem;
+}
+
+.store-info {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.store-name {
+    font-weight: 600;
+}
+
+/* Custom breakpoint adjustments */
+@media (max-width: 767.98px) {
+    .tagline {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tagline-divider {
+        right: -10px;
+        font-size: 2.75rem;
+    }
+}

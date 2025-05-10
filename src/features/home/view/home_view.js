@@ -1,7 +1,7 @@
 import { FooterWidget } from '../../../core/common/footer.js';
 import { NavBar } from '../../../core/common/nav_bar.js';
 import { CarouselComponent } from './components/corsaul.js';
-import { ProductComponent } from './components/product.js';
+import { ProductComponent } from '../../../core/common/product.js';
 import { ThreeImageSection } from './components/three_img_section.js';
 import { FourIconsSection } from "./components/four_icon_section.js";
 import { BigTwoPartBanner } from "./components/big_two_part_banner.js";
@@ -9,7 +9,7 @@ import { Toast } from '../../../core/common/toast.js';
 export class HomeView {
     renderPage() {
         new FooterWidget().render();
-        new NavBar().render();
+        new NavBar("home").render();
         this.toast = new Toast();
         this.toast.render();
 
@@ -94,7 +94,9 @@ export class HomeView {
 
                 console.log(action);
                 if (action === ProductComponent.addtoCartAction) {
-                    addToCartFunction(productId);
+                    if (!addToCartFunction(productId)) {
+                        return;
+                    }
                     this.toast.showToast("product added to cart", "Success");
                     return;
 
@@ -117,6 +119,12 @@ export class HomeView {
                     // Update the card attribute with the new state
                     card.setAttribute(ProductComponent.dataIsFavorite, newIsFavorite);
 
+                    // Call the callback function
+                    if (addTofavoriteFuction) {
+                        if (!addTofavoriteFuction(productId, newIsFavorite)) {
+                            return;
+                        };
+                    }
                     // Update icon classes based on new state
                     if (newIsFavorite) {
                         icon.classList.remove("far");
@@ -126,10 +134,6 @@ export class HomeView {
                         icon.classList.add("far");
                     }
 
-                    // Call the callback function
-                    if (addTofavoriteFuction) {
-                        addTofavoriteFuction(productId, newIsFavorite);
-                    }
 
                     console.log("Wishlist toggled for product ID:", productId, "New state:", newIsFavorite);
 

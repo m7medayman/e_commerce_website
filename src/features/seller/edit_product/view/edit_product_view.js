@@ -1,7 +1,7 @@
 export class EditProductView {
     constructor() {
         this.container = document.getElementById('container');
-       
+
     }
 
     render(product) {
@@ -55,9 +55,9 @@ export class EditProductView {
     <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;">
     <div id="previewContainer" class="d-flex gap-2 flex-wrap"></div></div>
                     <div class="col-10 col-md-5">
-                        <label for="measuarment" class="form-label">Measurement</label>
-                        <input type="text" class="form-control" id="measuarment" value="${product.measuarment
-                            }" required>
+                        <label for="measurement" class="form-label">Measurement</label>
+                        <input type="text" class="form-control" id="measurement" value="${product.measurement
+            }" required>
                     </div>
                 </div>
                 <div class="d-flex justify-content-around align-items-center my-5">
@@ -67,51 +67,51 @@ export class EditProductView {
             </form>`;
         this.container.innerHTML = form;
         const imageInput = document.getElementById('imageUpload');
-const previewContainer = document.getElementById('previewContainer');
-const triggerBtn = document.getElementById('uploadTrigger');
+        const previewContainer = document.getElementById('previewContainer');
+        const triggerBtn = document.getElementById('uploadTrigger');
 
-// Create a hidden input to hold new images (base64)
-const hiddenInput = document.createElement('input');
-hiddenInput.type = 'hidden';
-hiddenInput.name = 'newImagesBase64';
-hiddenInput.id = 'newImagesBase64';
-document.getElementById('editProductForm').appendChild(hiddenInput);
+        // Create a hidden input to hold new images (base64)
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'newImagesBase64';
+        hiddenInput.id = 'newImagesBase64';
+        document.getElementById('editProductForm').appendChild(hiddenInput);
 
-triggerBtn.addEventListener('click', () => {
-    imageInput.click();
-});
-
-imageInput.addEventListener('change', () => {
-    const files = Array.from(imageInput.files);
-    if (files.length === 0) {
-        //keep existing images
-        return;
-    }
-    previewContainer.innerHTML = '';
-    const base64Images = [];
-
-    const promises = files.map(file => {
-        return new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                base64Images.push(e.target.result);
-
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.width = 100;
-                img.classList.add('rounded', 'border');
-                previewContainer.appendChild(img);
-
-                resolve();
-            };
-            reader.readAsDataURL(file);
+        triggerBtn.addEventListener('click', () => {
+            imageInput.click();
         });
-    });
 
-    Promise.all(promises).then(() => {
-        hiddenInput.value = JSON.stringify(base64Images);
-    });
-});
+        imageInput.addEventListener('change', () => {
+            const files = Array.from(imageInput.files);
+            if (files.length === 0) {
+                //keep existing images
+                return;
+            }
+            previewContainer.innerHTML = '';
+            const base64Images = [];
+
+            const promises = files.map(file => {
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        base64Images.push(e.target.result);
+
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.width = 100;
+                        img.classList.add('rounded', 'border');
+                        previewContainer.appendChild(img);
+
+                        resolve();
+                    };
+                    reader.readAsDataURL(file);
+                });
+            });
+
+            Promise.all(promises).then(() => {
+                hiddenInput.value = JSON.stringify(base64Images);
+            });
+        });
 
     }
 }
