@@ -64,7 +64,6 @@ class CheckoutController {
                 };
                 const order = this.model.saveOrderWithOrderModel();
                 for (let item of order.items) {
-                    debugger;
                     let itemInStorage = ProductModel.getById(item.productId);
 
                     if (itemInStorage.stock < item.quantity) {
