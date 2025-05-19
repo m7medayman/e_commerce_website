@@ -36,7 +36,7 @@ export class ProductView {
                 <div class="main-img border mb-3">
                     <img id="main-image" class="w-100" src="${product.detailedImages[0]}" alt="main image">
                 </div>
-                <div class="imgs-details d-none m-2 d-md-flex w-100 d-flex ">
+                <div class="imgs-details  m-2 d-md-flex w-100 d-flex ">
                 ${product.detailedImages.map(
       (image) => `<img class="img-thumbnail small-image" src="${image}" alt="Detailed Image">`
     ).join('')}
