@@ -10,6 +10,7 @@ export class ProductView {
     new NavBar("shop").render();
     this.toast = new Toast();
     this.toast.render();
+    
 
   }
 
@@ -70,7 +71,7 @@ export class ProductView {
 
                 <button class="${product.isFavorite ? "btn-primary" : "btn-outline-primary"} wishBtn mb-3 details_button" id="favorite" data-favorite=${product.isFavorite}> <span><i class="far fa-heart"></i></span> Wishlist</button>
             </div>
-            <button class="btn-primary details_button" id="addToCart"> Add To Cart</button>
+            <button class="btn-primary details_button" id="addToCart" ${product.stock > 0 ? '' : 'disabled'}  >   ${product.stock > 0 ? 'Add To Cart' : 'out of stock'}</button>
         </div>
     </div>
       `;
@@ -115,22 +116,25 @@ export class ProductView {
     });
   }
   togelFavorite(favoriteFunc) {
-    const button = document.getElementById("favorite");
-    button.addEventListener("click", function (event) {
-      const isFavorite = button.classList.contains('btn-primary');
+  const button = document.getElementById("favorite");
+  button.addEventListener("click", (event) => {
+    const isFavorite = button.classList.contains('btn-primary');
 
-      if (!favoriteFunc(!isFavorite)) {
-        return;
-      };
-      // Toggle the class
-      if (isFavorite) {
-        button.classList.remove('btn-primary');
-        button.classList.add('btn-outline-primary');
-      } else {
-        button.classList.remove('btn-outline-primary');
-        button.classList.add('btn-primary');
-      }
-    })
-  }
+    if (!favoriteFunc(!isFavorite)) {
+      return;
+    }
+
+    // Toggle the class
+    if (isFavorite) {
+      button.classList.remove('btn-primary');
+      button.classList.add('btn-outline-primary');
+      this.toast.showToast("Product removed from wishlist", "Wishlist");
+    } else {
+      button.classList.remove('btn-outline-primary');
+      button.classList.add('btn-primary');
+      this.toast.showToast("Product added to wishlist", "Wishlist");
+    }
+  });
+}
 }
 

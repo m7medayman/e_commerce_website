@@ -69,6 +69,7 @@ export class ShopView {
                         icon.classList.add("far");
                     }
 
+                    this.toast.showToast(newIsFavorite ? "Product added to wishlist" : "Product reoved from wishlist", "whislist");
 
 
                     console.log("Wishlist toggled for product ID:", productId, "New state:", newIsFavorite);

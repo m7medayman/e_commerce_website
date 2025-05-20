@@ -32,3 +32,16 @@ body {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
+
+.details_button:disabled {
+    background-color: #ccc;
+    /* Greyed out */
+    color: #666;
+    /* Dimmed text */
+    cursor: not-allowed;
+    /* Not-allowed cursor */
+    opacity: 0.6;
+    /* Slightly transparent */
+    pointer-events: none;
+    /* Prevent clicks */
+}

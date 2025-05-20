@@ -5,22 +5,33 @@ export class ShopModel {
         let products = [];
         ProductModel.getAll().forEach((product) => {
             const finalPrice = (product.price - (product.price * product.discount) / 100).toFixed(2);
-
-            products.push({
-                id: product.productId,
-                imageUrl: product.detailedImages[0],
-                altText: product.name,
-                isNew: true,
-                discountPct: product.discount,
-                isFavorite: false,
-                title: product.name,
-                price: `${finalPrice}`,
-                originalPrice: `$${product.price}.00`,
-                rating: product.rate,
-                category: product.category // Make sure category is included
-            });
-        });
-
+            if (product.stock > 0) {
+                products.push({
+                    id: product.productId,
+                    imageUrl: product.detailedImages[0],
+                    altText: product.name,
+                    isNew: true,
+                    discountPct: product.discount,
+                    isFavorite: false,
+                    title: product.name,
+                    price: `${finalPrice}`,
+                    originalPrice: `$${product.price}.00`,
+                    rating: product.rate
+                })
+            }
+            // products.push({
+            //     id: product.productId,
+            //     imageUrl: product.detailedImages[0],
+            //     altText: product.name,
+            //     isNew: true,
+            //     discountPct: product.discount,
+            //     isFavorite: false,
+            //     title: product.name,
+            //     price: `${finalPrice}`,
+            //     originalPrice: `$${product.price}.00`,
+            //     rating: product.rate
+            // })
+        })
         // Apply filters if any
         if (filters.category && filters.category !== 'all') {
             products = products.filter(product => product.category === filters.category);

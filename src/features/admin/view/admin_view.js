@@ -1,9 +1,16 @@
-
+import { FooterWidget } from '../../../core/common/footer.js';
+import { NavBar } from '../../../core/common/nav_bar.js';
 export class AdminView {
   constructor(usersContainerId, productsContainerId, profileId) {
     this.usersContainer = document.getElementById(usersContainerId);
     this.productsContainer = document.getElementById(productsContainerId);
     this.profileContainer = document.getElementById(profileId);
+  }
+  renderNavBar(){
+    new NavBar("admin").render();
+  }
+  renderFooter(){
+    new FooterWidget().render();
   }
 
   renderUsers(users) {

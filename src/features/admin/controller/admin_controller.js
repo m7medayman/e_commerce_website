@@ -15,13 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
   view.renderUsers(users);
   view.renderProfile(user);
   initializeEventListeners(view);
+  view.renderFooter();
+
 });
 
 function initializeEventListeners(view) {
   document.getElementById("total_users").innerText = UserModel.getAll().length;
   document.getElementById("total-products").innerText = ProductModel.getAll().length;
   document.getElementById("total-sellers").innerText = UserModel.getAll().filter(user => user.role === 'seller').length;
-  document.getElementById("total-customers").innerText = UserModel.getAll().filter(user => user.role === 'customer').length; 
+  document.getElementById("total-customers").innerText = UserModel.getAll().filter(user => user.role === 'customer').length;
   document.getElementById("add-user-btn").addEventListener("click", () => {
     view.renderAddUserForm();
 
@@ -80,23 +82,23 @@ function initializeEventListeners(view) {
 
   document.getElementById("products-panel").addEventListener("click", (e) => {
 
-  if (e.target.classList.contains("delete-product")) {
-    const productId = e.target.dataset.id;
-if (confirm("Are you sure you want to delete this product?")) {
+    if (e.target.classList.contains("delete-product")) {
+      const productId = e.target.dataset.id;
+      if (confirm("Are you sure you want to delete this product?")) {
         ProductModel.delete(productId);
         const products = ProductModel.getAll();
         view.renderProducts(products);
         initializeEventListeners(view);
- }
-  }
-});
-const logoutLink = document.getElementById('logout');
-if (logoutLink) {
-  logoutLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    logoutLink.classList.add('text-light');
-    localStorage.removeItem(AuthModel.STORAGE_KEY);
-    window.location.href = 'login.html';
+      }
+    }
   });
-}
+  const logoutLink = document.getElementById('logout');
+  if (logoutLink) {
+    logoutLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      logoutLink.classList.add('text-light');
+      localStorage.removeItem(AuthModel.STORAGE_KEY);
+      window.location.href = 'login.html';
+    });
+  }
 }

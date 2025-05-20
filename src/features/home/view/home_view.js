@@ -136,6 +136,8 @@ export class HomeView {
 
 
                     console.log("Wishlist toggled for product ID:", productId, "New state:", newIsFavorite);
+                    this.toast.showToast(newIsFavorite ? "Product added to wishlist" : "Product reoved from wishlist", "whislist");
+
 
                     // Prevent card click event from firing other handlers
                     e.stopPropagation();
