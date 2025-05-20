@@ -4,12 +4,20 @@ import { AuthModel } from "../../../../core/models/auth_model.js";
 import { DashboardModel } from "../model/model.js";
 import { DashboardView } from "../view/view.js"
 class DashboardController {
+
   constructor(model, view) {
+    const user = AuthModel.getUser();
+    if (!user) {
+      console.warn("No user logged in, redirecting to login.");
+      window.location.href = '../login.html';
+      return;
+    }
     this.model = model;
     this.view = view;
     this.productsController = null;
     this.ordersController = null;
     this.init();
+
   }
 
   init() {

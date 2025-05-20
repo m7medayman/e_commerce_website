@@ -1,9 +1,19 @@
-img{
+img {
   width: 80px;
   height: 80px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
+/* Optional animation on hover */
+img:hover {
+  transform: scale(1.1) rotate(2deg);
+  opacity: 0.9;
+}
+
+/* Animate border and background-color changes */
 #codInputCheckout {
   border-color: #000;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 #codInputCheckout:checked {
@@ -15,16 +25,24 @@ img{
   opacity: 0.6;
   background-color: #000;
   border-color: #000;
+  transition: opacity 0.3s ease;
 }
 
+/* Smooth SVG radio effect for checked state */
 #codInputCheckout:checked[type="radio"] {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+  animation: popIn 0.3s ease forwards;
 }
 
-/* @media (max-width: 576px) {
-  
-  #checkoutTitle {
-      font-size: 24px;
+/* Optional keyframe for pop-in effect */
+@keyframes popIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
   }
 
-} */
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
