@@ -2,6 +2,7 @@ import { CartDataModel } from '../model/cart_data_model.js';
 import { CartView } from '../view/cart_view.js';
 import { AuthModel } from "../../../core/models/auth_model.js";
 import { DummyData } from '../../../core/models/dummy_data.js';
+import { ProductModel } from '../../../core/models/product_model.js';
 export class CartController {
     constructor() {
         const user = AuthModel.getUser();
@@ -37,12 +38,22 @@ export class CartController {
         document.getElementById('cart-items').addEventListener('click', (e) => {
             const action = e.target.dataset.action;
             const index = parseInt(e.target.dataset.index);
-
-            if (action === 'increase') {
-                this.model.updateQuantity(index, 1);
-                this.renderCart();
-                this.renderSummary();
-            } else if (action === 'decrease') {
+            const ele = document.getElementById('quatity');
+            const items = this.model.getCartItems();
+            console.log(items);
+                if (action === 'increase') {
+                    let productId = items[index].productId;
+                    let stock = ProductModel.getById(productId).stock;
+                    let currentQuantity = items[index].quantity;
+                    if (currentQuantity + 1 > stock) {
+                        alert('You have reached the maximum quantity for this item');
+                        return;
+                    }
+                    this.model.updateQuantity(index, 1);
+                    this.renderCart();
+                    this.renderSummary();
+                }
+             else if (action === 'decrease') {
                 this.model.updateQuantity(index, -1);
                 this.renderCart();
                 this.renderSummary();
