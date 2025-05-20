@@ -20,7 +20,7 @@ export class CartItem {
         </div>
         <div class="d-flex gap-3 align-items-center border p-1 rounded mx-5 ">
          <span class="change hover-pointer" data-action="decrease" data-index="${this.index}">−</span>
-          <span>${quantity}</span>
+          <span id="quatity">${quantity}</span>
          <span class="change hover-pointer" data-action="increase" data-index="${this.index}">+</span>
          </div>
        <div class="col-md-2 ">$${price.toFixed(2)}</div>
