@@ -10,7 +10,7 @@ export class ProductsView {
               <td><img src="${product.detailedImages[0]}" alt="${product.name}" width="80px" height="80px" class="rounded"/></td>
               <td>${product.name}</td>
               <td>${product.price}</td>
-              <td>${product.stock}</td>
+              <td>${product.stock > 0 ? product.stock : "Out of stock"}</td>
               <td>${product.category}</td>
               <td>${product.discount}</td>
               <td><span class="edit-icon" data-id="${product.productId}"><i class="fa-solid fa-pen text-primary"></i></span></td>
