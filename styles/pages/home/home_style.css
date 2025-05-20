@@ -3,81 +3,115 @@
 @import url('./component/four_card_section.css');
 @import url('./component/big_two_part_banner.css');
 
+/* === Animations === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* === Carousel === */
 .carousel-item {
     height: 60vh;
-    /* Adjust the height as needed */
     background-size: cover;
     background-position: center;
+    animation: fadeInScale 0.6s ease forwards;
 }
 
 .carousel-inner {
     text-align: center;
 }
 
-.carousel-control-prev-icon {
-    background-color: rgb(0, 0, 0, 0.6);
-    border-radius: 50%;
-    width: 50px;
-    /* Increase the circle size */
-    height: 50px;
-    /* Increase the circle size */
-    background-size: 30px;
-}
-
+.carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgb(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 50%;
     width: 50px;
-    /* Increase the circle size */
     height: 50px;
-    /* Increase the circle size */
     background-size: 30px;
 }
 
+/* Carousel item background styling */
 .carousel-item {
     background-size: cover;
-    /* Scale the image without maintaining aspect ratio */
     background-repeat: no-repeat;
-    /* Prevent the image from repeating */
     background-position: center;
-    /* Center the image within the element */
-
 }
 
-.row flex-nowrap overflow-auto gx-3 {
+/* === Cards & Layout === */
+.row.flex-nowrap.overflow-auto.gx-3 {
     padding: 0.25rem 0.5rem !important;
 }
 
-.col-6 col-sm-4 col-md-3 {
+.col-6.col-sm-4.col-md-3 {
     height: max-content !important;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
+/* === General Containers === */
 .container {
     padding-bottom: 1rem !important;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
-.underline-link {
+/* === Links === */
+.underline-link,
+.big-link {
     color: #1a1a1a !important;
     text-decoration: underline !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
     text-underline-offset: 0.3rem !important;
+    font-weight: 600 !important;
+    animation: fadeInLeft 0.6s ease forwards;
 }
 
 .big-link {
     font-size: 1.5rem !important;
-    font-weight: 600 !important;
-    color: #1a1a1a !important;
-    text-decoration: underline !important;
-    text-underline-offset: 0.3rem !important;
 }
 
+.underline-link {
+    font-size: 1rem !important;
+}
+
+/* === Feature Cards === */
 .feature-card {
     background-color: #f2f3f5;
     padding: 30px 20px;
     text-align: center;
     height: 100%;
     border-radius: 4px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.2s;
 }
 
 .feature-icon {
@@ -97,14 +131,18 @@
     line-height: 1.4;
 }
 
+/* === Branding === */
 .branding-container {
     position: relative;
+    animation: fadeInScale 0.7s ease forwards;
 }
 
 .tagline {
     font-size: 3.25rem;
     font-weight: 600;
     line-height: 1.1;
+    opacity: 0;
+    animation: fadeInUp 0.7s ease forwards;
 }
 
 .tagline-divider {
@@ -114,19 +152,23 @@
     right: -15px;
     top: 0;
     font-size: 3.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.7s ease forwards;
+    animation-delay: 0.2s;
 }
 
 .store-info {
     color: #666;
     font-size: 1rem;
     line-height: 1.5;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
 .store-name {
     font-weight: 600;
 }
 
-/* Custom breakpoint adjustments */
+/* === Responsive Tagline Adjustments === */
 @media (max-width: 767.98px) {
     .tagline {
         font-size: 2.5rem;

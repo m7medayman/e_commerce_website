@@ -1,33 +1,95 @@
- /* panel background + rounding */
- .category-panel {
-     background: #f4f5f8;
-     border-radius: .5rem;
-     overflow: hidden;
-     display: flex;
-     flex-direction: column;
-     align-items: start;
-     padding: 1.5rem;
-     gap: 1rem;
- }
+/* === Animations === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
- /* underlined “Shop Now” link */
- .shop-link {
-     text-decoration: none;
-     border-bottom: 1px solid currentColor;
-     padding-bottom: 2px;
-     font-weight: 500;
- }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
- /* constrain images */
- .panel-img {
-     max-height: 565px;
-     max-width: 100%;
-     align-self: center !important;
-     margin: 0 auto;
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
 
- }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
- .sm-img {
-     max-height: 250px;
-     max-width: 100%;
- }
+@keyframes underlineGrow {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* === Panel background + rounding with animation === */
+.category-panel {
+    background: #f4f5f8;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 1.5rem;
+    gap: 1rem;
+
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* === Underlined “Shop Now” link with hover animation === */
+.shop-link {
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.shop-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: currentColor;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.shop-link:hover::after {
+    width: 100%;
+}
+
+/* === Constrain images with entrance animation === */
+.panel-img,
+.sm-img {
+    max-width: 100%;
+    display: block;
+    opacity: 0;
+    animation: fadeInScale 0.6s ease forwards;
+}
+
+.panel-img {
+    max-height: 565px;
+    align-self: center !important;
+    margin: 0 auto;
+}
+
+.sm-img {
+    max-height: 250px;
+}
